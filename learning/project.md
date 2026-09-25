@@ -92,3 +92,6 @@ Written down so it stops nagging me. Not before the MVP ships.
 - **Session 3:** Mapped the 8-piece trunk. Understanding check: got the definitions of the data model and
   persistence; the gap was *why both* (memory vs surviving closing the app). To practise: explain
   ideas in my own words, not just repeat the definitions.
+  Pushed to GitHub: https://github.com/manav0004/climb-tracker (remote `origin`, `main` tracks `origin/main`).
+  Debugging lessons: a typo (`pusj`) makes a command silently do nothing, so reread the exact command
+  and its output. Test the input before "fixing" it (the repo name really did end in a dot).
