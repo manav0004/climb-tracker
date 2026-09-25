@@ -35,6 +35,27 @@ Hosted free on GitHub Pages.
 | Effort | 1–5 | how hard it felt |
 | Intended beta? | yes/no | did I climb it the intended way |
 
+## 🌳 The trunk: core pieces to learn and build
+
+| # | Piece | What it is | Why this project needs it |
+|---|---|---|---|
+| 1 | **Structure (HTML)** | Says *what's on the page* (elements: buttons, inputs, lists) | The log form and the lists |
+| 2 | **Presentation (CSS)** | Says *how it looks*; mobile-first | Used on a phone at the gym |
+| 3 | **Behaviour (JavaScript)** | Reacts to events (taps) and changes the page, using functions | Anything interactive |
+| 4 | **Data model** | The *shape* of the data: a climb is an object, many climbs form an array | Every feature reads or writes climbs |
+| 5 | **Persistence** | Saves data so it survives closing the app: `localStorage` + JSON | Past sessions, not losing data |
+| 6 | **Source control (Git + GitHub)** | Snapshots of every version (commits), backed up online (remote) | Undo, history, backup; also enables deploying |
+| 7 | **Deployment (GitHub Pages)** | Puts the app on the internet at a public URL | The MVP must be live on my phone |
+| 8 | **Testing and debugging** | Checking things work on purpose; finding and fixing bugs with DevTools | Everything breaks at some point |
+
+**Flow:** tap "Log" → JavaScript (3) builds a climb in the shape of the data model (4) →
+saves it (5) → updates the HTML (1), styled by CSS (2).
+Code changes → committed with Git (6) → published by GitHub Pages (7). Testing (8) checks every step.
+
+**Key idea (checked in session 3):** the data model is how data exists *while the app runs*,
+in memory, which is wiped on close. Persistence is what *survives* closing.
+Unity analogy: your variables vs `PlayerPrefs` or a save file.
+
 ## ✅ In the MVP
 
 The smallest version I'd actually open at the gym, live on my phone.
@@ -67,4 +88,7 @@ Written down so it stops nagging me. Not before the MVP ships.
 - **Session 1:** Picked the project. Created `index.html`, `style.css`, and `app.js`: a page
   with today's date and a "+ Log a problem" button that increases a counter
   (not saved yet).
-- **Session 2:** Defined the MVP and the parking lot. Created this file.
+- **Session 2:** Defined the MVP and the parking lot. Created this file. First Git commit.
+- **Session 3:** Mapped the 8-piece trunk. Understanding check: got the definitions of the data model and
+  persistence; the gap was *why both* (memory vs surviving closing the app). To practise: explain
+  ideas in my own words, not just repeat the definitions.
