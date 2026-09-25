@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Makes the page fit the phone screen instead of showing a zoomed-out desktop page -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Climb Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Climb Tracker</h1>
+    <p id="today"></p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Today's session</h2>
+      <p>Problems logged: <strong id="count">0</strong></p>
+      <button id="add-btn">+ Log a problem</button>
+    </section>
+  </main>
+
+  <!-- Loaded at the end so the HTML elements above already exist when the script runs -->
+  <script src="app.js"></script>
+</body>
+</html>
