@@ -21,8 +21,8 @@
 A phone-friendly web app for logging my climbing (bouldering) sessions at the gym:
 I record each problem I try, then look back at my sessions.
 
-Plain HTML + CSS + JavaScript, no framework. Data is stored in the browser (`localStorage`).
-Hosted free on GitHub Pages.
+Plain HTML + CSS + JavaScript frontend, no framework. Node.js + Express backend with a PostgreSQL
+database. Hosted free on Render (app) + Neon (database). Full decisions and the build plan: `learning/plan.md`.
 
 ### A climb record
 
@@ -43,9 +43,9 @@ Hosted free on GitHub Pages.
 | 2 | **Presentation (CSS)** | Says *how it looks*; mobile-first | Used on a phone at the gym |
 | 3 | **Behaviour (JavaScript)** | Reacts to events (taps) and changes the page, using functions | Anything interactive |
 | 4 | **Data model** | The *shape* of the data: a climb is an object, many climbs form an array | Every feature reads or writes climbs |
-| 5 | **Persistence** | Saves data so it survives closing the app: `localStorage` + JSON | Past sessions, not losing data |
+| 5 | **Server + persistence** | An Express API that the page talks to, saving climbs in a PostgreSQL database | Past sessions, not losing data |
 | 6 | **Source control (Git + GitHub)** | Snapshots of every version (commits), backed up online (remote) | Undo, history, backup; also enables deploying |
-| 7 | **Deployment (GitHub Pages)** | Puts the app on the internet at a public URL | The MVP must be live on my phone |
+| 7 | **Deployment (Render + Neon)** | Puts the app on the internet at a public URL | The MVP must be live on my phone |
 | 8 | **Testing and debugging** | Checking things work on purpose; finding and fixing bugs with DevTools | Everything breaks at some point |
 
 **Flow:** tap "Log" → JavaScript (3) builds a climb in the shape of the data model (4) →
@@ -63,9 +63,9 @@ The smallest version I'd actually open at the gym, live on my phone.
 1. **Log a climb** with all six fields above.
 2. **Today's list** of the climbs logged this session.
 3. **Delete a climb** to fix mis-taps.
-4. **Data is saved on the phone** (`localStorage`) and survives closing the app.
+4. **Data is saved in the database** on the server and survives closing the app.
 5. **Past sessions**: a plain list of earlier days and their climbs.
-6. **Live on the internet** via GitHub Pages, used on my phone at the gym.
+6. **Live on the internet** via Render + Neon, used on my phone at the gym.
 
 **MVP is done when:** I've used it for a real gym session on my phone, from a public URL.
 
@@ -80,7 +80,8 @@ Written down so it stops nagging me. Not before the MVP ships.
 - **Pre-workout log + "how should I train today" recommendations**: mostly a
   training-science problem (someone has to write the rules), and needs weeks of logged
   data. The pre-workout log is parked with it because only the recommendations use it.
-- **Backup/export**: `localStorage` data is lost if the browser data is cleared.
+- **Backup/export**: download my climbs as a file.
+- **Offline mode**: only if the gym's signal turns out to be bad (the app needs internet).
 - **Sync across devices / accounts**
 
 ## Progress log
@@ -95,3 +96,8 @@ Written down so it stops nagging me. Not before the MVP ships.
   Pushed to GitHub: https://github.com/manav0004/climb-tracker (remote `origin`, `main` tracks `origin/main`).
   Debugging lessons: a typo (`pusj`) makes a command silently do nothing, so reread the exact command
   and its output. Test the input before "fixing" it (the repo name really did end in a dot).
+- **Session 4:** Locked the five design decisions: JavaScript, plain HTML/CSS/JS, Node + Express,
+  PostgreSQL, Render + Neon. Changed from `localStorage` + GitHub Pages so I learn servers, APIs and
+  databases (portfolio value). Wrote `learning/plan.md` (8 sections). Lessons: Java ≠ JavaScript.
+  Reading back a list of reasons isn't the same as explaining; I got it when I tied Postgres to *this*
+  project (free hosts wipe files, so SQLite would lose my climbs).
