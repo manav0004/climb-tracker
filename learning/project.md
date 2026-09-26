@@ -1,6 +1,7 @@
 # Climb Tracker — Project Record
 
-> Every session starts by reading this file.
+> Every session starts by reading this file, then `plan.md`, `knowledge-graph.md` (it decides the quiz)
+> and `file-map.md`. After every lesson, update the knowledge graph and the file map.
 
 ## Who I am
 
@@ -101,3 +102,5 @@ Written down so it stops nagging me. Not before the MVP ships.
   databases (portfolio value). Wrote `learning/plan.md` (8 sections). Lessons: Java ≠ JavaScript.
   Reading back a list of reasons isn't the same as explaining; I got it when I tied Postgres to *this*
   project (free hosts wipe files, so SQLite would lose my climbs).
+  Also created `knowledge-graph.md` (73 concepts: what I actually know, and what to quiz me on) and
+  `file-map.md` (every file explained, so there are no mystery boxes).
