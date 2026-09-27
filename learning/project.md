@@ -11,7 +11,9 @@
 - **Goal:** Learn to code for real by building something I'll actually use.
 - **How I learn best:** Twice-exceptional: attention deficit plus high ability (IQ around 130).
   My strengths are language and connecting abstract concepts.
-  - Keep steps short, and make each one end with something visible working.
+  - **I learn fast (session 6 felt too slow).** Pitch lessons at a fast learner: bigger steps, predictions
+    batched into one set per step, no re-explaining HTML/CSS basics. Slow down only where I actually get something wrong.
+  - Make each step end with something visible working.
   - Explain new ideas through analogies to what I know (Unity scripts, Python, HTML/CSS)
     and through *why* they work, not just *what* to type.
   - Avoid long lectures and repetitive drills (boredom), and avoid big unexplained jumps
