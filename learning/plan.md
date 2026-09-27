@@ -49,6 +49,15 @@ Mobile-first styling so it's usable with chalky thumbs. JS reads the form, build
 **✅ Deliverable:** I can log and delete climbs on the page. Refreshing wipes them, and I can explain *why*
 (the data model lives in memory).
 
+- [x] **2.1 Catch the submit and build a climb object.** JS stops the page reload, reads all six fields by `name`,
+  and builds one climb object. ✅ Tapping Log doesn't reload, and the climb object shows up in the Console.
+- [ ] **2.2 The array and the real list.** Each climb goes into a `climbs` array, and a function redraws the list from it,
+  replacing the made-up `<li>`s. ✅ Logged climbs appear in the list, and a refresh wipes them (I explain why).
+- [ ] **2.3 Delete a climb.** Each list item gets a delete button that removes that climb from the array and redraws.
+  ✅ I can fix a mis-tap.
+- [ ] **2.4 Mobile-first styling.** Stacked fields, big tap targets, and a readable list. ✅ The app is usable one-handed
+  in phone view. That's the Section 2 deliverable.
+
 ### 3. My own server (Node + Express, locally)
 Install Node and npm. A tiny Express server sends my HTML/CSS/JS to the browser.
 **✅ Deliverable:** the same app at `http://localhost:3000`, served by *my* server, with each request
@@ -68,6 +77,8 @@ Passwords and connection details stay out of the code (environment variables).
 ### 6. The core features (the MVP, complete)
 "Today" versus **past sessions** (earlier days and their climbs), checks on bad input,
 and a clear message when the server can't be reached.
+*(Noted in 2.1: `effort` is still a string, and it's `''` when none is picked. Make effort required, or give it a default, then
+`Number()` it. Don't `Number('')` it blindly, because that silently becomes `0`.)*
 **✅ Deliverable:** MVP features 1–5 all work on my laptop.
 
 ### 7. Tests and debugging

@@ -44,7 +44,7 @@
 
 ## 📊 Snapshot
 
-76 concepts · 🌱 39 · 👋 26 · 🔧 11 · ✅ 0 (as of 2026-09-28)
+76 concepts · 🌱 36 · 👋 26 · 🔧 14 · ✅ 0 (as of 2026-09-28)
 
 ---
 
@@ -53,19 +53,19 @@
 | ID | Concept | § | Status | Introduced | Last reviewed | Evidence | Builds on |
 |---|---|---|---|---|---|---|---|
 | L1 | Variables (`let` vs `const`) | 2 | 👋 | 2026-09-25 | 2026-09-25 | The `app.js` comments explain `let count` as state and `const` for element references. I haven't explained them back yet. | — |
-| L2 | Data types (string, number, boolean) | 2 | 🌱 | — | — | — | L1 |
-| L3 | Operators and comparisons (`+`, `===`, `>`) | 2 | 🌱 | — | — | — | L2 |
+| L2 | Data types (string, number, boolean) | 2 | 🔧 | 2026-09-28 | 2026-09-28 | 2.1: predicted `attempts: 3` but got `'3'` (a gap). Learned that everything from HTML is text (the quotes are the tell), and wrapped it in `Number(...)` myself. | L1 |
+| L3 | Operators and comparisons (`+`, `===`, `>`) | 2 | 👋 | 2026-09-28 | 2026-09-28 | 2.1: `"3" + 1` gives `"31"` (it glues text instead of adding); I got this one right. | L2 |
 | L4 | Conditionals (`if` / `else`) | 2 | 🌱 | — | — | — | L3 |
 | L5 | Functions (parameters, `return`) | 2 | 🌱 | — | — | `app.js` has one (the click handler), but it was never explained as a function. | L1 |
-| L6 | Callbacks and arrow functions (`() => {}`) | 2 | 🌱 | — | — | — | L5 |
+| L6 | Callbacks and arrow functions (`() => {}`) | 2 | 👋 | 2026-09-28 | 2026-09-28 | 2.1: the submit listener's `(event) => {...}` was explained as the same lambda as C#'s `AddListener(() => {...})`. Claude wrote it. | L5 |
 | L7 | Arrays | 2 | 👋 | 2026-09-25 | 2026-09-25 | Session 3: I got the definition ("many climbs form an array"). Not in code yet. | L1 |
-| L8 | Objects | 2 | 👋 | 2026-09-25 | 2026-09-25 | Session 3: I got the definition ("a climb is an object"). Not in code yet. | L1 |
+| L8 | Objects | 2 | 🔧 | 2026-09-25 | 2026-09-28 | Session 3: I got the definition ("a climb is an object"). 2.1: wrote 4 of the climb object's 6 fields myself, and read the object in the Console. | L1 |
 | L9 | Loops (`for...of`) | 2 | 🌱 | — | — | — | L7 |
 | L10 | Array methods (`filter`, `map`, `find`) | 6 | 🌱 | — | — | — | L6, L7 |
 | L11 | Scope (where a variable can be seen) | 2 | 🌱 | — | — | — | L1, L5 |
 | L12 | Template literals (`` `Grade ${g}` ``) | 2 | 🌱 | — | — | — | L2 |
 | L13 | Dates (`Date`, comparing days) | 6 | 🌱 | — | — | `app.js` shows today's date, but it was never explained. | L8 |
-| L14 | `null` / `undefined` (missing values) | 2 | 👋 | 2026-09-27 | 2026-09-27 | Session 6: `null` explained as JS's `NullReferenceException`. With a hint, I named `addBtn` as the `null` variable. | L2 |
+| L14 | `null` / `undefined` (missing values) | 2 | 👋 | 2026-09-27 | 2026-09-27 | Session 6: `null` explained as JS's `NullReferenceException`. With a hint, I named `addBtn` as the `null` variable. 2.1: I predicted an unpicked effort would be "none", and it's `''` (an empty string: JS has no `None`, and `''` isn't `null` either). | L2 |
 | L15 | Errors and `try` / `catch` | 6 | 🌱 | — | — | — | L5 |
 | L16 | Async: promises and `async` / `await` | 4 | 🌱 | — | — | — | L6 |
 | L17 | JSON (data as text) | 4 | 🌱 | — | — | Named in the session 3 trunk (with `localStorage`), never explained. | L7, L8 |
@@ -81,7 +81,7 @@
 | S5 | The three roles: HTML structure, CSS looks, JS behaviour | Plan | 👋 | 2026-09-25 | 2026-09-26 | Session 4: I said browsers "won't run if it is not on Java". Corrected: Java ≠ JS, and pages show without JS; JS adds *behaviour*. Session 5: predicted correctly that JS keeps working without the CSS. | — |
 | S6 | Files talking to each other (`<link>`, `<script src>`, paths) | 1 | 🔧 | 2026-09-25 | 2026-09-26 | Session 5: found both wire lines and wrote comments on them myself. Correctly predicted that `styles.css` would kill the styling but not the counter. Session 6: reasoned "the date shows, so `app.js` loaded" myself. | S1 |
 | S7 | The DOM (JS grabbing page elements) | 2 | 🔧 | 2026-09-25 | 2026-09-27 | The `app.js` comments compare `getElementById` to Unity's `GetComponent`. Session 6: saw it return `null` once we deleted the button. In 1.3, I deleted exactly the dead references myself and kept `todayEl` ("I knew they weren't working"). The Console was clean. | S1, L8 |
-| S8 | Events and listeners | 2 | 👋 | 2026-09-25 | 2026-09-25 | The `app.js` comments compare `addEventListener` to `onClick.AddListener`. | S7, L6 |
+| S8 | Events and listeners | 2 | 🔧 | 2026-09-25 | 2026-09-28 | The `app.js` comments compare `addEventListener` to `onClick.AddListener`. 2.1: predicted that `preventDefault()` stops the reload, then commented it out myself to test that. | S7, L6 |
 | S9 | Drawing a list from data (data → HTML) | 2 | 👋 | 2026-09-28 | 2026-09-28 | Session 6 (1.4): my two made-up `<li>`s are the design mock for one climb, and JS will copy that shape in §2. I predicted that tapping Log won't change the list "since we'd need JS". | L7, L9, S7 |
 | S10 | Data model (the shape of data in memory) | 2 | 👋 | 2026-09-25 | 2026-09-25 | Session 3: I got the definition, but not *why* we need both it and persistence. ⚠️ known gap | L7, L8 |
 | S11 | Persistence (data that survives closing the app) | 5 | 👋 | 2026-09-25 | 2026-09-26 | Session 3: same gap as S10. Session 4: switched from `localStorage` to a database. | S10 |
@@ -106,7 +106,7 @@
 | S30 | Parameterized queries (and why: SQL injection) | 5 | 🌱 | — | — | — | S27 |
 | S31 | Sessions = climbs grouped by day | 6 | 🌱 | — | — | — | L13, S27 |
 | S32 | `file://` vs `http://` (opening a file vs being served by a server) | 3 | 👋 | 2026-09-26 | 2026-09-26 | Session 5: saw the "'file:' URLs are treated as unique security origins" warning; it was explained as noise that goes away in §3. | S19, S20 |
-| S33 | A form's default submit (reloads the page and adds `?name=value` to the URL) | 1 | 🔧 | 2026-09-27 | 2026-09-27 | Session 6: predicted "nothing" on tapping Log and saw a reload (a gap). Then correctly predicted `?grade=6b` in the URL. | S2, S20 |
+| S33 | A form's default submit (reloads the page and adds `?name=value` to the URL) | 1 | 🔧 | 2026-09-27 | 2026-09-27 | Session 6: predicted "nothing" on tapping Log and saw a reload (a gap). Then correctly predicted `?grade=6b` in the URL. 2.1: JS now stops the default with `event.preventDefault()`. | S2, S20 |
 | S34 | Labels and focus (`for` → `id`, or input nested inside the label; tap targets, screen readers) | 1 | 🔧 | 2026-09-27 | 2026-09-27 | Session 6: proved the focus by tapping "Grade" and pressing ↓. In 1.3, correctly predicted that tapping the word "Sent" ticks the box, and used both wiring styles. I haven't explained *focus* in my own words yet. | S2 |
 
 ## E: Engineering practice
@@ -161,3 +161,5 @@
 - **2026-09-28 (Section 1 trace a tap):** List: correct ("not any type of variable… fixed plain text used as an example").
   Data: "doesn't go nowhere". I forgot it's sent in the URL and then ignored after the reload (S33 slip). Next: "save it up
   using js" repeats the S10/S11 gap.
+- **2026-09-28 (task 2.1):** L2, L8 and S8 → 🔧. L3 and L6 → 👋. Reviewed L14 and S33. Gap: "HTML values are text" (`'3'`, not `3`).
+  Prediction 4 (no `preventDefault`, with Preserve log) was never reported back.

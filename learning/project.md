@@ -124,3 +124,6 @@ Written down so it stops nagging me. Not before the MVP ships.
   **Copilot autofill** wrote. I turned Copilot off so I write my own code. Section 1 is built.
   **§1 trace a tap:** the list is fixed example text, not a variable ✅. The data is sent in the URL, but the reloaded page ignores it
   (I first said "nowhere"). Gap to fix in §2: JS alone keeps climbs in memory, and *saving* them is §4–5.
+  Split §2 into 4 tasks and finished 2.1: JS catches the submit (`preventDefault`) and builds a climb object from all six fields.
+  Surprise: `attempts` came out as `'3'`, because everything from HTML is text, and `"3" + 1` is `"31"`. Fixed it with `Number()`.
+  An unpicked effort is `''`, so that's parked for §6 validation.
