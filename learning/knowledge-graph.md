@@ -44,7 +44,7 @@
 
 ## 📊 Snapshot
 
-76 concepts · 🌱 42 · 👋 26 · 🔧 8 · ✅ 0 (as of 2026-09-27)
+76 concepts · 🌱 41 · 👋 24 · 🔧 11 · ✅ 0 (as of 2026-09-27)
 
 ---
 
@@ -74,13 +74,13 @@
 
 | ID | Concept | § | Status | Introduced | Last reviewed | Evidence | Builds on |
 |---|---|---|---|---|---|---|---|
-| S1 | HTML elements and page structure | 1 | 🌱 | — | — | I've built HTML sites before (self-reported), but it hasn't been checked here. Could upgrade quickly. | — |
-| S2 | Forms and inputs (select, checkbox, number) | 1 | 🔧 | 2026-09-27 | 2026-09-27 | Session 6: filled in my gym's 8 grades as `<option>`s myself. My first comment on `for="grade"` was wrong ("a form named grade", "submits the form"). I tested it, found it points to the select and doesn't submit, and saw ↓ change the grade. My rewrite, "It calls the select element", still misses *focus*. | S1 |
+| S1 | HTML elements and page structure | 1 | 🔧 | 2026-09-27 | 2026-09-27 | Session 6 (1.3): wrote `<label input type="checkbox">`, merging two tags so no box appeared. After the parent/child explanation, I nested `<input>` inside `<label>` correctly. | — |
+| S2 | Forms and inputs (select, checkbox, number) | 1 | 🔧 | 2026-09-27 | 2026-09-27 | Session 6: filled in my gym's 8 grades as `<option>`s myself. My first comment on `for="grade"` was wrong ("a form named grade", "submits the form"). I tested it, found it points to the select and doesn't submit, and saw ↓ change the grade. My rewrite, "It calls the select element", still misses *focus*. Session 6 (1.3): wrote the colour options, and added an Attempts `number` input (`min="1" value="1"`) on my own. Chose a Yes/No dropdown for beta, then switched to a checkbox after the tradeoff. Was *told*, not shown, that an unticked checkbox sends nothing. | S1 |
 | S3 | CSS selectors, box model, layout | 2 | 🌱 | — | — | Prior experience (self-reported), not checked. | S1 |
 | S4 | Mobile-first and the viewport tag | 2 | 👋 | 2026-09-25 | 2026-09-25 | Explained in an `index.html` comment. I haven't explained it back. | S3 |
 | S5 | The three roles: HTML structure, CSS looks, JS behaviour | Plan | 👋 | 2026-09-25 | 2026-09-26 | Session 4: I said browsers "won't run if it is not on Java". Corrected: Java ≠ JS, and pages show without JS; JS adds *behaviour*. Session 5: predicted correctly that JS keeps working without the CSS. | — |
 | S6 | Files talking to each other (`<link>`, `<script src>`, paths) | 1 | 🔧 | 2026-09-25 | 2026-09-26 | Session 5: found both wire lines and wrote comments on them myself. Correctly predicted that `styles.css` would kill the styling but not the counter. Session 6: reasoned "the date shows, so `app.js` loaded" myself. | S1 |
-| S7 | The DOM (JS grabbing page elements) | 2 | 👋 | 2026-09-25 | 2026-09-27 | The `app.js` comments compare `getElementById` to Unity's `GetComponent`. Session 6: saw it return `null` once we deleted the button. | S1, L8 |
+| S7 | The DOM (JS grabbing page elements) | 2 | 🔧 | 2026-09-25 | 2026-09-27 | The `app.js` comments compare `getElementById` to Unity's `GetComponent`. Session 6: saw it return `null` once we deleted the button. In 1.3, I deleted exactly the dead references myself and kept `todayEl` ("I knew they weren't working"). The Console was clean. | S1, L8 |
 | S8 | Events and listeners | 2 | 👋 | 2026-09-25 | 2026-09-25 | The `app.js` comments compare `addEventListener` to `onClick.AddListener`. | S7, L6 |
 | S9 | Drawing a list from data (data → HTML) | 2 | 🌱 | — | — | — | L7, L9, S7 |
 | S10 | Data model (the shape of data in memory) | 2 | 👋 | 2026-09-25 | 2026-09-25 | Session 3: I got the definition, but not *why* we need both it and persistence. ⚠️ known gap | L7, L8 |
@@ -107,7 +107,7 @@
 | S31 | Sessions = climbs grouped by day | 6 | 🌱 | — | — | — | L13, S27 |
 | S32 | `file://` vs `http://` (opening a file vs being served by a server) | 3 | 👋 | 2026-09-26 | 2026-09-26 | Session 5: saw the "'file:' URLs are treated as unique security origins" warning; it was explained as noise that goes away in §3. | S19, S20 |
 | S33 | A form's default submit (reloads the page and adds `?name=value` to the URL) | 1 | 🔧 | 2026-09-27 | 2026-09-27 | Session 6: predicted "nothing" on tapping Log and saw a reload (a gap). Then correctly predicted `?grade=6b` in the URL. | S2, S20 |
-| S34 | Labels and focus (`for` → `id`; tap targets, screen readers) | 1 | 👋 | 2026-09-27 | 2026-09-27 | Session 6: proved the focus by tapping "Grade" and pressing ↓. I haven't explained *focus* in my own words yet. | S2 |
+| S34 | Labels and focus (`for` → `id`, or input nested inside the label; tap targets, screen readers) | 1 | 🔧 | 2026-09-27 | 2026-09-27 | Session 6: proved the focus by tapping "Grade" and pressing ↓. In 1.3, correctly predicted that tapping the word "Sent" ticks the box, and used both wiring styles. I haven't explained *focus* in my own words yet. | S2 |
 
 ## E: Engineering practice
 
@@ -154,3 +154,5 @@
   the `app.js` typo prediction is unfinished.
 - **2026-09-27 (session 6, task 1.2):** S2 and E6 → 🔧. L14 → 👋. Added S33 (🔧) and S34 (👋). Reviewed S6, S7 and E8.
   Gaps found: the form reload (I predicted "nothing"), blaming "the function" for a `null` error, and my first label comment.
+- **2026-09-27 (session 6, task 1.3):** S1, S7 and S34 → 🔧. Reviewed S2. Gap: merging `<label>` and `<input>` into one tag.
+  I skipped the URL test as redundant (fair). The checkbox quirk (`on` / missing) was told to me, not tested.

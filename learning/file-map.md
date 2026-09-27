@@ -22,9 +22,9 @@
 
 | Path | Mark | What it is and why it exists | Deep dive |
 |---|---|---|---|
-| `index.html` | parked | The page's structure. Right now: a title, today's date, and the log form (`id="log-form"`) with a grade dropdown and a "Log" button; the counter is gone. **I wrote** the 8 grade `<option>`s (my gym's grades; comp grades get added later) and the label comment (2026-09-27), plus the comments on the two "wire" lines (2026-09-26). The rest gets explained as I rebuild it in §1. | §1 |
+| `index.html` | parked | The page's structure. Right now: a title, today's date, and the log form (`id="log-form"`) with grade, colour, attempts, sent and intended beta, plus a "Log" button. **I wrote** the grade and colour `<option>`s, the Attempts input, the intended-beta checkbox and the label comment (2026-09-27), plus the comments on the two "wire" lines (2026-09-26). The rest gets explained as I rebuild it in §1. | §1 |
 | `style.css` | parked | How the page looks: mobile-first styling for the card and button. | §2 |
-| `app.js` | parked | The page's behaviour. It shows today's date, then **crashes on line 20** (`addBtn` is `null` because the counter button was removed). That's expected, and task 1.3 cleans it up. | §2 (cleanup in 1.3) |
+| `app.js` | parked | The page's behaviour. It only shows today's date now. **I removed** the dead counter code (2026-09-27), so the Console is clean. | §2 |
 
 ## Tools and machine-made files
 

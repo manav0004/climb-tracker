@@ -35,10 +35,10 @@ and a "Today" list with a couple of made-up climbs typed into the HTML.
   how one HTML file pulls in the other two. ✅ The page in phone view, plus one wire broken and fixed on purpose.
 - [x] **1.2 The first field: grade.** A `<form>` with a grade dropdown and a "Log" button, replacing the old counter.
   ✅ The dropdown opens in phone view.
-- [ ] **1.3 Clean up the counter, then colour and the two yes/no fields.** Remove the dead counter code from `app.js`,
+- [x] **1.3 Clean up the counter, then colour and the two yes/no fields.** Remove the dead counter code from `app.js`,
   then add a colour dropdown and checkboxes for sent and intended beta.
   ✅ The Console is clean, and the colour dropdown and both checkboxes work in phone view.
-- [ ] **1.4 The numbers, then Today's list.** Add attempts and effort (1–5), then a "Today" list with two made-up
+- [ ] **1.4 The numbers, then Today's list.** Add effort (1–5) (attempts is already done: I added it early in 1.3), then a "Today" list with two made-up
   climbs typed into the HTML. ✅ All six fields are usable, and the list shows. That's the Section 1 deliverable.
 
 *(Session 6: the old tasks 1.3–1.6 were merged into two, because the smaller steps were too slow for how fast I learn.)*

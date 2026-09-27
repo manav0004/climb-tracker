@@ -116,3 +116,6 @@ Written down so it stops nagging me. Not before the MVP ships.
   That's a form's built-in "deliver it" behaviour. Decoded `Cannot read properties of null` as JS's
   `NullReferenceException`. The date still showing proved `app.js` loaded and crashed partway through. Tested my own
   wrong claim ("the label submits") with evidence and dropped it. Still to say in my own words: what *focus* is.
+  Asked for a faster pace, so the rest of Section 1 was merged into two tasks. Finished 1.3: removed the dead counter JS myself
+  (clean Console), then added colour, attempts (early), sent and intended beta. Picked a checkbox over a Yes/No dropdown
+  (fewer taps). Bug: `<label input type="checkbox">` merged two tags, so no box appeared. Fixed it by nesting, like a child GameObject.
