@@ -33,10 +33,8 @@
 
 ## 🎯 Quiz queue (next session)
 
-0. **Section 1 exit: the trace a tap.** In 2–3 lines: what happens *right now* when I fill the form and tap Log?
-   Where does the data go, and why doesn't the list change? (This covers S33, S9 and S5.)
-1. **S10 + S11: why both a data model *and* persistence?** This is the known gap from session 3, and it matters more now that persistence
-   is a database on another computer.
+1. **S10 + S11: why both a data model *and* persistence?** This is the known gap from session 3, and it came back in the §1 trace
+   ("save it up using js"). §2's JS array is *memory*, which is wiped on refresh; saving needs §4–5. Ask it early in §2.
 2. **S34: what does tapping a label actually do?** My comment says it "calls the select element". Say it again using the
    word *focus*, and give one reason labels matter at the gym.
 3. **S20 + S33: "the browser *requests* things."** When I tapped Log, the URL became `?grade=6b`. Who was that request
@@ -160,3 +158,6 @@
   I skipped the URL test as redundant (fair). The checkbox quirk (`on` / missing) was told to me, not tested.
 - **2026-09-28 (session 6, task 1.4):** S9 and A6 → 👋. Reviewed S1, S2 and S34 (radio groups, `<fieldset>`/`<legend>`).
   Gaps: a dangling `for="effort"` pointing at no `id`, and duplicate `id="attempts"` from Copilot autofill. Both were silent failures.
+- **2026-09-28 (Section 1 trace a tap):** List: correct ("not any type of variable… fixed plain text used as an example").
+  Data: "doesn't go nowhere". I forgot it's sent in the URL and then ignored after the reload (S33 slip). Next: "save it up
+  using js" repeats the S10/S11 gap.

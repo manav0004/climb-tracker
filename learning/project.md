@@ -121,4 +121,6 @@ Written down so it stops nagging me. Not before the MVP ships.
   (fewer taps). Bug: `<label input type="checkbox">` merged two tags, so no box appeared. Fixed it by nesting, like a child GameObject.
   Finished 1.4 (2026-09-28): effort as a radio group in a `<fieldset>`/`<legend>`, and a Today's list card with two made-up
   climbs (the design mock that JS will copy in §2). Two silent bugs: a `for` pointing at no `id`, and duplicate `id`s that
-  **Copilot autofill** wrote. I turned Copilot off so I write my own code. Section 1 is built; its trace-a-tap is the next opener.
+  **Copilot autofill** wrote. I turned Copilot off so I write my own code. Section 1 is built.
+  **§1 trace a tap:** the list is fixed example text, not a variable ✅. The data is sent in the URL, but the reloaded page ignores it
+  (I first said "nowhere"). Gap to fix in §2: JS alone keeps climbs in memory, and *saving* them is §4–5.
