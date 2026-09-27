@@ -5,6 +5,7 @@
   <!-- Makes the page fit the phone screen instead of showing a zoomed-out desktop page -->
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Climb Tracker</title>
+  <!-- It references the CSS file and applies the styles to the page -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,12 +17,28 @@
   <main>
     <section class="card">
       <h2>Today's session</h2>
-      <p>Problems logged: <strong id="count">0</strong></p>
-      <button id="add-btn">+ Log a problem</button>
+      <form id="log-form">
+        <!-- It calls the select element -->
+        <label for="grade">Grade</label>
+        <select id="grade" name="grade">
+          <option value="4">4</option>
+          <option value="5+">5+</option>
+          <option value="6a">6a</option>
+          <option value="6b">6b</option>
+          <option value="6c">6c</option>
+          <option value="7a">7a</option>
+          <option value="7b">7b</option>
+          <option value="7c">7c</option>  
+          
+        </select>
+    
+        <button type="submit">Log</button>
+      </form>
     </section>
   </main>
 
   <!-- Loaded at the end so the HTML elements above already exist when the script runs -->
+  <!-- It references the script file and loads it when the page is loaded, if there is a typo in the file name, the script will not load and may cause errors -->
   <script src="app.js"></script>
 </body>
 </html>

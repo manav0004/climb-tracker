@@ -22,9 +22,9 @@
 
 | Path | Mark | What it is and why it exists | Deep dive |
 |---|---|---|---|
-| `index.html` | parked | The page's structure. Right now: a title, today's date, and a "+ Log a problem" button with a counter. | §1 |
+| `index.html` | parked | The page's structure. Right now: a title, today's date, and the log form (`id="log-form"`) with a grade dropdown and a "Log" button; the counter is gone. **I wrote** the 8 grade `<option>`s (my gym's grades; comp grades get added later) and the label comment (2026-09-27), plus the comments on the two "wire" lines (2026-09-26). The rest gets explained as I rebuild it in §1. | §1 |
 | `style.css` | parked | How the page looks: mobile-first styling for the card and button. | §2 |
-| `app.js` | parked | The page's behaviour. It shows today's date and adds 1 to the counter on each tap (not saved). | §2 |
+| `app.js` | parked | The page's behaviour. It shows today's date, then **crashes on line 20** (`addBtn` is `null` because the counter button was removed). That's expected, and task 1.3 cleans it up. | §2 (cleanup in 1.3) |
 
 ## Tools and machine-made files
 

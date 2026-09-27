@@ -35,12 +35,16 @@
 
 1. **S10 + S11: why both a data model *and* persistence?** This is the known gap from session 3, and it matters more now that persistence
    is a database on another computer.
-2. **S6: how do `index.html`, `style.css` and `app.js` find each other?** Section 1 needs it.
-3. **S5: what does each of HTML, CSS and JS do, and what still works without JS?** This was corrected in session 4.
+2. **S34: what does tapping a label actually do?** My comment says it "calls the select element". Say it again using the
+   word *focus*, and give one reason labels matter at the gym.
+3. **S20 + S33: "the browser *requests* things."** When I tapped Log, the URL became `?grade=6b`. Who was that request
+   sent to, and who answered it? This leads into §3.
+4. *(If there's time)* **S5 + S6: the rest of the session 5 step.** I've now seen that a crash halfway through the file still leaves
+   the date showing. What if `<script src>` had a **typo** instead: would the date show? Predict, then break it.
 
 ## 📊 Snapshot
 
-73 concepts · 🌱 46 · 👋 25 · 🔧 2 · ✅ 0 (as of 2026-09-26)
+76 concepts · 🌱 42 · 👋 26 · 🔧 8 · ✅ 0 (as of 2026-09-27)
 
 ---
 
@@ -61,7 +65,7 @@
 | L11 | Scope (where a variable can be seen) | 2 | 🌱 | — | — | — | L1, L5 |
 | L12 | Template literals (`` `Grade ${g}` ``) | 2 | 🌱 | — | — | — | L2 |
 | L13 | Dates (`Date`, comparing days) | 6 | 🌱 | — | — | `app.js` shows today's date, but it was never explained. | L8 |
-| L14 | `null` / `undefined` (missing values) | 2 | 🌱 | — | — | — | L2 |
+| L14 | `null` / `undefined` (missing values) | 2 | 👋 | 2026-09-27 | 2026-09-27 | Session 6: `null` explained as JS's `NullReferenceException`. With a hint, I named `addBtn` as the `null` variable. | L2 |
 | L15 | Errors and `try` / `catch` | 6 | 🌱 | — | — | — | L5 |
 | L16 | Async: promises and `async` / `await` | 4 | 🌱 | — | — | — | L6 |
 | L17 | JSON (data as text) | 4 | 🌱 | — | — | Named in the session 3 trunk (with `localStorage`), never explained. | L7, L8 |
@@ -71,12 +75,12 @@
 | ID | Concept | § | Status | Introduced | Last reviewed | Evidence | Builds on |
 |---|---|---|---|---|---|---|---|
 | S1 | HTML elements and page structure | 1 | 🌱 | — | — | I've built HTML sites before (self-reported), but it hasn't been checked here. Could upgrade quickly. | — |
-| S2 | Forms and inputs (select, checkbox, number) | 1 | 🌱 | — | — | — | S1 |
+| S2 | Forms and inputs (select, checkbox, number) | 1 | 🔧 | 2026-09-27 | 2026-09-27 | Session 6: filled in my gym's 8 grades as `<option>`s myself. My first comment on `for="grade"` was wrong ("a form named grade", "submits the form"). I tested it, found it points to the select and doesn't submit, and saw ↓ change the grade. My rewrite, "It calls the select element", still misses *focus*. | S1 |
 | S3 | CSS selectors, box model, layout | 2 | 🌱 | — | — | Prior experience (self-reported), not checked. | S1 |
 | S4 | Mobile-first and the viewport tag | 2 | 👋 | 2026-09-25 | 2026-09-25 | Explained in an `index.html` comment. I haven't explained it back. | S3 |
-| S5 | The three roles: HTML structure, CSS looks, JS behaviour | Plan | 👋 | 2026-09-25 | 2026-09-26 | Session 4: I said browsers "won't run if it is not on Java". Corrected: Java ≠ JS, and pages show without JS; JS adds *behaviour*. | — |
-| S6 | Files talking to each other (`<link>`, `<script src>`, paths) | 1 | 👋 | 2026-09-25 | 2026-09-25 | An `index.html` comment explains why `<script>` goes at the end. I haven't explained it back. | S1 |
-| S7 | The DOM (JS grabbing page elements) | 2 | 👋 | 2026-09-25 | 2026-09-25 | The `app.js` comments compare `getElementById` to Unity's `GetComponent`. | S1, L8 |
+| S5 | The three roles: HTML structure, CSS looks, JS behaviour | Plan | 👋 | 2026-09-25 | 2026-09-26 | Session 4: I said browsers "won't run if it is not on Java". Corrected: Java ≠ JS, and pages show without JS; JS adds *behaviour*. Session 5: predicted correctly that JS keeps working without the CSS. | — |
+| S6 | Files talking to each other (`<link>`, `<script src>`, paths) | 1 | 🔧 | 2026-09-25 | 2026-09-26 | Session 5: found both wire lines and wrote comments on them myself. Correctly predicted that `styles.css` would kill the styling but not the counter. Session 6: reasoned "the date shows, so `app.js` loaded" myself. | S1 |
+| S7 | The DOM (JS grabbing page elements) | 2 | 👋 | 2026-09-25 | 2026-09-27 | The `app.js` comments compare `getElementById` to Unity's `GetComponent`. Session 6: saw it return `null` once we deleted the button. | S1, L8 |
 | S8 | Events and listeners | 2 | 👋 | 2026-09-25 | 2026-09-25 | The `app.js` comments compare `addEventListener` to `onClick.AddListener`. | S7, L6 |
 | S9 | Drawing a list from data (data → HTML) | 2 | 🌱 | — | — | — | L7, L9, S7 |
 | S10 | Data model (the shape of data in memory) | 2 | 👋 | 2026-09-25 | 2026-09-25 | Session 3: I got the definition, but not *why* we need both it and persistence. ⚠️ known gap | L7, L8 |
@@ -101,6 +105,9 @@
 | S29 | Connecting to the database (driver, connection string) | 5 | 🌱 | — | — | — | S14, S25 |
 | S30 | Parameterized queries (and why: SQL injection) | 5 | 🌱 | — | — | — | S27 |
 | S31 | Sessions = climbs grouped by day | 6 | 🌱 | — | — | — | L13, S27 |
+| S32 | `file://` vs `http://` (opening a file vs being served by a server) | 3 | 👋 | 2026-09-26 | 2026-09-26 | Session 5: saw the "'file:' URLs are treated as unique security origins" warning; it was explained as noise that goes away in §3. | S19, S20 |
+| S33 | A form's default submit (reloads the page and adds `?name=value` to the URL) | 1 | 🔧 | 2026-09-27 | 2026-09-27 | Session 6: predicted "nothing" on tapping Log and saw a reload (a gap). Then correctly predicted `?grade=6b` in the URL. | S2, S20 |
+| S34 | Labels and focus (`for` → `id`; tap targets, screen readers) | 1 | 👋 | 2026-09-27 | 2026-09-27 | Session 6: proved the focus by tapping "Grade" and pressing ↓. I haven't explained *focus* in my own words yet. | S2 |
 
 ## E: Engineering practice
 
@@ -111,9 +118,9 @@
 | E3 | Good commit messages | all | 🌱 | — | — | — | E1 |
 | E4 | `.gitignore` (what stays out of the repo) | 3 | 🌱 | — | — | `debug.log` is sitting untracked right now. | E1 |
 | E5 | Reading the exact command and its output | all | 👋 | 2026-09-25 | 2026-09-25 | Session 3: a `pusj` typo silently did nothing. | — |
-| E6 | Debugging method: check the input before "fixing" | all | 👋 | 2026-09-25 | 2026-09-25 | Session 3: the repo name really did end in a dot. | E5 |
-| E7 | Browser DevTools (Console, Elements, Network, phone view) | 1 | 🌱 | — | — | — | S7 |
-| E8 | Reading error messages and stack traces | 7 | 🌱 | — | — | — | L15 |
+| E6 | Debugging method: check the input before "fixing" | all | 🔧 | 2026-09-25 | 2026-09-27 | Session 3: the repo name really did end in a dot. Session 6: tested my own "the label submits" claim against evidence (the URL, the selected grade) instead of trusting it, and dropped it. | E5 |
+| E7 | Browser DevTools (Console, Elements, Network, phone view) | 1 | 🔧 | 2026-09-26 | 2026-09-26 | Session 5: opened device mode and the Console with help, and spotted the red error. | S7 |
+| E8 | Reading error messages and stack traces | 7 | 🔧 | 2026-09-26 | 2026-09-26 | Session 5: decoded `ERR_FILE_NOT_FOUND` myself: "it didnt load the file because it didn't find it due to a typo". Session 6: pasted `Cannot read properties of null` but blamed "the function"; learned to read it right to left (the null thing → `addBtn`). | L15 |
 | E9 | Automated tests and a test runner | 7 | 🌱 | — | — | — | L5, S22 |
 | E10 | Input validation (rejecting bad data) | 6 | 🌱 | — | — | — | L4, S22 |
 | E11 | Handling failure (server unreachable) | 6 | 🌱 | — | — | — | L15, S23 |
@@ -143,3 +150,7 @@
 
 - **2026-09-26:** Created with 73 concepts. Anything walked through and checked while planning (sessions 1–4) starts as 👋,
   and two concepts I've actually used start as 🔧 (E2 push, A1 scoping). Nothing is ✅ yet, because no quizzes have happened.
+- **2026-09-26 (session 5, task 1.1):** S6, E7 and E8 → 🔧. Added S32 (👋). S5 was reviewed. S6 isn't ✅ yet because
+  the `app.js` typo prediction is unfinished.
+- **2026-09-27 (session 6, task 1.2):** S2 and E6 → 🔧. L14 → 👋. Added S33 (🔧) and S34 (👋). Reviewed S6, S7 and E8.
+  Gaps found: the form reload (I predicted "nothing"), blaming "the function" for a `null` error, and my first label comment.

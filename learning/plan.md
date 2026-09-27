@@ -31,6 +31,15 @@ The log form with all six fields (grade, colour, sent, attempts, effort, intende
 and a "Today" list with a couple of made-up climbs typed into the HTML.
 **✅ Deliverable:** the form and the list show up in the browser, in DevTools' phone view.
 
+- [x] **1.1 See it on a "phone" and trace the wiring.** Open the page in DevTools' phone view, and find out
+  how one HTML file pulls in the other two. ✅ The page in phone view, plus one wire broken and fixed on purpose.
+- [x] **1.2 The first field: grade.** A `<form>` with a grade dropdown and a "Log" button, replacing the old counter.
+  ✅ The dropdown opens in phone view.
+- [ ] **1.3 Clean up after the old counter.** ✅ The page *and* the DevTools Console are both clean.
+- [ ] **1.4 Colour and the two yes/no fields** (sent, intended beta). ✅ A colour dropdown and two tappable checkboxes.
+- [ ] **1.5 The numbers: attempts and effort (1–5).** ✅ All six fields are visible and usable.
+- [ ] **1.6 Today's list** with two made-up climbs typed into the HTML. ✅ The Section 1 deliverable.
+
 ### 2. Looks and behaviour: CSS + JavaScript in the browser
 Mobile-first styling so it's usable with chalky thumbs. JS reads the form, builds a climb
 **object**, adds it to an **array**, and redraws the list. Delete button included.

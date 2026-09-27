@@ -84,6 +84,7 @@ Written down so it stops nagging me. Not before the MVP ships.
 - **Backup/export**: download my climbs as a file.
 - **Offline mode**: only if the gym's signal turns out to be bad (the app needs internet).
 - **Sync across devices / accounts**
+- **Comp grades above 7c**: add them to the grade dropdown when I start climbing them (probably on a board).
 
 ## Progress log
 
@@ -104,3 +105,12 @@ Written down so it stops nagging me. Not before the MVP ships.
   project (free hosts wipe files, so SQLite would lose my climbs).
   Also created `knowledge-graph.md` (73 concepts: what I actually know, and what to quiz me on) and
   `file-map.md` (every file explained, so there are no mystery boxes).
+- **Session 5:** Broke Section 1 into 6 tasks and finished 1.1. Viewed the page in DevTools phone view,
+  broke the `<link>` on purpose, and predicted the result correctly (styling gone, counter still works).
+  Read `ERR_FILE_NOT_FOUND` in the Console: unlike `pusj`, this error wasn't silent. Wrote my first
+  own-words comments in `index.html`. Unfinished: the `app.js` typo prediction (it opens next session).
+- **Session 6:** Finished 1.2. Replaced the counter with a `<form>` holding a grade dropdown (my gym's 8 grades,
+  where the `+` is hidden on purpose) and a Log button. Surprise: tapping Log reloads the page and adds `?grade=6b` to the URL.
+  That's a form's built-in "deliver it" behaviour. Decoded `Cannot read properties of null` as JS's
+  `NullReferenceException`. The date still showing proved `app.js` loaded and crashed partway through. Tested my own
+  wrong claim ("the label submits") with evidence and dropped it. Still to say in my own words: what *focus* is.
