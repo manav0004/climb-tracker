@@ -33,6 +33,8 @@
 
 ## 🎯 Quiz queue (next session)
 
+0. **Section 1 exit: the trace a tap.** In 2–3 lines: what happens *right now* when I fill the form and tap Log?
+   Where does the data go, and why doesn't the list change? (This covers S33, S9 and S5.)
 1. **S10 + S11: why both a data model *and* persistence?** This is the known gap from session 3, and it matters more now that persistence
    is a database on another computer.
 2. **S34: what does tapping a label actually do?** My comment says it "calls the select element". Say it again using the
@@ -44,7 +46,7 @@
 
 ## 📊 Snapshot
 
-76 concepts · 🌱 41 · 👋 24 · 🔧 11 · ✅ 0 (as of 2026-09-27)
+76 concepts · 🌱 39 · 👋 26 · 🔧 11 · ✅ 0 (as of 2026-09-28)
 
 ---
 
@@ -82,7 +84,7 @@
 | S6 | Files talking to each other (`<link>`, `<script src>`, paths) | 1 | 🔧 | 2026-09-25 | 2026-09-26 | Session 5: found both wire lines and wrote comments on them myself. Correctly predicted that `styles.css` would kill the styling but not the counter. Session 6: reasoned "the date shows, so `app.js` loaded" myself. | S1 |
 | S7 | The DOM (JS grabbing page elements) | 2 | 🔧 | 2026-09-25 | 2026-09-27 | The `app.js` comments compare `getElementById` to Unity's `GetComponent`. Session 6: saw it return `null` once we deleted the button. In 1.3, I deleted exactly the dead references myself and kept `todayEl` ("I knew they weren't working"). The Console was clean. | S1, L8 |
 | S8 | Events and listeners | 2 | 👋 | 2026-09-25 | 2026-09-25 | The `app.js` comments compare `addEventListener` to `onClick.AddListener`. | S7, L6 |
-| S9 | Drawing a list from data (data → HTML) | 2 | 🌱 | — | — | — | L7, L9, S7 |
+| S9 | Drawing a list from data (data → HTML) | 2 | 👋 | 2026-09-28 | 2026-09-28 | Session 6 (1.4): my two made-up `<li>`s are the design mock for one climb, and JS will copy that shape in §2. I predicted that tapping Log won't change the list "since we'd need JS". | L7, L9, S7 |
 | S10 | Data model (the shape of data in memory) | 2 | 👋 | 2026-09-25 | 2026-09-25 | Session 3: I got the definition, but not *why* we need both it and persistence. ⚠️ known gap | L7, L8 |
 | S11 | Persistence (data that survives closing the app) | 5 | 👋 | 2026-09-25 | 2026-09-26 | Session 3: same gap as S10. Session 4: switched from `localStorage` to a database. | S10 |
 | S12 | Frontend vs backend (client and server) | Plan | 👋 | 2026-09-26 | 2026-09-26 | I chose a backend for portfolio value, but skipped the gym-internet tradeoff when asked about it. | S5 |
@@ -139,7 +141,7 @@
 | A3 | Explaining in my own words (not repeating) | all | 👋 | 2026-09-25 | 2026-09-26 | Session 3: set as a goal. Session 4: my first Postgres answer read the list back; the second try was my own. | — |
 | A4 | Agent memory files (`project.md`, `plan.md`, this graph) | all | 👋 | 2026-09-25 | 2026-09-26 | Session 2: made `project.md` so context survives between sessions. Session 4: asked for this graph and the file map. | — |
 | A5 | Reviewing a diff (`git diff`: what changed and why) | all | 🌱 | — | — | All commits so far were written by Claude and not read line by line. | E1 |
-| A6 | Verifying AI output (run it, test it, don't just trust it) | all | 🌱 | — | — | — | A5, E9 |
+| A6 | Verifying AI output (run it, test it, don't just trust it) | all | 👋 | 2026-09-28 | 2026-09-28 | Session 6 (1.4): Copilot autofill slipped duplicate `id="attempts"` into my radios, and Claude caught it, not me. I turned Copilot off myself because I "wasn't coding". Next step: catch one myself. | A5, E9 |
 | A7 | Giving an agent good context (prompts) | all | 🌱 | — | — | My session prompts are already detailed; it just hasn't been taught. | A4 |
 | A8 | No mystery boxes (every file explained; see `file-map.md`) | all | 👋 | 2026-09-26 | 2026-09-26 | Session 4: I asked for `file-map.md` so nothing in the repo is unexplained. | A4 |
 | A9 | Agent permissions (what Claude may do without asking) | — | 🌱 | — | — | `.claude/settings.local.json` lets Claude run git without asking. | A4 |
@@ -156,3 +158,5 @@
   Gaps found: the form reload (I predicted "nothing"), blaming "the function" for a `null` error, and my first label comment.
 - **2026-09-27 (session 6, task 1.3):** S1, S7 and S34 → 🔧. Reviewed S2. Gap: merging `<label>` and `<input>` into one tag.
   I skipped the URL test as redundant (fair). The checkbox quirk (`on` / missing) was told to me, not tested.
+- **2026-09-28 (session 6, task 1.4):** S9 and A6 → 👋. Reviewed S1, S2 and S34 (radio groups, `<fieldset>`/`<legend>`).
+  Gaps: a dangling `for="effort"` pointing at no `id`, and duplicate `id="attempts"` from Copilot autofill. Both were silent failures.

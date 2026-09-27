@@ -22,7 +22,7 @@
 
 | Path | Mark | What it is and why it exists | Deep dive |
 |---|---|---|---|
-| `index.html` | parked | The page's structure. Right now: a title, today's date, and the log form (`id="log-form"`) with grade, colour, attempts, sent and intended beta, plus a "Log" button. **I wrote** the grade and colour `<option>`s, the Attempts input, the intended-beta checkbox and the label comment (2026-09-27), plus the comments on the two "wire" lines (2026-09-26). The rest gets explained as I rebuild it in §1. | §1 |
+| `index.html` | parked | The page's structure. Right now: a title, today's date, and the log form (`id="log-form"`) with all six fields and a "Log" button, then a "Today's list" card (`id="today-list"`) with two made-up climbs. **I wrote** the grade and colour `<option>`s, the Attempts input, the intended-beta checkbox, the label comment (2026-09-27), and the effort radios in a `<fieldset>` plus the whole Today's list card (2026-09-28), plus the comments on the two "wire" lines (2026-09-26). The rest gets explained as I rebuild it in §1. | §1 |
 | `style.css` | parked | How the page looks: mobile-first styling for the card and button. | §2 |
 | `app.js` | parked | The page's behaviour. It only shows today's date now. **I removed** the dead counter code (2026-09-27), so the Console is clean. | §2 |
 

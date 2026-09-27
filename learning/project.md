@@ -119,3 +119,6 @@ Written down so it stops nagging me. Not before the MVP ships.
   Asked for a faster pace, so the rest of Section 1 was merged into two tasks. Finished 1.3: removed the dead counter JS myself
   (clean Console), then added colour, attempts (early), sent and intended beta. Picked a checkbox over a Yes/No dropdown
   (fewer taps). Bug: `<label input type="checkbox">` merged two tags, so no box appeared. Fixed it by nesting, like a child GameObject.
+  Finished 1.4 (2026-09-28): effort as a radio group in a `<fieldset>`/`<legend>`, and a Today's list card with two made-up
+  climbs (the design mock that JS will copy in §2). Two silent bugs: a `for` pointing at no `id`, and duplicate `id`s that
+  **Copilot autofill** wrote. I turned Copilot off so I write my own code. Section 1 is built; its trace-a-tap is the next opener.
