@@ -34,7 +34,9 @@
 ## 🎯 Quiz queue (next session)
 
 1. **S10 + S11: why both a data model *and* persistence?** This is the known gap from session 3, and it came back in the §1 trace
-   ("save it up using js"). §2's JS array is *memory*, which is wiped on refresh; saving needs §4–5. Ask it early in §2.
+   ("save it up using js"). **Left open at the end of 2.2 (2026-09-28):** I saw that a refresh wipes the climbs, but I haven't
+   said *why*. Ask: where were the 3 climbs living just before the refresh, why does a refresh destroy that place, and what would
+   have to exist for them to survive? Tie it to `climbs`, the page, and my phone at the gym.
 2. **S34: what does tapping a label actually do?** My comment says it "calls the select element". Say it again using the
    word *focus*, and give one reason labels matter at the gym.
 3. **S20 + S33: "the browser *requests* things."** When I tapped Log, the URL became `?grade=6b`. Who was that request
@@ -44,7 +46,7 @@
 
 ## 📊 Snapshot
 
-76 concepts · 🌱 36 · 👋 26 · 🔧 14 · ✅ 0 (as of 2026-09-28)
+76 concepts · 🌱 32 · 👋 27 · 🔧 17 · ✅ 0 (as of 2026-09-28)
 
 ---
 
@@ -52,18 +54,18 @@
 
 | ID | Concept | § | Status | Introduced | Last reviewed | Evidence | Builds on |
 |---|---|---|---|---|---|---|---|
-| L1 | Variables (`let` vs `const`) | 2 | 👋 | 2026-09-25 | 2026-09-25 | The `app.js` comments explain `let count` as state and `const` for element references. I haven't explained them back yet. | — |
+| L1 | Variables (`let` vs `const`) | 2 | 👋 | 2026-09-25 | 2026-09-25 | The `app.js` comments explain `let count` as state and `const` for element references. I haven't explained them back yet. 2.2: saw `push` work on a `const` array, but my answer "const lets push" was the *what*. The why was given to me (it locks the label, not the contents; like a C# `readonly List`). | — |
 | L2 | Data types (string, number, boolean) | 2 | 🔧 | 2026-09-28 | 2026-09-28 | 2.1: predicted `attempts: 3` but got `'3'` (a gap). Learned that everything from HTML is text (the quotes are the tell), and wrapped it in `Number(...)` myself. | L1 |
 | L3 | Operators and comparisons (`+`, `===`, `>`) | 2 | 👋 | 2026-09-28 | 2026-09-28 | 2.1: `"3" + 1` gives `"31"` (it glues text instead of adding); I got this one right. | L2 |
-| L4 | Conditionals (`if` / `else`) | 2 | 🌱 | — | — | — | L3 |
-| L5 | Functions (parameters, `return`) | 2 | 🌱 | — | — | `app.js` has one (the click handler), but it was never explained as a function. | L1 |
+| L4 | Conditionals (`if` / `else`) | 2 | 👋 | 2026-09-28 | 2026-09-28 | 2.2: wrote two ternaries myself (`climb.sent ? "Sent" : "Not Sent"`), after one example. No `if`/`else` yet. | L3 |
+| L5 | Functions (parameters, `return`) | 2 | 👋 | 2026-09-28 | 2026-09-28 | 2.2: `renderList()` was explained as a Python `def`, and I call it after `push`. Claude wrote the function; no parameters or `return` yet. | L1 |
 | L6 | Callbacks and arrow functions (`() => {}`) | 2 | 👋 | 2026-09-28 | 2026-09-28 | 2.1: the submit listener's `(event) => {...}` was explained as the same lambda as C#'s `AddListener(() => {...})`. Claude wrote it. | L5 |
-| L7 | Arrays | 2 | 👋 | 2026-09-25 | 2026-09-25 | Session 3: I got the definition ("many climbs form an array"). Not in code yet. | L1 |
+| L7 | Arrays | 2 | 🔧 | 2026-09-25 | 2026-09-28 | Session 3: I got the definition ("many climbs form an array"). 2.2: wrote `climbs.push(climb)` once I knew push = Python's append. | L1 |
 | L8 | Objects | 2 | 🔧 | 2026-09-25 | 2026-09-28 | Session 3: I got the definition ("a climb is an object"). 2.1: wrote 4 of the climb object's 6 fields myself, and read the object in the Console. | L1 |
-| L9 | Loops (`for...of`) | 2 | 🌱 | — | — | — | L7 |
+| L9 | Loops (`for...of`) | 2 | 👋 | 2026-09-28 | 2026-09-28 | 2.2: `for (const climb of climbs)` was explained as Python's `for climb in climbs:`. Claude wrote it. | L7 |
 | L10 | Array methods (`filter`, `map`, `find`) | 6 | 🌱 | — | — | — | L6, L7 |
 | L11 | Scope (where a variable can be seen) | 2 | 🌱 | — | — | — | L1, L5 |
-| L12 | Template literals (`` `Grade ${g}` ``) | 2 | 🌱 | — | — | — | L2 |
+| L12 | Template literals (`` `Grade ${g}` ``) | 2 | 🔧 | 2026-09-28 | 2026-09-28 | 2.2: my first try was `"grade"+grade,` (a bare `grade`, and a comma instead of `;`). After one example line, I wrote my own full six-field literal in my own format. | L2 |
 | L13 | Dates (`Date`, comparing days) | 6 | 🌱 | — | — | `app.js` shows today's date, but it was never explained. | L8 |
 | L14 | `null` / `undefined` (missing values) | 2 | 👋 | 2026-09-27 | 2026-09-27 | Session 6: `null` explained as JS's `NullReferenceException`. With a hint, I named `addBtn` as the `null` variable. 2.1: I predicted an unpicked effort would be "none", and it's `''` (an empty string: JS has no `None`, and `''` isn't `null` either). | L2 |
 | L15 | Errors and `try` / `catch` | 6 | 🌱 | — | — | — | L5 |
@@ -82,7 +84,7 @@
 | S6 | Files talking to each other (`<link>`, `<script src>`, paths) | 1 | 🔧 | 2026-09-25 | 2026-09-26 | Session 5: found both wire lines and wrote comments on them myself. Correctly predicted that `styles.css` would kill the styling but not the counter. Session 6: reasoned "the date shows, so `app.js` loaded" myself. | S1 |
 | S7 | The DOM (JS grabbing page elements) | 2 | 🔧 | 2026-09-25 | 2026-09-27 | The `app.js` comments compare `getElementById` to Unity's `GetComponent`. Session 6: saw it return `null` once we deleted the button. In 1.3, I deleted exactly the dead references myself and kept `todayEl` ("I knew they weren't working"). The Console was clean. | S1, L8 |
 | S8 | Events and listeners | 2 | 🔧 | 2026-09-25 | 2026-09-28 | The `app.js` comments compare `addEventListener` to `onClick.AddListener`. 2.1: predicted that `preventDefault()` stops the reload, then commented it out myself to test that. | S7, L6 |
-| S9 | Drawing a list from data (data → HTML) | 2 | 👋 | 2026-09-28 | 2026-09-28 | Session 6 (1.4): my two made-up `<li>`s are the design mock for one climb, and JS will copy that shape in §2. I predicted that tapping Log won't change the list "since we'd need JS". | L7, L9, S7 |
+| S9 | Drawing a list from data (data → HTML) | 2 | 🔧 | 2026-09-28 | 2026-09-28 | Session 6 (1.4): my two made-up `<li>`s are the design mock for one climb, and JS will copy that shape in §2. I predicted that tapping Log won't change the list "since we'd need JS". 2.2: the list is now drawn from `climbs` by `renderList()`. I wrote the `<li>` text and the push + redraw. The "wipe first, or you get A, A, B" point was told to me, not tested. | L7, L9, S7 |
 | S10 | Data model (the shape of data in memory) | 2 | 👋 | 2026-09-25 | 2026-09-25 | Session 3: I got the definition, but not *why* we need both it and persistence. ⚠️ known gap | L7, L8 |
 | S11 | Persistence (data that survives closing the app) | 5 | 👋 | 2026-09-25 | 2026-09-26 | Session 3: same gap as S10. Session 4: switched from `localStorage` to a database. | S10 |
 | S12 | Frontend vs backend (client and server) | Plan | 👋 | 2026-09-26 | 2026-09-26 | I chose a backend for portfolio value, but skipped the gym-internet tradeoff when asked about it. | S5 |
@@ -163,3 +165,6 @@
   using js" repeats the S10/S11 gap.
 - **2026-09-28 (task 2.1):** L2, L8 and S8 → 🔧. L3 and L6 → 👋. Reviewed L14 and S33. Gap: "HTML values are text" (`'3'`, not `3`).
   Prediction 4 (no `preventDefault`, with Preserve log) was never reported back.
+- **2026-09-28 (task 2.2, code done, explanation open):** L7, L12 and S9 → 🔧. L4, L5 and L9 → 👋. Reviewed L1.
+  I got stuck on the template-literal *syntax* ("I know what I'd need to do, I just don't know the exact code"). One example was enough.
+  Answers were *what*, not *why* ("const lets push", "refresh wipes them"). The why for the refresh is the open S10/S11 question.

@@ -127,3 +127,6 @@ Written down so it stops nagging me. Not before the MVP ships.
   Split §2 into 4 tasks and finished 2.1: JS catches the submit (`preventDefault`) and builds a climb object from all six fields.
   Surprise: `attempts` came out as `'3'`, because everything from HTML is text, and `"3" + 1` is `"31"`. Fixed it with `Number()`.
   An unpicked effort is `''`, so that's parked for §6 validation.
+  2.2 (code done): a `climbs` array, and `renderList()` redraws the list from it. Got stuck on template-literal *syntax*,
+  not the idea, and one example was enough to write my own. Stopped before explaining **why** a refresh wipes the climbs:
+  that's the opener next time, and 2.2 gets checked off after it.

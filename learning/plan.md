@@ -53,6 +53,7 @@ Mobile-first styling so it's usable with chalky thumbs. JS reads the form, build
   and builds one climb object. ✅ Tapping Log doesn't reload, and the climb object shows up in the Console.
 - [ ] **2.2 The array and the real list.** Each climb goes into a `climbs` array, and a function redraws the list from it,
   replacing the made-up `<li>`s. ✅ Logged climbs appear in the list, and a refresh wipes them (I explain why).
+  *(2026-09-28: the code works. It stays unchecked until I explain **why** the refresh wipes them, the S10/S11 question.)*
 - [ ] **2.3 Delete a climb.** Each list item gets a delete button that removes that climb from the array and redraws.
   ✅ I can fix a mis-tap.
 - [ ] **2.4 Mobile-first styling.** Stacked fields, big tap targets, and a readable list. ✅ The app is usable one-handed
