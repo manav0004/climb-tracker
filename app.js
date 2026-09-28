@@ -23,8 +23,24 @@ function renderList() {
   todayList.innerHTML = ""; // wipe the old <li>s
   for (const climb of climbs) {
     const li = document.createElement("li"); // a new, empty <li>, not on the page yet
-    // TODO(you): li.textContent = a template literal in the same shape as your made-up climbs in index.html
+    
     li.textContent = `${climb.grade} - ${climb.sent ? "Sent" : "Not Sent"} - ${climb.colour} - ${climb.attempts} attempts - ${climb.effort} effort - ${climb.beta ? "Beta" : "No Beta"}`;
+
+    // Delete button: one per <li>
+    // TODO(you): make a new <button> element (same way the <li> was made above)
+    const deleteBtn = document.createElement("button");
+    // TODO(you): give it the text "✕"
+    deleteBtn.textContent = "✕";
+
+    deleteBtn.addEventListener("click", () => {
+      // TODO(you): remove THIS climb from the array. JS has no .remove() like Python;
+      // use climbs.splice(climbs.indexOf(climb), 1)  (= "find it, cut 1 item out there")
+
+      // TODO(you): then what has to happen so the screen matches the array?
+
+    });
+
+    li.appendChild(deleteBtn); // the button goes inside the <li>
     todayList.appendChild(li); // add the new <li> to the <ul>
   }
 }
@@ -45,7 +61,7 @@ form.addEventListener("submit", (event) => {
     beta: form.elements.beta.checked,
   };
 
-  // TODO(you): add the climb to the array, then redraw the list (2 lines)
+  
   climbs.push(climb);
   renderList();
   

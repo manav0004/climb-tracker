@@ -130,3 +130,6 @@ Written down so it stops nagging me. Not before the MVP ships.
   2.2 (code done): a `climbs` array, and `renderList()` redraws the list from it. Got stuck on template-literal *syntax*,
   not the idea, and one example was enough to write my own. Stopped before explaining **why** a refresh wipes the climbs:
   that's the opener next time, and 2.2 gets checked off after it.
+  **2.2 checked off (2026-09-28):** the climbs live in the `climbs` array in the tab's memory, not "in renderList" (that only draws them).
+  A refresh destroys that memory, and `const climbs = []` makes a new, empty array. A server alone wouldn't save them (it wipes on restart);
+  the database does. **2.3 started:** the ✕ button is created and labelled. Next time: the splice + redraw TODOs and predictions A/B (see the quiz queue).

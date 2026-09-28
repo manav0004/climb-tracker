@@ -33,10 +33,8 @@
 
 ## 🎯 Quiz queue (next session)
 
-1. **S10 + S11: why both a data model *and* persistence?** This is the known gap from session 3, and it came back in the §1 trace
-   ("save it up using js"). **Left open at the end of 2.2 (2026-09-28):** I saw that a refresh wipes the climbs, but I haven't
-   said *why*. Ask: where were the 3 climbs living just before the refresh, why does a refresh destroy that place, and what would
-   have to exist for them to survive? Tie it to `climbs`, the page, and my phone at the gym.
+1. **2.3 predictions (open, task half-done):** (A) log 3 climbs and tap ✕ on the middle one. Does it delete the middle climb or the third, given that the loop's `climb` changed every pass? (B) If you splice but don't redraw, what does the screen show? The answers go in with the last two `TODO(you)`s in the click handler.
+1b. **S10 + S11 (don't re-ask directly, they asked not to repeat):** check it again naturally in §4, where "refresh keeps them, server restart wipes them" is the same idea one level up.
 2. **S34: what does tapping a label actually do?** My comment says it "calls the select element". Say it again using the
    word *focus*, and give one reason labels matter at the gym.
 3. **S20 + S33: "the browser *requests* things."** When I tapped Log, the URL became `?grade=6b`. Who was that request
@@ -85,8 +83,8 @@
 | S7 | The DOM (JS grabbing page elements) | 2 | 🔧 | 2026-09-25 | 2026-09-27 | The `app.js` comments compare `getElementById` to Unity's `GetComponent`. Session 6: saw it return `null` once we deleted the button. In 1.3, I deleted exactly the dead references myself and kept `todayEl` ("I knew they weren't working"). The Console was clean. | S1, L8 |
 | S8 | Events and listeners | 2 | 🔧 | 2026-09-25 | 2026-09-28 | The `app.js` comments compare `addEventListener` to `onClick.AddListener`. 2.1: predicted that `preventDefault()` stops the reload, then commented it out myself to test that. | S7, L6 |
 | S9 | Drawing a list from data (data → HTML) | 2 | 🔧 | 2026-09-28 | 2026-09-28 | Session 6 (1.4): my two made-up `<li>`s are the design mock for one climb, and JS will copy that shape in §2. I predicted that tapping Log won't change the list "since we'd need JS". 2.2: the list is now drawn from `climbs` by `renderList()`. I wrote the `<li>` text and the push + redraw. The "wipe first, or you get A, A, B" point was told to me, not tested. | L7, L9, S7 |
-| S10 | Data model (the shape of data in memory) | 2 | 👋 | 2026-09-25 | 2026-09-25 | Session 3: I got the definition, but not *why* we need both it and persistence. ⚠️ known gap | L7, L8 |
-| S11 | Persistence (data that survives closing the app) | 5 | 👋 | 2026-09-25 | 2026-09-26 | Session 3: same gap as S10. Session 4: switched from `localStorage` to a database. | S10 |
+| S10 | Data model (the shape of data in memory) | 2 | 🔧 | 2026-09-25 | 2026-09-28 | Session 3: I got the definition, not the *why*. 2.2: I use `climbs` in code. I said the climbs live "in renderList" (wrong: they live in the `climbs` array, and renderList only draws it). Refresh: "it has nothing saved on it", which is close. The full chain was told to me: the tab's memory is destroyed, then `const climbs = []` makes a new array. ⚠️ known gap | L7, L8 |
+| S11 | Persistence (data that survives closing the app) | 5 | 👋 | 2026-09-25 | 2026-09-28 | Session 3: same gap as S10. Session 4: switched from `localStorage` to a database. 2.2: "a server would need to exist" is half right. Told: a server alone still wipes on restart (§4), and the database is what outlives the program. | S10 |
 | S12 | Frontend vs backend (client and server) | Plan | 👋 | 2026-09-26 | 2026-09-26 | I chose a backend for portfolio value, but skipped the gym-internet tradeoff when asked about it. | S5 |
 | S13 | Framework vs plain JS | Plan | 👋 | 2026-09-26 | 2026-09-26 | I said: "framework is pre built so I wouldnt understand the exact mechanics of how JS really works." | S5 |
 | S14 | Node.js and Express (what they are) | 3 | 👋 | 2026-09-26 | 2026-09-26 | Decision 3: I picked them, but I haven't said what Node *is* in my own words. | S12 |
@@ -168,3 +166,6 @@
 - **2026-09-28 (task 2.2, code done, explanation open):** L7, L12 and S9 → 🔧. L4, L5 and L9 → 👋. Reviewed L1.
   I got stuck on the template-literal *syntax* ("I know what I'd need to do, I just don't know the exact code"). One example was enough.
   Answers were *what*, not *why* ("const lets push", "refresh wipes them"). The why for the refresh is the open S10/S11 question.
+- **2026-09-28 (2.2 closed, 2.3 started):** S10 → 🔧. Reviewed S11. Gap: I said the climbs live "in renderList", mixing up the painter and the data.
+  I pushed back on re-explaining in a comment ("don't make me repeat myself"), which was fair, so I moved on. 2.3: I wrote `createElement("button")`
+  and the ✕ text myself. The splice + redraw and predictions A/B are still open.
