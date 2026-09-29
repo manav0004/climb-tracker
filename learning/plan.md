@@ -65,6 +65,15 @@ Install Node and npm. A tiny Express server sends my HTML/CSS/JS to the browser.
 **✅ Deliverable:** the same app at `http://localhost:3000`, served by *my* server, with each request
 printed in the terminal.
 
+- [ ] **3.1 Install Node and run JS outside the browser.** Install Node (LTS), then write `hello.js` and run it with `node hello.js`.
+  ✅ It prints in the terminal, and I can explain why `document` crashes there.
+  *(2026-09-29: Node v24.19.0 was already installed. `hello.js` runs and crashed on `document` as expected. Still to do: print the count
+  with `.length`, and switch `Sent` to lowercase `sent` to match `app.js`.)*
+- [ ] **3.2 npm, `package.json`, Express and `.gitignore`.** `npm init`, install Express, see what `node_modules` and the lock file are,
+  and keep them (plus `debug.log`) out of Git. ✅ `git status` shows no `node_modules`.
+- [ ] **3.3 The server.** `server.js` serves my three files with `express.static`, prints every request, and listens on port 3000.
+  ✅ The app works at `http://localhost:3000`, and the terminal shows each request. Then the §3 trace a tap.
+
 ### 4. The API: the browser talks to the server
 Routes for listing, adding and deleting climbs (`GET` / `POST` / `DELETE /api/climbs`), with the climbs
 kept in an array on the server. The frontend uses `fetch` instead of its own array.

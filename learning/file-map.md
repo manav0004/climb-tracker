@@ -26,6 +26,9 @@
 | `style.css` | parked | How the page looks: mobile-first styling for the card and button. | §2 |
 | `app.js` | parked | The page's behaviour. It shows today's date, and holds the data model (the `climbs` array, in memory only). On submit it builds a climb object from the six fields, pushes it into `climbs`, and `renderList()` redraws Today's list from the array. **I removed** the dead counter code (2026-09-27), and **wrote** four of the object's fields (with the `Number()` fix), the `<li>` template literal, and the push + redraw (2026-09-28). | §2 |
 
+| `hello.js` | parked | Practice file for 3.1: my first JS run by **Node** in the terminal, not by the browser. It proved that `document` doesn't exist outside the browser. I wrote it (2026-09-29). Not part of the app; can be deleted after §3. | §3 (3.1) |
+| `package.json` | parked | The project's ID card, made by `npm init -y` (2026-09-29): name, scripts, and `dependencies` (Express). I edit this one. | §3 (3.2) |
+
 ## Tools and machine-made files
 
 | Path | Mark | What it is and why it exists | Deep dive |
@@ -33,6 +36,8 @@
 | `.git/` | generated | Git's database: every commit (snapshot) and the link to GitHub. Never edit it by hand; use `git` commands. | — |
 | `.claude/` | parked | Claude Code's settings for this project. | Knowledge graph A9 |
 | `.claude/settings.local.json` | parked | Lets Claude run `git` commands without asking me each time. It's personal, so my global Git ignore file keeps it out of the repo. | Knowledge graph A9 |
+| `package-lock.json` | generated | Made by `npm install` (2026-09-29): the exact version of every package in `node_modules`, so every install is identical. Committed, never hand-edited. | §3 (3.2) |
+| `node_modules/` | generated | The downloaded code: Express plus everything Express needs (65 folders). Rebuilt any time with `npm install`, so **never committed** (it goes in `.gitignore` in 3.2). | §3 (3.2) |
 | `debug.log` | generated | A one-line crash note written by a Chromium-based program (a browser or VS Code), not by my app. Safe to delete. It will go in `.gitignore`. | §3 (`.gitignore`) |
 
 ## Coming soon (so they're not a surprise)
@@ -40,9 +45,6 @@
 | Path | Will be | Arrives in |
 |---|---|---|
 | `server.js` (or similar) | My Express server | §3 |
-| `package.json` | The project's ID card: name, scripts, dependency list. I edit it. | §3 |
-| `package-lock.json` | generated: the exact version of every dependency | §3 |
-| `node_modules/` | generated: the downloaded dependencies. Never committed, never edited. | §3 |
 | `.gitignore` | A list of files Git should ignore | §3 |
 | `.env` | Secrets (such as the database password). **Never committed.** | §5 |
 | test files | Automated tests | §7 |

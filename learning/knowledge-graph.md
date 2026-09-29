@@ -33,7 +33,12 @@
 
 ## 🎯 Quiz queue (next session)
 
-1. **Section 2 is done (2026-09-29). Next: §3.** Break §3 into tasks. Queue items 3 (S20 + S33, who answers a request) and 4 fit well as §3 openers.
+0. **Opener (session 8): finish 3.1, then 3.2.** In `hello.js`, print the count (`climbs.length`) and use lowercase `sent`. Then the 3.2 predictions.
+   I already ran `npm init -y` + `npm install express`, so ask them *before* I open `package.json` or `node_modules`:
+   (a) what's in `package.json`? (b) does `node_modules` hold 1 folder, about 5, or dozens, and why? (It's 65: dependencies have dependencies.)
+   (c) should `node_modules/` be committed? (Unity: `Library/`.) Then I write `.gitignore` myself (`node_modules/`, `debug.log`).
+1. **§3 is broken into tasks (plan.md 3.1–3.3).** Queue item 4 still fits as a §3 opener. Item 3 was answered (2026-09-29; see S32).
+   Check S35 (host: browser vs Node) again in the §3 trace.
 1a. **S3 specificity, one quick check (taught 2026-09-29, when I said "I don't know"):** a new rule `.list-item { color: red }` against `#today-list li { color: blue }`. Which colour wins, and why? Predict it, then try it.
 1a'. **L18 closures, one prediction:** after deleting the middle of 3 climbs, is the old 3rd ✕ button reused, or rebuilt? (Rebuilt: `renderList` wipes every `<li>` and makes new buttons with new functions.)
 1b. **S10 + S11 (don't re-ask directly, they asked not to repeat):** check it again naturally in §4, where "refresh keeps them, server restart wipes them" is the same idea one level up.
@@ -46,7 +51,7 @@
 
 ## 📊 Snapshot
 
-76 concepts · 🌱 32 · 👋 27 · 🔧 17 · ✅ 0 (as of 2026-09-28)
+78 concepts · 🌱 31 · 👋 28 · 🔧 19 · ✅ 0 (as of 2026-09-29)
 
 ---
 
@@ -90,7 +95,7 @@
 | S11 | Persistence (data that survives closing the app) | 5 | 👋 | 2026-09-25 | 2026-09-28 | Session 3: same gap as S10. Session 4: switched from `localStorage` to a database. 2.2: "a server would need to exist" is half right. Told: a server alone still wipes on restart (§4), and the database is what outlives the program. | S10 |
 | S12 | Frontend vs backend (client and server) | Plan | 👋 | 2026-09-26 | 2026-09-26 | I chose a backend for portfolio value, but skipped the gym-internet tradeoff when asked about it. | S5 |
 | S13 | Framework vs plain JS | Plan | 👋 | 2026-09-26 | 2026-09-26 | I said: "framework is pre built so I wouldnt understand the exact mechanics of how JS really works." | S5 |
-| S14 | Node.js and Express (what they are) | 3 | 👋 | 2026-09-26 | 2026-09-26 | Decision 3: I picked them, but I haven't said what Node *is* in my own words. | S12 |
+| S14 | Node.js and Express (what they are) | 3 | 🔧 | 2026-09-26 | 2026-09-29 | Decision 3: I picked them, but I haven't said what Node *is* in my own words. 3.1: wrote `hello.js` and ran it with Node myself (with the VS Code runner). Installed Express with npm. | S12 |
 | S15 | npm and dependencies (other people's code I install) | 3 | 🌱 | — | — | — | S14 |
 | S16 | `package.json` (the project's ID card and dependency list) | 3 | 🌱 | — | — | — | S15 |
 | S17 | `package-lock.json` and `node_modules` (generated) | 3 | 🌱 | — | — | — | S16 |
@@ -108,7 +113,8 @@
 | S29 | Connecting to the database (driver, connection string) | 5 | 🌱 | — | — | — | S14, S25 |
 | S30 | Parameterized queries (and why: SQL injection) | 5 | 🌱 | — | — | — | S27 |
 | S31 | Sessions = climbs grouped by day | 6 | 🌱 | — | — | — | L13, S27 |
-| S32 | `file://` vs `http://` (opening a file vs being served by a server) | 3 | 👋 | 2026-09-26 | 2026-09-26 | Session 5: saw the "'file:' URLs are treated as unique security origins" warning; it was explained as noise that goes away in §3. | S19, S20 |
+| S32 | `file://` vs `http://` (opening a file vs being served by a server) | 3 | 👋 | 2026-09-26 | 2026-09-26 | Session 5: saw the "'file:' URLs are treated as unique security origins" warning; it was explained as noise that goes away in §3. 2026-09-29: asked who answered the §1 `?grade=6b` request, I said "app.js" (a gap). Told: with `file://`, nobody answers; the browser rereads the file from disk. | S19, S20 |
+| S35 | The host (runtime): browser vs Node give the same JS different extras | 3 | 👋 | 2026-09-29 | 2026-09-29 | 3.1: predicted `document.title` would work in Node and that the lines after it would run. Both wrong (a crash stops everything). My why: "app.js runs on js, hello.js through node", which is half right (both are JS). Told: the host provides `document`, like Unity provides `transform`. | S5, S14, S7 |
 | S33 | A form's default submit (reloads the page and adds `?name=value` to the URL) | 1 | 🔧 | 2026-09-27 | 2026-09-27 | Session 6: predicted "nothing" on tapping Log and saw a reload (a gap). Then correctly predicted `?grade=6b` in the URL. 2.1: JS now stops the default with `event.preventDefault()`. | S2, S20 |
 | S34 | Labels and focus (`for` → `id`, or input nested inside the label; tap targets, screen readers) | 1 | 🔧 | 2026-09-27 | 2026-09-27 | Session 6: proved the focus by tapping "Grade" and pressing ↓. In 1.3, correctly predicted that tapping the word "Sent" ticks the box, and used both wiring styles. I haven't explained *focus* in my own words yet. | S2 |
 
@@ -178,3 +184,6 @@
   so check the Styles pane for struck-through lines.
 - **2026-09-29 (§2 trace a tap):** S3 → 👋 (specificity taught after "I don't know"). Added L18 closures (👋). Reviewed S8, S9 and S10.
   The ✕ trace was correct (delete from the data, then redraw). The Log trace skipped the listener and `preventDefault`, and blurred array vs list again (S10 ⚠️).
+- **2026-09-29 (session 7, task 3.1):** S14 → 🔧. Added S35 (host, 👋). Reviewed S32 (a gap: "app.js answered the request"). Two wrong predictions in `hello.js`
+  (`document` in Node, and code after a crash). The trace-reading tip (the top line is my file) was told to me. I ran npm ahead of the 3.2 predictions,
+  so S15–S17 stay 🌱 until I answer them. `Sent` vs `sent` key casing was flagged as a silent bug.

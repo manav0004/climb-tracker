@@ -144,3 +144,11 @@ Written down so it stops nagging me. Not before the MVP ships.
   remembers its own `climb` (a closure). My Log trace skipped the listener and `preventDefault`, and blurred "array" and "list" again
   (the array stores; the list only shows). Learned CSS specificity: an id beats any number of element names, whatever the order.
   **2.4 ticked (2026-09-29):** the one-handed phone test was fine. **Section 2 is done.** Next: §3, my own server (Node + Express).
+- **Session 7 (2026-09-29): §3 started.** Node was already installed. Wrote `hello.js` and ran it with Node. Predicted `document.title`
+  would print the title and that the lines after it would still run. Both were wrong: it crashed with `document is not defined`, and nothing after the crash ran.
+  Lesson: both files are JS, but the **host** is different. The browser gives page JS `document`; Node gives it files and the network instead
+  (like `transform` existing only because Unity provides it). My answer ("js vs node") was half right. With `file://`, *nobody* answers the form's request
+  (I said `app.js`): the browser just rereads the file from disk. A server is what answers requests.
+  Also ran `npm init -y` + `npm install express` ahead of the lesson (65 folders in `node_modules`), without making the 3.2 predictions first.
+  `node_modules` and `debug.log` were left out of the commit; `.gitignore` is my job in 3.2.
+  **Next:** print the count in `hello.js` (tick 3.1), then the 3.2 predictions in the quiz queue.
