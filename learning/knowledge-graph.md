@@ -33,7 +33,7 @@
 
 ## 🎯 Quiz queue (next session)
 
-1. **2.3 predictions (open, task half-done):** (A) log 3 climbs and tap ✕ on the middle one. Does it delete the middle climb or the third, given that the loop's `climb` changed every pass? (B) If you splice but don't redraw, what does the screen show? The answers go in with the last two `TODO(you)`s in the click handler.
+1. **2.4 review (open; fix these first):** some CSS is invalid, and the browser *silently skips* it. Find each one in DevTools → Elements → Styles (invalid lines are struck through with a ⚠️): `margin: 10` (no unit), `align-items: left` (should be `center`), `text-size-adjust` / `size-adjust` (not font size; use `font-size`), `padding: auto` (not allowed). Also: `.delete-button` is 33% wide + a 10% margin, but the spec was about 44×44px. The `<li>` bullets are still there (`list-style: none` on the `ul`). Form spec #3 isn't done yet (labels above fields, 44px tall, 16px+ font on inputs). In JS, `renderList(climbs)` still passes an unused argument. The commented-out `textContent.className` can't work, because textContent is a string, not an element; to style the text separately, put it in a `<span>`.
 1b. **S10 + S11 (don't re-ask directly, they asked not to repeat):** check it again naturally in §4, where "refresh keeps them, server restart wipes them" is the same idea one level up.
 2. **S34: what does tapping a label actually do?** My comment says it "calls the select element". Say it again using the
    word *focus*, and give one reason labels matter at the gym.
@@ -169,3 +169,5 @@
 - **2026-09-28 (2.2 closed, 2.3 started):** S10 → 🔧. Reviewed S11. Gap: I said the climbs live "in renderList", mixing up the painter and the data.
   I pushed back on re-explaining in a comment ("don't make me repeat myself"), which was fair, so I moved on. 2.3: I wrote `createElement("button")`
   and the ✕ text myself. The splice + redraw and predictions A/B are still open.
+- **2026-09-29 (2.3 done, 2.4 started):** predictions A and B correct. Bug: splice's second argument (how many to cut) set to `climbs.length`, and hidden by `li.remove()`.
+  Found it by testing (I said D was missing; it was C). Set `className` from JS on my own. 2.4 CSS has several invalid properties; see the queue.

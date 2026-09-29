@@ -133,3 +133,7 @@ Written down so it stops nagging me. Not before the MVP ships.
   **2.2 checked off (2026-09-28):** the climbs live in the `climbs` array in the tab's memory, not "in renderList" (that only draws them).
   A refresh destroys that memory, and `const climbs = []` makes a new, empty array. A server alone wouldn't save them (it wipes on restart);
   the database does. **2.3 started:** the ✕ button is created and labelled. Next time: the splice + redraw TODOs and predictions A/B (see the quiz queue).
+  **2.3 done (2026-09-29):** predicted A (the middle ✕ deletes the middle climb) and B (splice without a redraw leaves the screen stale) correctly.
+  Bug: `splice(i, climbs.length)` cut the climb *and everything after it*, and `li.remove()` hid that until the next redraw. Fixed it with `1` + `renderList()`.
+  Lesson: update the screen by redrawing from the array, not by hand, so bugs show up straight away.
+  **2.4 in progress:** the ✕ and the list rows have classes set from JS, and the CSS was started. Review notes are in the knowledge graph's quiz queue.

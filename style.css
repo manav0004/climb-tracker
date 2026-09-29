@@ -9,7 +9,7 @@
 * { box-sizing: border-box; }
 
 body {
-  margin: 0;
+  margin: 10;
   padding: 16px;
   font-family: -apple-system, system-ui, sans-serif;
   background: var(--bg);
@@ -26,15 +26,43 @@ header h1 { margin: 0; }
   margin-top: 16px;
 }
 
+
 button {
   width: 100%;
   padding: 16px;              /* big touch target, easy to hit with chalky fingers */
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1.4rem;
+  font-weight: bolder;
   border: none;
   border-radius: 10px;
   background: var(--accent);
   color: #121417;
 }
+
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: left;
+  width: 100%;
+  text-align: left;
+  text-size-adjust: calc(1.4rem);
+  padding: 15px;
+  padding-left: 0px;
+}
+
+
+
+.delete-button {
+  size-adjust: calc(2.6rem);
+  width: 33%;
+  margin-left: 10%;
+  flex-shrink: 0;
+  padding: auto;
+  size-adjust: calc(2.5rem);
+}
+
+
+
+
 
 button:active { transform: scale(0.98); }

@@ -23,25 +23,27 @@ function renderList() {
   todayList.innerHTML = ""; // wipe the old <li>s
   for (const climb of climbs) {
     const li = document.createElement("li"); // a new, empty <li>, not on the page yet
-    
-    li.textContent = `${climb.grade} - ${climb.sent ? "Sent" : "Not Sent"} - ${climb.colour} - ${climb.attempts} attempts - ${climb.effort} effort - ${climb.beta ? "Beta" : "No Beta"}`;
+    li.className = "list-item";
 
-    // Delete button: one per <li>
-    // TODO(you): make a new <button> element (same way the <li> was made above)
+    li.textContent = `${climb.grade} - ${climb.sent ? "Sent" : "Not Sent"} - ${climb.colour} - ${climb.attempts} attempts - ${climb.effort} effort - ${climb.beta ? "Beta" : "No Beta"}`;
+    //textContent.className="list-text";
+    
     const deleteBtn = document.createElement("button");
-    // TODO(you): give it the text "✕"
+    deleteBtn.className="delete-button";
+    
     deleteBtn.textContent = "✕";
 
     deleteBtn.addEventListener("click", () => {
-      // TODO(you): remove THIS climb from the array. JS has no .remove() like Python;
-      // use climbs.splice(climbs.indexOf(climb), 1)  (= "find it, cut 1 item out there")
-
-      // TODO(you): then what has to happen so the screen matches the array?
-
+      
+      climbs.splice(climbs.indexOf(climb), 1)
+      
+      renderList(climbs)
     });
 
     li.appendChild(deleteBtn); // the button goes inside the <li>
     todayList.appendChild(li); // add the new <li> to the <ul>
+   
+    
   }
 }
 
