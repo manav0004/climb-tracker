@@ -1,15 +1,17 @@
 :root {
   --bg: #121417;
   --card: #1e2227;
+  --field: #2a2f36;
   --text: #e8eaed;
   --muted: #9aa0a6;
   --accent: #f5a623;
+  --line: #333a42;
 }
 
 * { box-sizing: border-box; }
 
 body {
-  margin: 10;
+  margin: 0;
   padding: 16px;
   font-family: -apple-system, system-ui, sans-serif;
   background: var(--bg);
@@ -26,43 +28,108 @@ header h1 { margin: 0; }
   margin-top: 16px;
 }
 
+/* ---- The form: every field stacked, label above it ---- */
+
+#log-form label {
+  display: block;
+  margin: 16px 0 6px;
+  color: var(--muted);
+}
+
+select,
+input[type="number"] {
+  display: block;
+  width: 100%;
+  min-height: 44px;            /* Apple's minimum tap target */
+  padding: 8px 12px;
+  font-size: 16px;             /* under 16px, iPhone Safari zooms in when you tap the field */
+  color: var(--text);
+  background: var(--field);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+/* Checkbox labels: box and text side by side, the whole row is tappable */
+#log-form label:has(input[type="checkbox"]) {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  color: var(--text);
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  accent-color: var(--accent);
+}
+
+/* Effort: the five choices in one row */
+fieldset {
+  display: flex;
+  gap: 8px;
+  margin: 16px 0;
+  padding: 8px 0 0;
+  border: none;
+}
+
+legend { color: var(--muted); padding: 0; }
+
+#log-form fieldset label {   /* #log-form beats plain "fieldset", so this wins over the label rule above */
+  flex: 1;                     /* five equal columns */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+  padding: 8px 0;
+  color: var(--text);
+  background: var(--field);
+  border-radius: 8px;
+}
 
 button {
   width: 100%;
   padding: 16px;              /* big touch target, easy to hit with chalky fingers */
-  font-size: 1.4rem;
-  font-weight: bolder;
+  font-size: 1.1rem;
+  font-weight: 600;
   border: none;
   border-radius: 10px;
   background: var(--accent);
   color: #121417;
 }
 
+button:active { transform: scale(0.98); }
+
+/* ---- Today's list ---- */
+
+#today-list {
+  list-style: none;            /* no bullet dots */
+  margin: 0;
+  padding: 0;
+}
 
 .list-item {
   display: flex;
-  justify-content: space-between;
-  align-items: left;
-  width: 100%;
-  text-align: left;
-  text-size-adjust: calc(1.4rem);
-  padding: 15px;
-  padding-left: 0px;
+  justify-content: space-between;  /* text left, ✕ right */
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  font-size: 16px;
+  border-bottom: 1px solid var(--line);
 }
 
+.list-item:last-child { border-bottom: none; }
 
-
+/* Overrides the big button rule above, just for ✕ */
 .delete-button {
-  size-adjust: calc(2.6rem);
-  width: 33%;
-  margin-left: 10%;
-  flex-shrink: 0;
-  padding: auto;
-  size-adjust: calc(2.5rem);
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  flex-shrink: 0;              /* long climb text can't squash it */
+  font-size: 1.2rem;
+  color: var(--text);
+  background: var(--field);
 }
-
-
-
-
-
-button:active { transform: scale(0.98); }

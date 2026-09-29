@@ -37,7 +37,7 @@ function renderList() {
       
       climbs.splice(climbs.indexOf(climb), 1)
       
-      renderList(climbs)
+      renderList();
     });
 
     li.appendChild(deleteBtn); // the button goes inside the <li>

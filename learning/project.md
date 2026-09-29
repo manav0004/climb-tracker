@@ -137,3 +137,6 @@ Written down so it stops nagging me. Not before the MVP ships.
   Bug: `splice(i, climbs.length)` cut the climb *and everything after it*, and `li.remove()` hid that until the next redraw. Fixed it with `1` + `renderList()`.
   Lesson: update the screen by redrawing from the array, not by hand, so bugs show up straight away.
   **2.4 in progress:** the ✕ and the list rows have classes set from JS, and the CSS was started. Review notes are in the knowledge graph's quiz queue.
+  **2.4 (2026-09-29):** my first CSS had several invalid properties that the browser silently skipped. I had to leave, so Claude rewrote `style.css`
+  to the spec (stacked fields, 44px tap targets, 16px inputs, 5-box effort row, ✕ on the right) and checked it in a 390px-wide screenshot.
+  Next session: try it one-handed in phone view, tick 2.4, then do the §2 trace a tap. That finishes Section 2.

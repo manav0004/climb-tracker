@@ -33,7 +33,7 @@
 
 ## 🎯 Quiz queue (next session)
 
-1. **2.4 review (open; fix these first):** some CSS is invalid, and the browser *silently skips* it. Find each one in DevTools → Elements → Styles (invalid lines are struck through with a ⚠️): `margin: 10` (no unit), `align-items: left` (should be `center`), `text-size-adjust` / `size-adjust` (not font size; use `font-size`), `padding: auto` (not allowed). Also: `.delete-button` is 33% wide + a 10% margin, but the spec was about 44×44px. The `<li>` bullets are still there (`list-style: none` on the `ul`). Form spec #3 isn't done yet (labels above fields, 44px tall, 16px+ font on inputs). In JS, `renderList(climbs)` still passes an unused argument. The commented-out `textContent.className` can't work, because textContent is a string, not an element; to style the text separately, put it in a `<span>`.
+1. **Open next session: the §2 trace a tap.** 2.4's CSS was written by Claude at my request (2026-09-29), after my first try had silent invalid properties (`margin: 10`, `align-items: left`, `size-adjust`, `padding: auto`). First, check it one-handed in phone view and tick 2.4. Then trace a tap: Log → … → the list, and ✕ → … → the list. One quick check along the way: why did `#log-form label` beat `fieldset label` (specificity: an id outranks element names)?
 1b. **S10 + S11 (don't re-ask directly, they asked not to repeat):** check it again naturally in §4, where "refresh keeps them, server restart wipes them" is the same idea one level up.
 2. **S34: what does tapping a label actually do?** My comment says it "calls the select element". Say it again using the
    word *focus*, and give one reason labels matter at the gym.
@@ -171,3 +171,5 @@
   and the ✕ text myself. The splice + redraw and predictions A/B are still open.
 - **2026-09-29 (2.3 done, 2.4 started):** predictions A and B correct. Bug: splice's second argument (how many to cut) set to `climbs.length`, and hidden by `li.remove()`.
   Found it by testing (I said D was missing; it was C). Set `className` from JS on my own. 2.4 CSS has several invalid properties; see the queue.
+- **2026-09-29 (2.4 CSS):** I asked Claude to fix the CSS itself ("it's just CSS"). No upgrades from that. Gap to remember: invalid CSS fails silently,
+  so check the Styles pane for struck-through lines.

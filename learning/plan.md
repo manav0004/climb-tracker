@@ -58,6 +58,7 @@ Mobile-first styling so it's usable with chalky thumbs. JS reads the form, build
   ✅ I can fix a mis-tap.
 - [ ] **2.4 Mobile-first styling.** Stacked fields, big tap targets, and a readable list. ✅ The app is usable one-handed
   in phone view. That's the Section 2 deliverable.
+  *(2026-09-29: the CSS is written. Tick it after I try it one-handed in phone view.)*
 
 ### 3. My own server (Node + Express, locally)
 Install Node and npm. A tiny Express server sends my HTML/CSS/JS to the browser.
