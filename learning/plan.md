@@ -56,9 +56,9 @@ Mobile-first styling so it's usable with chalky thumbs. JS reads the form, build
   *(2026-09-28: done. Why a refresh wipes them: the tab's memory is thrown away, and `const climbs = []` makes a new, empty array.)*
 - [x] **2.3 Delete a climb.** Each list item gets a delete button that removes that climb from the array and redraws.
   ✅ I can fix a mis-tap.
-- [ ] **2.4 Mobile-first styling.** Stacked fields, big tap targets, and a readable list. ✅ The app is usable one-handed
+- [x] **2.4 Mobile-first styling.** Stacked fields, big tap targets, and a readable list. ✅ The app is usable one-handed
   in phone view. That's the Section 2 deliverable.
-  *(2026-09-29: the CSS is written. Tick it after I try it one-handed in phone view.)*
+  *(2026-09-29: done. Tested one-handed in phone view: log 3, delete the middle one. §2 trace a tap done too. **Section 2 complete.**)*
 
 ### 3. My own server (Node + Express, locally)
 Install Node and npm. A tiny Express server sends my HTML/CSS/JS to the browser.

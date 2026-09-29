@@ -140,3 +140,7 @@ Written down so it stops nagging me. Not before the MVP ships.
   **2.4 (2026-09-29):** my first CSS had several invalid properties that the browser silently skipped. I had to leave, so Claude rewrote `style.css`
   to the spec (stacked fields, 44px tap targets, 16px inputs, 5-box effort row, ✕ on the right) and checked it in a 390px-wide screenshot.
   Next session: try it one-handed in phone view, tick 2.4, then do the §2 trace a tap. That finishes Section 2.
+  **§2 trace a tap (2026-09-29):** ✕ was right: delete it from the data, then redraw. How the button knows *which* climb: each ✕'s function
+  remembers its own `climb` (a closure). My Log trace skipped the listener and `preventDefault`, and blurred "array" and "list" again
+  (the array stores; the list only shows). Learned CSS specificity: an id beats any number of element names, whatever the order.
+  **2.4 ticked (2026-09-29):** the one-handed phone test was fine. **Section 2 is done.** Next: §3, my own server (Node + Express).

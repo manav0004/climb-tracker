@@ -33,7 +33,9 @@
 
 ## 🎯 Quiz queue (next session)
 
-1. **Open next session: the §2 trace a tap.** 2.4's CSS was written by Claude at my request (2026-09-29), after my first try had silent invalid properties (`margin: 10`, `align-items: left`, `size-adjust`, `padding: auto`). First, check it one-handed in phone view and tick 2.4. Then trace a tap: Log → … → the list, and ✕ → … → the list. One quick check along the way: why did `#log-form label` beat `fieldset label` (specificity: an id outranks element names)?
+1. **Section 2 is done (2026-09-29). Next: §3.** Break §3 into tasks. Queue items 3 (S20 + S33, who answers a request) and 4 fit well as §3 openers.
+1a. **S3 specificity, one quick check (taught 2026-09-29, when I said "I don't know"):** a new rule `.list-item { color: red }` against `#today-list li { color: blue }`. Which colour wins, and why? Predict it, then try it.
+1a'. **L18 closures, one prediction:** after deleting the middle of 3 climbs, is the old 3rd ✕ button reused, or rebuilt? (Rebuilt: `renderList` wipes every `<li>` and makes new buttons with new functions.)
 1b. **S10 + S11 (don't re-ask directly, they asked not to repeat):** check it again naturally in §4, where "refresh keeps them, server restart wipes them" is the same idea one level up.
 2. **S34: what does tapping a label actually do?** My comment says it "calls the select element". Say it again using the
    word *focus*, and give one reason labels matter at the gym.
@@ -69,6 +71,7 @@
 | L15 | Errors and `try` / `catch` | 6 | 🌱 | — | — | — | L5 |
 | L16 | Async: promises and `async` / `await` | 4 | 🌱 | — | — | — | L6 |
 | L17 | JSON (data as text) | 4 | 🌱 | — | — | Named in the session 3 trunk (with `localStorage`), never explained. | L7, L8 |
+| L18 | Closures (a function remembers the variables around it when it was made) | 2 | 👋 | 2026-09-29 | 2026-09-29 | §2 trace: I said ✕ deletes "the climb that is on the same list as the x" (the right idea, the wrong mechanism). Told: each ✕'s click function captures its own `climb` from the loop, and `indexOf(climb)` finds it in the array. | L5, L6, L9 |
 
 ## S: Structural (how the pieces connect)
 
@@ -76,14 +79,14 @@
 |---|---|---|---|---|---|---|---|
 | S1 | HTML elements and page structure | 1 | 🔧 | 2026-09-27 | 2026-09-27 | Session 6 (1.3): wrote `<label input type="checkbox">`, merging two tags so no box appeared. After the parent/child explanation, I nested `<input>` inside `<label>` correctly. | — |
 | S2 | Forms and inputs (select, checkbox, number) | 1 | 🔧 | 2026-09-27 | 2026-09-27 | Session 6: filled in my gym's 8 grades as `<option>`s myself. My first comment on `for="grade"` was wrong ("a form named grade", "submits the form"). I tested it, found it points to the select and doesn't submit, and saw ↓ change the grade. My rewrite, "It calls the select element", still misses *focus*. Session 6 (1.3): wrote the colour options, and added an Attempts `number` input (`min="1" value="1"`) on my own. Chose a Yes/No dropdown for beta, then switched to a checkbox after the tradeoff. Was *told*, not shown, that an unticked checkbox sends nothing. | S1 |
-| S3 | CSS selectors, box model, layout | 2 | 🌱 | — | — | Prior experience (self-reported), not checked. | S1 |
+| S3 | CSS selectors, box model, layout | 2 | 👋 | 2026-09-29 | 2026-09-29 | 2.4: my first CSS had silent invalid properties. §2 trace: said "I don't know" to why `fieldset label` loses to `#log-form label`. Taught specificity as a score (ids, classes, elements) compared left to right, like sorting layers. | S1 |
 | S4 | Mobile-first and the viewport tag | 2 | 👋 | 2026-09-25 | 2026-09-25 | Explained in an `index.html` comment. I haven't explained it back. | S3 |
 | S5 | The three roles: HTML structure, CSS looks, JS behaviour | Plan | 👋 | 2026-09-25 | 2026-09-26 | Session 4: I said browsers "won't run if it is not on Java". Corrected: Java ≠ JS, and pages show without JS; JS adds *behaviour*. Session 5: predicted correctly that JS keeps working without the CSS. | — |
 | S6 | Files talking to each other (`<link>`, `<script src>`, paths) | 1 | 🔧 | 2026-09-25 | 2026-09-26 | Session 5: found both wire lines and wrote comments on them myself. Correctly predicted that `styles.css` would kill the styling but not the counter. Session 6: reasoned "the date shows, so `app.js` loaded" myself. | S1 |
 | S7 | The DOM (JS grabbing page elements) | 2 | 🔧 | 2026-09-25 | 2026-09-27 | The `app.js` comments compare `getElementById` to Unity's `GetComponent`. Session 6: saw it return `null` once we deleted the button. In 1.3, I deleted exactly the dead references myself and kept `todayEl` ("I knew they weren't working"). The Console was clean. | S1, L8 |
-| S8 | Events and listeners | 2 | 🔧 | 2026-09-25 | 2026-09-28 | The `app.js` comments compare `addEventListener` to `onClick.AddListener`. 2.1: predicted that `preventDefault()` stops the reload, then commented it out myself to test that. | S7, L6 |
-| S9 | Drawing a list from data (data → HTML) | 2 | 🔧 | 2026-09-28 | 2026-09-28 | Session 6 (1.4): my two made-up `<li>`s are the design mock for one climb, and JS will copy that shape in §2. I predicted that tapping Log won't change the list "since we'd need JS". 2.2: the list is now drawn from `climbs` by `renderList()`. I wrote the `<li>` text and the push + redraw. The "wipe first, or you get A, A, B" point was told to me, not tested. | L7, L9, S7 |
-| S10 | Data model (the shape of data in memory) | 2 | 🔧 | 2026-09-25 | 2026-09-28 | Session 3: I got the definition, not the *why*. 2.2: I use `climbs` in code. I said the climbs live "in renderList" (wrong: they live in the `climbs` array, and renderList only draws it). Refresh: "it has nothing saved on it", which is close. The full chain was told to me: the tab's memory is destroyed, then `const climbs = []` makes a new array. ⚠️ known gap | L7, L8 |
+| S8 | Events and listeners | 2 | 🔧 | 2026-09-25 | 2026-09-28 | The `app.js` comments compare `addEventListener` to `onClick.AddListener`. 2.1: predicted that `preventDefault()` stops the reload, then commented it out myself to test that. §2 trace (2026-09-29): left the listener and `preventDefault` out of my Log trace (started at "we get the data"). | S7, L6 |
+| S9 | Drawing a list from data (data → HTML) | 2 | 🔧 | 2026-09-28 | 2026-09-28 | Session 6 (1.4): my two made-up `<li>`s are the design mock for one climb, and JS will copy that shape in §2. I predicted that tapping Log won't change the list "since we'd need JS". 2.2: the list is now drawn from `climbs` by `renderList()`. I wrote the `<li>` text and the push + redraw. The "wipe first, or you get A, A, B" point was told to me, not tested. §2 trace (2026-09-29): ✕ → delete from the data → "rerender the list to display the updated info". Correct, and in my own words. | L7, L9, S7 |
+| S10 | Data model (the shape of data in memory) | 2 | 🔧 | 2026-09-25 | 2026-09-28 | Session 3: I got the definition, not the *why*. 2.2: I use `climbs` in code. I said the climbs live "in renderList" (wrong: they live in the `climbs` array, and renderList only draws it). Refresh: "it has nothing saved on it", which is close. The full chain was told to me: the tab's memory is destroyed, then `const climbs = []` makes a new array. §2 trace (2026-09-29): "display them in a list stored in an array" still blurs the two (the array stores; the `<ul>` only shows). ⚠️ known gap | L7, L8 |
 | S11 | Persistence (data that survives closing the app) | 5 | 👋 | 2026-09-25 | 2026-09-28 | Session 3: same gap as S10. Session 4: switched from `localStorage` to a database. 2.2: "a server would need to exist" is half right. Told: a server alone still wipes on restart (§4), and the database is what outlives the program. | S10 |
 | S12 | Frontend vs backend (client and server) | Plan | 👋 | 2026-09-26 | 2026-09-26 | I chose a backend for portfolio value, but skipped the gym-internet tradeoff when asked about it. | S5 |
 | S13 | Framework vs plain JS | Plan | 👋 | 2026-09-26 | 2026-09-26 | I said: "framework is pre built so I wouldnt understand the exact mechanics of how JS really works." | S5 |
@@ -173,3 +176,5 @@
   Found it by testing (I said D was missing; it was C). Set `className` from JS on my own. 2.4 CSS has several invalid properties; see the queue.
 - **2026-09-29 (2.4 CSS):** I asked Claude to fix the CSS itself ("it's just CSS"). No upgrades from that. Gap to remember: invalid CSS fails silently,
   so check the Styles pane for struck-through lines.
+- **2026-09-29 (§2 trace a tap):** S3 → 👋 (specificity taught after "I don't know"). Added L18 closures (👋). Reviewed S8, S9 and S10.
+  The ✕ trace was correct (delete from the data, then redraw). The Log trace skipped the listener and `preventDefault`, and blurred array vs list again (S10 ⚠️).
