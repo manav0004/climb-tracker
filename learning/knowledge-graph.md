@@ -33,9 +33,12 @@
 
 ## 🎯 Quiz queue (next session)
 
-0. **Opener (session 9): start §4.** Break §4 into tasks in `plan.md`. First prediction, aimed at the S35/S10 gap from the §3 trace
-   (I said the climbs are "stored on app.js and lost when the server stops"): once Log sends a `POST` to the server and the server pushes
-   the climb into *its* array, what survives a **refresh**, and what survives **Ctrl + C**? Ask it as a prediction and test both. Don't re-ask the §3 answer.
+0. **Opener (session 9): finish 4.3. Two bugs were pointed out but NOT fixed yet** (I had to leave):
+   - `server.js` TODO H: `climbs.splice(climbs.indexOf(1), 1)` → `climbs.splice(index, 1)`.
+   - `public/app.js` TODO I: `` fetch(`/api/climbs/body.id`, ...) `` → `` `/api/climbs/${climb.id}` ``, then delete the old `splice` + `renderList()`
+     lines and call `loadClimbs()` instead.
+   Test: log one, ✕ the *first* made-up climb (6a Blue), refresh; it stays gone. Then the §4 deliverable (Ctrl + C wipes them) and the §4 trace a tap.
+   The (a) refresh prediction was wrong ("nothing survives") and then *proved* in 4.2; in the trace, ask why Ctrl + C wipes them but a refresh doesn't.
 1. **S36 (why `public/`):** it was told, not answered. Check it naturally in §5 when `.env` arrives: "could someone download `.env` from my server? Why not?"
 1a. **S3 specificity, one quick check (taught 2026-09-29, when I said "I don't know"):** a new rule `.list-item { color: red }` against `#today-list li { color: blue }`. Which colour wins, and why? Predict it, then try it.
 1a'. **L18 closures, one prediction:** after deleting the middle of 3 climbs, is the old 3rd ✕ button reused, or rebuilt? (Rebuilt: `renderList` wipes every `<li>` and makes new buttons with new functions.)
@@ -47,7 +50,7 @@
 
 ## 📊 Snapshot
 
-79 concepts · 🌱 24 · 👋 31 · 🔧 24 · ✅ 0 (as of 2026-09-30)
+79 concepts · 🌱 19 · 👋 32 · 🔧 28 · ✅ 0 (as of 2026-09-30, mid-4.3)
 
 ---
 
@@ -55,7 +58,7 @@
 
 | ID | Concept | § | Status | Introduced | Last reviewed | Evidence | Builds on |
 |---|---|---|---|---|---|---|---|
-| L1 | Variables (`let` vs `const`) | 2 | 👋 | 2026-09-25 | 2026-09-25 | The `app.js` comments explain `let count` as state and `const` for element references. I haven't explained them back yet. 2.2: saw `push` work on a `const` array, but my answer "const lets push" was the *what*. The why was given to me (it locks the label, not the contents; like a C# `readonly List`). | — |
+| L1 | Variables (`let` vs `const`) | 2 | 🔧 | 2026-09-25 | 2026-09-30 | 4.2 (2026-09-30): the planted `const climbs` + `climbs = await ...` crashed with "Assignment to constant variable"; I read it as "gets nothing in return". Told: `push` fills the glued box, `=` swaps the box. I changed it to `let` myself. Earlier: The `app.js` comments explain `let count` as state and `const` for element references. I haven't explained them back yet. 2.2: saw `push` work on a `const` array, but my answer "const lets push" was the *what*. The why was given to me (it locks the label, not the contents; like a C# `readonly List`). | — |
 | L2 | Data types (string, number, boolean) | 2 | 🔧 | 2026-09-28 | 2026-09-28 | 2.1: predicted `attempts: 3` but got `'3'` (a gap). Learned that everything from HTML is text (the quotes are the tell), and wrapped it in `Number(...)` myself. | L1 |
 | L3 | Operators and comparisons (`+`, `===`, `>`) | 2 | 👋 | 2026-09-28 | 2026-09-28 | 2.1: `"3" + 1` gives `"31"` (it glues text instead of adding); I got this one right. | L2 |
 | L4 | Conditionals (`if` / `else`) | 2 | 👋 | 2026-09-28 | 2026-09-28 | 2.2: wrote two ternaries myself (`climb.sent ? "Sent" : "Not Sent"`), after one example. No `if`/`else` yet. | L3 |
@@ -70,8 +73,8 @@
 | L13 | Dates (`Date`, comparing days) | 6 | 🌱 | — | — | `app.js` shows today's date, but it was never explained. | L8 |
 | L14 | `null` / `undefined` (missing values) | 2 | 👋 | 2026-09-27 | 2026-09-27 | Session 6: `null` explained as JS's `NullReferenceException`. With a hint, I named `addBtn` as the `null` variable. 2.1: I predicted an unpicked effort would be "none", and it's `''` (an empty string: JS has no `None`, and `''` isn't `null` either). | L2 |
 | L15 | Errors and `try` / `catch` | 6 | 🌱 | — | — | — | L5 |
-| L16 | Async: promises and `async` / `await` | 4 | 🌱 | — | — | — | L6 |
-| L17 | JSON (data as text) | 4 | 🌱 | — | — | Named in the session 3 trunk (with `localStorage`), never explained. | L7, L8 |
+| L16 | Async: promises and `async` / `await` | 4 | 👋 | 2026-09-30 | 2026-09-30 | 4.2: explained as a Unity coroutine with `yield return www.SendWebRequest()`. Claude wrote `loadClimbs` and the `async` listeners; I copied the `await fetch` pattern into the ✕. | L6 |
+| L17 | JSON (data as text) | 4 | 🔧 | 2026-09-30 | 2026-09-30 | Found `JSON.stringify` myself in `hello.js` (3.1). 4.1: saw `res.json` send the array as raw text in the tab. 4.2: wrote `body: JSON.stringify(climb)` ("you can only mail text"). | L7, L8 |
 | L18 | Closures (a function remembers the variables around it when it was made) | 2 | 👋 | 2026-09-29 | 2026-09-29 | §2 trace: I said ✕ deletes "the climb that is on the same list as the x" (the right idea, the wrong mechanism). Told: each ✕'s click function captures its own `climb` from the loop, and `indexOf(climb)` finds it in the array. | L5, L6, L9 |
 
 ## S: Structural (how the pieces connect)
@@ -98,9 +101,9 @@
 | S18 | Modules (`import` / `export` between JS files) | 3 | 🌱 | — | — | — | S6, L5 |
 | S19 | A local server: `localhost` and ports | 3 | 🔧 | 2026-09-30 | 2026-09-30 | 3.3: ran `node server.js` and used the app at `localhost:3000`. Predicted correctly that after Ctrl + C a refresh gives an error page ("site can't be reached"). Learned that Node needs a restart after every edit. | S14 |
 | S20 | HTTP: request and response, methods, status codes | 4 | 🔧 | 2026-09-30 | 2026-09-30 | §3 trace: predicted 4 requests on page load and got 4 (`/`, `style.css`, `app.js`, `favicon.ico`). Said correctly that Log sends no request because of `preventDefault`. The favicon 404 and the DevTools request were told to me. Status codes not taught yet. | S12 |
-| S21 | Routes and URLs | 4 | 🌱 | — | — | — | S20 |
-| S22 | APIs (REST style) | 4 | 🌱 | — | — | — | S20, S21, L17 |
-| S23 | `fetch` (the page calling the server) | 4 | 🌱 | — | — | — | S22, L16 |
+| S21 | Routes and URLs | 4 | 🔧 | 2026-09-30 | 2026-09-30 | 4.1: wrote `res.json(climbs)` in `GET /api/climbs`. 4.2: `climbs.push(req.body)` in the POST route. 4.3: `req.body.id = nextId++` ✅, but `splice(climbs.indexOf(1), 1)` instead of `splice(index, 1)` (-1, so it would cut the LAST climb). `:id` URL blanks and `req.params` were told. | S20 |
+| S22 | APIs (REST style) | 4 | 👋 | 2026-09-30 | 2026-09-30 | 4.1: predicted "an error, since we didn't create any API" (the route *is* the API). Told: the menu of orders; GET reads, POST adds (201), DELETE removes (204, or 404 if missing). | S20, S21, L17 |
+| S23 | `fetch` (the page calling the server) | 4 | 🔧 | 2026-09-30 | 2026-09-30 | 4.2: wrote the POST `body` line and replaced push + redraw with `loadClimbs()`; a refresh kept the climb. 4.3: wrote `` `/api/climbs/body.id` `` (no `${}`, and `body` instead of `climb`), so the server gets literal text and replies 404. The old splice lines hid it. | S22, L16 |
 | S24 | Middleware (`express.json`, `express.static`) | 3 | 🔧 | 2026-09-30 | 2026-09-30 | 3.3: filled in `express.static("public/")` and the logger (`console.log` of `req.method` + `req.url`, then `next()`) myself. First try was `res.use("GET /style.css")`: unsure what the TODO wanted, mixing up printing with the reply object. Said "now I understand it" after the fix. | S14, S20 |
 | S25 | Database tables, rows, columns | 5 | 👋 | 2026-09-26 | 2026-09-26 | Decision 4: my climb-record table = a database table. It was explained to me but not checked. | L8 |
 | S26 | Why the database runs as a separate service (Postgres vs SQLite) | Plan | 👋 | 2026-09-26 | 2026-09-26 | My first answer read the list back. After a nudge: "free hosts whipe the servers so data on climbs would be lost." | S11, S25 |
@@ -188,3 +191,6 @@
   Gaps: committing `node_modules` (said yes), why serving the whole folder is dangerous, `res.use` instead of `console.log`, and "climbs lost when the
   server stops" (S35 ⚠️, fixed by testing a refresh with the server running). Found `JSON.stringify` on my own. Correct: dozens of packages,
   4 requests on load, no request on Log, and Ctrl + C → "site can't be reached".
+- **2026-09-30 (session 8, §4: 4.1 + 4.2 done, 4.3 half):** L1 → 🔧. L17, S21 and S23 → 🔧. L16 and S22 → 👋.
+  Pacing: 3 TODOs + 3 predictions + a diagram at once was too much ("explain it to me, I'm not understanding"). One TODO at a time, each with a
+  fill-in-the-blank, worked. 4.3 bugs: the `indexOf(1)` splice and the literal `body.id` URL (see the queue).

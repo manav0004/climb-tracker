@@ -161,3 +161,8 @@ Written down so it stops nagging me. Not before the MVP ships.
   **§3 trace:** 4 requests on load ✅. Log sends nothing ✅. But I said the climbs are "stored on app.js and lost when the server stops" ❌:
   `app.js` is a recipe the server hands over; the array lives in the tab's memory. I proved it: a refresh with the server running still wipes them.
   **Next:** Section 4, the API (`fetch` + `POST /api/climbs`), so the server finally holds the climbs.
+  **§4 started (same session):** split into 4.1–4.3. Added `npm run dev` (`node --watch`: restarts on save). 4.1 ✅: `res.json(climbs)`, and the API
+  answers raw JSON in the tab. 4.2 ✅: Log POSTs the climb (`JSON.stringify`), the server pushes `req.body`, and the page redraws via `loadClimbs()`.
+  A refresh keeps a logged climb (I'd predicted "nothing survives"). Planted `const` bug: "Assignment to constant variable" → `let`.
+  I asked for a slower explanation when 3 TODOs came at once; one TODO at a time worked. 4.3 half done: ids (`req.body.id = nextId++` ✅).
+  **Next (open bugs, not fixed yet):** TODO H `splice(index, 1)` and TODO I `` `/api/climbs/${climb.id}` `` + `loadClimbs()`. See the quiz queue.

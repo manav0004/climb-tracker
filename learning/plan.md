@@ -87,6 +87,19 @@ kept in an array on the server. The frontend uses `fetch` instead of its own arr
 **✅ Deliverable:** refreshing the page keeps my climbs, but restarting the server wipes them,
 and I can explain the difference.
 
+- [x] **4.1 The first route: `GET /api/climbs`.** The server keeps a `climbs` array and sends it back as JSON.
+  ✅ Opening `localhost:3000/api/climbs` in the tab shows the climbs as JSON text.
+  *(2026-09-30: done. I wrote `res.json(climbs)`. Predicted "an error, since we didn't create any API" and "no idea" for the log line.
+  Added `npm run dev` (`node --watch`) so the server restarts itself on save.)*
+- [x] **4.2 Save: `POST /api/climbs` + `fetch`.** Log sends the climb to the server (`express.json` reads it), and the page draws
+  its list from `GET` instead of its own array. ✅ A refresh keeps my climbs, and the terminal shows `POST /api/climbs`.
+  *(2026-09-30: done. I wrote the server's `push(req.body)`, `body: JSON.stringify(climb)` and the `loadClimbs()` call. The first explanation
+  was too much at once; one TODO at a time worked. Planted bug: `const climbs` + reassignment → "Assignment to constant variable"; I read it as
+  "gets nothing in return". Fixed with `let`. A refresh keeps a logged climb, but a deleted one came back (✕ only edited the tab's copy).)*
+- [ ] **4.3 Delete: `DELETE /api/climbs/:id`.** Each climb gets an `id` from the server, and ✕ asks the server to delete that id.
+  ✅ The deliverable: refresh keeps them, Ctrl + C wipes them, and I explain why. Then the §4 trace a tap.
+  *(2026-09-30: in progress. Ids and the DELETE route are in. TODO G done; TODOs H and I have bugs to fix, listed in the quiz queue.)*
+
 ### 5. The database (PostgreSQL)
 A `climbs` table in Postgres. The API reads and writes with SQL instead of the array.
 Passwords and connection details stay out of the code (environment variables).
