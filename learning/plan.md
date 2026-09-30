@@ -65,14 +65,21 @@ Install Node and npm. A tiny Express server sends my HTML/CSS/JS to the browser.
 **✅ Deliverable:** the same app at `http://localhost:3000`, served by *my* server, with each request
 printed in the terminal.
 
-- [ ] **3.1 Install Node and run JS outside the browser.** Install Node (LTS), then write `hello.js` and run it with `node hello.js`.
+- [x] **3.1 Install Node and run JS outside the browser.** Install Node (LTS), then write `hello.js` and run it with `node hello.js`.
   ✅ It prints in the terminal, and I can explain why `document` crashes there.
-  *(2026-09-29: Node v24.19.0 was already installed. `hello.js` runs and crashed on `document` as expected. Still to do: print the count
-  with `.length`, and switch `Sent` to lowercase `sent` to match `app.js`.)*
-- [ ] **3.2 npm, `package.json`, Express and `.gitignore`.** `npm init`, install Express, see what `node_modules` and the lock file are,
+  *(2026-09-29: Node v24.19.0 was already installed. `hello.js` runs and crashed on `document` as expected.
+  2026-09-30: done. It prints the count with `.length` and uses lowercase `sent`.)*
+- [x] **3.2 npm, `package.json`, Express and `.gitignore`.** `npm init`, install Express, see what `node_modules` and the lock file are,
   and keep them (plus `debug.log`) out of Git. ✅ `git status` shows no `node_modules`.
-- [ ] **3.3 The server.** `server.js` serves my three files with `express.static`, prints every request, and listens on port 3000.
+  *(2026-09-30: done. I wrote `.gitignore` myself: `node_modules/`, `debug.log`, `.vscode/`. Bug: `debug.log/` with a trailing slash
+  only matches a folder, so the file was silently not ignored.)*
+- [x] **3.3 The server.** `server.js` serves my three files with `express.static`, prints every request, and listens on port 3000.
   ✅ The app works at `http://localhost:3000`, and the terminal shows each request. Then the §3 trace a tap.
+  *(2026-09-30: done. The three app files moved into `public/`, so only they are served (never `server.js`, and never `.env` in §5).
+  I wrote the logger and the `express.static` line. Bug: `res.use("GET /style.css")` crashed every request; printing is `console.log`.
+  **§3 trace a tap:** predicted 4 requests on load, and got 4 (`/`, `style.css`, `app.js`, `favicon.ico`). Log adds no line
+  (`preventDefault`, nothing is sent). A refresh wipes the climbs even with the server running. Ctrl + C → "site can't be reached".
+  **Section 3 complete.**)*
 
 ### 4. The API: the browser talks to the server
 Routes for listing, adding and deleting climbs (`GET` / `POST` / `DELETE /api/climbs`), with the climbs

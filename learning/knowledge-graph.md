@@ -33,25 +33,21 @@
 
 ## 🎯 Quiz queue (next session)
 
-0. **Opener (session 8): finish 3.1, then 3.2.** In `hello.js`, print the count (`climbs.length`) and use lowercase `sent`. Then the 3.2 predictions.
-   I already ran `npm init -y` + `npm install express`, so ask them *before* I open `package.json` or `node_modules`:
-   (a) what's in `package.json`? (b) does `node_modules` hold 1 folder, about 5, or dozens, and why? (It's 65: dependencies have dependencies.)
-   (c) should `node_modules/` be committed? (Unity: `Library/`.) Then I write `.gitignore` myself (`node_modules/`, `debug.log`).
-1. **§3 is broken into tasks (plan.md 3.1–3.3).** Queue item 4 still fits as a §3 opener. Item 3 was answered (2026-09-29; see S32).
-   Check S35 (host: browser vs Node) again in the §3 trace.
+0. **Opener (session 9): start §4.** Break §4 into tasks in `plan.md`. First prediction, aimed at the S35/S10 gap from the §3 trace
+   (I said the climbs are "stored on app.js and lost when the server stops"): once Log sends a `POST` to the server and the server pushes
+   the climb into *its* array, what survives a **refresh**, and what survives **Ctrl + C**? Ask it as a prediction and test both. Don't re-ask the §3 answer.
+1. **S36 (why `public/`):** it was told, not answered. Check it naturally in §5 when `.env` arrives: "could someone download `.env` from my server? Why not?"
 1a. **S3 specificity, one quick check (taught 2026-09-29, when I said "I don't know"):** a new rule `.list-item { color: red }` against `#today-list li { color: blue }`. Which colour wins, and why? Predict it, then try it.
 1a'. **L18 closures, one prediction:** after deleting the middle of 3 climbs, is the old 3rd ✕ button reused, or rebuilt? (Rebuilt: `renderList` wipes every `<li>` and makes new buttons with new functions.)
 1b. **S10 + S11 (don't re-ask directly, they asked not to repeat):** check it again naturally in §4, where "refresh keeps them, server restart wipes them" is the same idea one level up.
 2. **S34: what does tapping a label actually do?** My comment says it "calls the select element". Say it again using the
    word *focus*, and give one reason labels matter at the gym.
-3. **S20 + S33: "the browser *requests* things."** When I tapped Log, the URL became `?grade=6b`. Who was that request
-   sent to, and who answered it? This leads into §3.
 4. *(If there's time)* **S5 + S6: the rest of the session 5 step.** I've now seen that a crash halfway through the file still leaves
    the date showing. What if `<script src>` had a **typo** instead: would the date show? Predict, then break it.
 
 ## 📊 Snapshot
 
-78 concepts · 🌱 31 · 👋 28 · 🔧 19 · ✅ 0 (as of 2026-09-29)
+79 concepts · 🌱 24 · 👋 31 · 🔧 24 · ✅ 0 (as of 2026-09-30)
 
 ---
 
@@ -96,16 +92,16 @@
 | S12 | Frontend vs backend (client and server) | Plan | 👋 | 2026-09-26 | 2026-09-26 | I chose a backend for portfolio value, but skipped the gym-internet tradeoff when asked about it. | S5 |
 | S13 | Framework vs plain JS | Plan | 👋 | 2026-09-26 | 2026-09-26 | I said: "framework is pre built so I wouldnt understand the exact mechanics of how JS really works." | S5 |
 | S14 | Node.js and Express (what they are) | 3 | 🔧 | 2026-09-26 | 2026-09-29 | Decision 3: I picked them, but I haven't said what Node *is* in my own words. 3.1: wrote `hello.js` and ran it with Node myself (with the VS Code runner). Installed Express with npm. | S12 |
-| S15 | npm and dependencies (other people's code I install) | 3 | 🌱 | — | — | — | S14 |
-| S16 | `package.json` (the project's ID card and dependency list) | 3 | 🌱 | — | — | — | S15 |
-| S17 | `package-lock.json` and `node_modules` (generated) | 3 | 🌱 | — | — | — | S16 |
+| S15 | npm and dependencies (other people's code I install) | 3 | 🔧 | 2026-09-30 | 2026-09-30 | Ran `npm install express` myself (2026-09-29). 3.2: predicted `node_modules` holds "too much to count" (right: 65). The why (dependencies have dependencies) was told to me. | S14 |
+| S16 | `package.json` (the project's ID card and dependency list) | 3 | 👋 | 2026-09-30 | 2026-09-30 | 3.2: "no idea" what's in it. Told: ID card plus shopping list (like Unity's `Packages/manifest.json`), with `"express": "^5.2.1"` in `dependencies`. | S15 |
+| S17 | `package-lock.json` and `node_modules` (generated) | 3 | 👋 | 2026-09-30 | 2026-09-30 | 3.2: said `node_modules` *should* be committed (a gap). Told: like Unity's `Library/`, it's rebuilt by `npm install`, so commit the recipe, not the groceries. The lock file (exact versions) *is* committed. | S16 |
 | S18 | Modules (`import` / `export` between JS files) | 3 | 🌱 | — | — | — | S6, L5 |
-| S19 | A local server: `localhost` and ports | 3 | 🌱 | — | — | — | S14 |
-| S20 | HTTP: request and response, methods, status codes | 4 | 🌱 | — | — | — | S12 |
+| S19 | A local server: `localhost` and ports | 3 | 🔧 | 2026-09-30 | 2026-09-30 | 3.3: ran `node server.js` and used the app at `localhost:3000`. Predicted correctly that after Ctrl + C a refresh gives an error page ("site can't be reached"). Learned that Node needs a restart after every edit. | S14 |
+| S20 | HTTP: request and response, methods, status codes | 4 | 🔧 | 2026-09-30 | 2026-09-30 | §3 trace: predicted 4 requests on page load and got 4 (`/`, `style.css`, `app.js`, `favicon.ico`). Said correctly that Log sends no request because of `preventDefault`. The favicon 404 and the DevTools request were told to me. Status codes not taught yet. | S12 |
 | S21 | Routes and URLs | 4 | 🌱 | — | — | — | S20 |
 | S22 | APIs (REST style) | 4 | 🌱 | — | — | — | S20, S21, L17 |
 | S23 | `fetch` (the page calling the server) | 4 | 🌱 | — | — | — | S22, L16 |
-| S24 | Middleware (`express.json`, `express.static`) | 3 | 🌱 | — | — | — | S14, S20 |
+| S24 | Middleware (`express.json`, `express.static`) | 3 | 🔧 | 2026-09-30 | 2026-09-30 | 3.3: filled in `express.static("public/")` and the logger (`console.log` of `req.method` + `req.url`, then `next()`) myself. First try was `res.use("GET /style.css")`: unsure what the TODO wanted, mixing up printing with the reply object. Said "now I understand it" after the fix. | S14, S20 |
 | S25 | Database tables, rows, columns | 5 | 👋 | 2026-09-26 | 2026-09-26 | Decision 4: my climb-record table = a database table. It was explained to me but not checked. | L8 |
 | S26 | Why the database runs as a separate service (Postgres vs SQLite) | Plan | 👋 | 2026-09-26 | 2026-09-26 | My first answer read the list back. After a nudge: "free hosts whipe the servers so data on climbs would be lost." | S11, S25 |
 | S27 | SQL basics (`SELECT`, `INSERT`, `DELETE`, `WHERE`) | 5 | 🌱 | — | — | One example query was shown in Decision 4. | S25 |
@@ -114,7 +110,8 @@
 | S30 | Parameterized queries (and why: SQL injection) | 5 | 🌱 | — | — | — | S27 |
 | S31 | Sessions = climbs grouped by day | 6 | 🌱 | — | — | — | L13, S27 |
 | S32 | `file://` vs `http://` (opening a file vs being served by a server) | 3 | 👋 | 2026-09-26 | 2026-09-26 | Session 5: saw the "'file:' URLs are treated as unique security origins" warning; it was explained as noise that goes away in §3. 2026-09-29: asked who answered the §1 `?grade=6b` request, I said "app.js" (a gap). Told: with `file://`, nobody answers; the browser rereads the file from disk. | S19, S20 |
-| S35 | The host (runtime): browser vs Node give the same JS different extras | 3 | 👋 | 2026-09-29 | 2026-09-29 | 3.1: predicted `document.title` would work in Node and that the lines after it would run. Both wrong (a crash stops everything). My why: "app.js runs on js, hello.js through node", which is half right (both are JS). Told: the host provides `document`, like Unity provides `transform`. | S5, S14, S7 |
+| S35 | The host (runtime): browser vs Node give the same JS different extras | 3 | 👋 | 2026-09-29 | 2026-09-29 | 3.1: predicted `document.title` would work in Node and that the lines after it would run. Both wrong (a crash stops everything). My why: "app.js runs on js, hello.js through node", which is half right (both are JS). Told: the host provides `document`, like Unity provides `transform`. §3 trace (2026-09-30): said the climbs are "stored on app.js and lost when the server stops" ⚠️. Told: the server only *hands over* `app.js`, and the array lives in the tab. I proved it: a refresh with the server still running wiped them. | S5, S14, S7 |
+| S36 | Serve only `public/` (never the whole project folder) | 3 | 👋 | 2026-09-30 | 2026-09-30 | 3.3: my prediction was "the server will just ruin" (a gap). Told: serving everything would let anyone download `server.js`, and in §5 the `.env` password. I moved the three app files into `public/` myself. | S24, E12 |
 | S33 | A form's default submit (reloads the page and adds `?name=value` to the URL) | 1 | 🔧 | 2026-09-27 | 2026-09-27 | Session 6: predicted "nothing" on tapping Log and saw a reload (a gap). Then correctly predicted `?grade=6b` in the URL. 2.1: JS now stops the default with `event.preventDefault()`. | S2, S20 |
 | S34 | Labels and focus (`for` → `id`, or input nested inside the label; tap targets, screen readers) | 1 | 🔧 | 2026-09-27 | 2026-09-27 | Session 6: proved the focus by tapping "Grade" and pressing ↓. In 1.3, correctly predicted that tapping the word "Sent" ticks the box, and used both wiring styles. I haven't explained *focus* in my own words yet. | S2 |
 
@@ -125,11 +122,11 @@
 | E1 | Git repo and commits (snapshots) | all | 👋 | 2026-09-25 | 2026-09-26 | Session 2: first commit. Session 4: approved a commit Claude made. | — |
 | E2 | Remotes and push (GitHub, `origin`) | all | 🔧 | 2026-09-25 | 2026-09-26 | Session 3: pushed to GitHub (and fixed a `pusj` typo). Session 4: ran `git push` myself. | E1 |
 | E3 | Good commit messages | all | 🌱 | — | — | — | E1 |
-| E4 | `.gitignore` (what stays out of the repo) | 3 | 🌱 | — | — | `debug.log` is sitting untracked right now. | E1 |
+| E4 | `.gitignore` (what stays out of the repo) | 3 | 🔧 | 2026-09-30 | 2026-09-30 | 3.2: wrote it myself (`node_modules/`, `debug.log`, `.vscode/`). Silent bug: `debug.log/` with a trailing slash only matches a folder, so the file still showed up in `git status`. | E1 |
 | E5 | Reading the exact command and its output | all | 👋 | 2026-09-25 | 2026-09-25 | Session 3: a `pusj` typo silently did nothing. | — |
 | E6 | Debugging method: check the input before "fixing" | all | 🔧 | 2026-09-25 | 2026-09-27 | Session 3: the repo name really did end in a dot. Session 6: tested my own "the label submits" claim against evidence (the URL, the selected grade) instead of trusting it, and dropped it. | E5 |
 | E7 | Browser DevTools (Console, Elements, Network, phone view) | 1 | 🔧 | 2026-09-26 | 2026-09-26 | Session 5: opened device mode and the Console with help, and spotted the red error. | S7 |
-| E8 | Reading error messages and stack traces | 7 | 🔧 | 2026-09-26 | 2026-09-26 | Session 5: decoded `ERR_FILE_NOT_FOUND` myself: "it didnt load the file because it didn't find it due to a typo". Session 6: pasted `Cannot read properties of null` but blamed "the function"; learned to read it right to left (the null thing → `addBtn`). | L15 |
+| E8 | Reading error messages and stack traces | 7 | 🔧 | 2026-09-26 | 2026-09-26 | Session 5: decoded `ERR_FILE_NOT_FOUND` myself: "it didnt load the file because it didn't find it due to a typo". Session 6: pasted `Cannot read properties of null` but blamed "the function"; learned to read it right to left (the null thing → `addBtn`). 3.3 (2026-09-30): `res.use is not a function` sent me into `node_modules/send/index.js`. Told: read the top line (the real problem), not the files the crash passed through. | L15 |
 | E9 | Automated tests and a test runner | 7 | 🌱 | — | — | — | L5, S22 |
 | E10 | Input validation (rejecting bad data) | 6 | 🌱 | — | — | — | L4, S22 |
 | E11 | Handling failure (server unreachable) | 6 | 🌱 | — | — | — | L15, S23 |
@@ -187,3 +184,7 @@
 - **2026-09-29 (session 7, task 3.1):** S14 → 🔧. Added S35 (host, 👋). Reviewed S32 (a gap: "app.js answered the request"). Two wrong predictions in `hello.js`
   (`document` in Node, and code after a crash). The trace-reading tip (the top line is my file) was told to me. I ran npm ahead of the 3.2 predictions,
   so S15–S17 stay 🌱 until I answer them. `Sent` vs `sent` key casing was flagged as a silent bug.
+- **2026-09-30 (session 8, 3.1–3.3, Section 3 done):** S15, S19, S20, S24 and E4 → 🔧. S16 and S17 → 👋. Added S36 (`public/`, 👋). Reviewed S14, S32, S35 and E8.
+  Gaps: committing `node_modules` (said yes), why serving the whole folder is dangerous, `res.use` instead of `console.log`, and "climbs lost when the
+  server stops" (S35 ⚠️, fixed by testing a refresh with the server running). Found `JSON.stringify` on my own. Correct: dozens of packages,
+  4 requests on load, no request on Log, and Ctrl + C → "site can't be reached".

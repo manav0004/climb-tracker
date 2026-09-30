@@ -152,3 +152,12 @@ Written down so it stops nagging me. Not before the MVP ships.
   Also ran `npm init -y` + `npm install express` ahead of the lesson (65 folders in `node_modules`), without making the 3.2 predictions first.
   `node_modules` and `debug.log` were left out of the commit; `.gitignore` is my job in 3.2.
   **Next:** print the count in `hello.js` (tick 3.1), then the 3.2 predictions in the quiz queue.
+- **Session 8 (2026-09-30): Section 3 done.** Finished 3.1 (`.length`, lowercase `sent`; found `JSON.stringify` myself).
+  3.2: "dozens" in `node_modules` ✅; I said commit it ❌. Commit the recipe (`package.json` + lock file), not the groceries (like Unity's `Library/`).
+  Wrote `.gitignore` myself. Silent bug: `debug.log/` with a slash only matches a folder. VS Code's Run button made `.vscode/launch.json`
+  (ignored now; run things from the terminal instead). 3.3: moved the app into `public/`, wrote the request logger and `express.static`.
+  I didn't see why serving the whole folder is dangerous (anyone could read `server.js`, and later the password). Bug: `res.use(...)` instead of `console.log`;
+  I learned to read the top line of an error, not the `node_modules` file it passed through. Node needs Ctrl + C and a restart after every edit.
+  **§3 trace:** 4 requests on load ✅. Log sends nothing ✅. But I said the climbs are "stored on app.js and lost when the server stops" ❌:
+  `app.js` is a recipe the server hands over; the array lives in the tab's memory. I proved it: a refresh with the server running still wipes them.
+  **Next:** Section 4, the API (`fetch` + `POST /api/climbs`), so the server finally holds the climbs.
