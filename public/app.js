@@ -55,7 +55,7 @@ form.addEventListener("submit", async (event) => {
     sent: form.elements.sent.checked,
     colour: form.elements.colour.value,
     attempts: Number(form.elements.attempts.value),
-    effort: form.elements.effort.value,
+    effort: Number(form.elements.effort.value),
     beta: form.elements.beta.checked,
   };
 
