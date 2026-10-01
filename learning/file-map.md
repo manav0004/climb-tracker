@@ -26,9 +26,10 @@
 | `public/index.html` | parked | The page's structure. Right now: a title, today's date, and the log form (`id="log-form"`) with all six fields and a "Log" button, then a "Today's list" card (`id="today-list"`) with two made-up climbs. **I wrote** the grade and colour `<option>`s, the Attempts input, the intended-beta checkbox, the label comment (2026-09-27), and the effort radios in a `<fieldset>` plus the whole Today's list card (2026-09-28), plus the comments on the two "wire" lines (2026-09-26). The rest gets explained as I rebuild it in §1. | §1 |
 | `public/style.css` | parked | How the page looks: mobile-first styling for the card and button. | §2 |
 | `public/app.js` | parked | The page's behaviour (runs in the **browser**, not on the server). Since §4, `climbs` is only the tab's *copy*: `loadClimbs()` fetches it from the server, Log POSTs, ✕ DELETEs. It shows today's date, and holds the data model (the `climbs` array, in memory only). On submit it builds a climb object from the six fields, pushes it into `climbs`, and `renderList()` redraws Today's list from the array. **I removed** the dead counter code (2026-09-27), and **wrote** four of the object's fields (with the `Number()` fix), the `<li>` template literal, and the push + redraw (2026-09-28). | §2 |
-| `server.js` | parked | My Express server (runs in **Node**): prints every request, serves `public/`, unpacks JSON bodies, and holds the **server's** `climbs` array (with ids from `nextId`). The API: `GET`, `POST` and `DELETE /api/climbs` (§4). Start it with `npm run dev` (restarts on save), stop it with Ctrl + C. A restart wipes the climbs until §5. **I wrote** the request logger and the `express.static` line (2026-09-30). | §3 (3.3), grows in §4 |
+| `server.js` | parked | My Express server (runs in **Node**): prints every request, serves `public/`, unpacks JSON bodies, and is the messenger between the page and my Neon database (`pool`, from the `pg` package). The API: `GET`, `POST` and `DELETE /api/climbs`, each running one SQL statement (`SELECT`, `INSERT`, `DELETE`) since §5 (2026-10-01). It holds no climbs itself any more, so a restart loses nothing. On start it prints the table's row count. Start it with `npm run dev` (restarts on save), stop it with Ctrl + C. **I wrote** the six-field INSERT and removed the old array (2026-10-01). The long teaching comments were stripped on 2026-10-01 at my request. **I wrote** the request logger and the `express.static` line (2026-09-30). | §3 (3.3), grows in §4 |
+| `.env` | parked | **I made it** (2026-10-01): one line, `DATABASE_URL=...`, the address and password of my Neon database. `npm run dev` loads it into `process.env`. Ignored by Git, **never committed**, never pasted anywhere. | §5 (5.2) |
 | `hello.js` | parked | Practice file for 3.1: my first JS run by **Node** in the terminal, not by the browser. It proved that `document` doesn't exist outside the browser. I wrote it (2026-09-29). Not part of the app; can be deleted after §3. | §3 (3.1) |
-| `package.json` | parked | The project's ID card, made by `npm init -y` (2026-09-29): name, scripts (`dev` = `node --watch server.js`, added 2026-09-30), and `dependencies` (Express). I edit this one. | §3 (3.2) |
+| `package.json` | parked | The project's ID card, made by `npm init -y` (2026-09-29): name, scripts (`dev` = `node --watch --env-file=.env server.js`; the `--env-file` part, added 2026-10-01, loads my secrets from `.env` into `process.env`), and `dependencies` (Express). I edit this one. | §3 (3.2) |
 
 ## Tools and machine-made files
 
@@ -47,7 +48,6 @@
 
 | Path | Will be | Arrives in |
 |---|---|---|
-| `.env` | Secrets (such as the database password). **Never committed.** | §5 |
 | test files | Automated tests | §7 |
 
 ## Outside the repo

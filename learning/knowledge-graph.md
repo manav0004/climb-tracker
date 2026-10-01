@@ -33,18 +33,23 @@
 
 ## 🎯 Quiz queue (next session)
 
-0. **Opener (session 10): task 5.1, not started.** §5 is split into 5.1–5.4 in `plan.md` (the database is on Neon from the start). The 5.1 step was shown
-   but I had to leave: Neon sign-up, `CREATE TABLE` with 3 type blanks (colour/attempts/beta), INSERT + SELECT. Predictions still open:
-   (a) what `id`/`created_at` show though the INSERT skips them, (b) same INSERT twice → error or two rows?, (c) `'lots'` in `attempts`. Re-show it short.
-0a. **L8/S10 gap, check it in §5 when rows come back from SQL:** in 4.3 I tried `climb.getElementById`, `climb.textContent` and the whole `${climb}`
-   before `climb.id`, mixing up a data object (fields = the names before the colons) with a page element (`li.textContent`). Ask naturally: "a row comes
-   back as `{ id: 4, grade: "6c", ... }`. How do you read its grade?"
+0. **Opener (session 11): split Section 6 into tasks** (today vs past sessions, input checks incl. the empty-effort `''` that the `INTEGER` column
+   refuses, and a message when the server can't be reached). Section 5 is complete.
+0d. **§5 trace gap (2026-10-01), the first quiz next session:** I missed 4 of 9 blanks, all the same link: which request goes with which action.
+   POST = add = `INSERT` (reply 201); GET = read = `SELECT`; DELETE = remove = `DELETE` (reply 204). And the page re-reads with `loadClimbs()`
+   (I said "server.js"). Ask with the terminal log in front of me: "you tap Log; which two lines appear in the terminal, and which SQL does each run?"
+0c. **S30 gap (2026-10-01):** I wrote `WHERE id = climb.id` inside the SQL string. Told: the SQL travels as text and the database can't see JS variables;
+   `$1` + the values array is the hand-over. One check in §6: "why can't the SQL just say `WHERE id = id`?"
+0a. **L8/S10 gap, still unchecked:** in 4.3 I tried `climb.getElementById`, `climb.textContent` and the whole `${climb}`
+   before `climb.id`, mixing up a data object (fields = the names before the colons) with a page element (`li.textContent`). In 5.2 `result.rows[0].count`
+   was given to me (shown as rows → `[0]` → `.count`), so it's no evidence. Check in 5.3: "how would you print the first climb's grade?"
+0b. **S28 defaults (gap 2026-10-01):** I predicted that an INSERT without `id` errors, and that the same INSERT twice errors. One check in 5.3:
+   "the POST route's INSERT doesn't send an `id`. Where does the id in the reply come from?"
 1. **S36 (why `public/`):** it was told, not answered. Check it naturally in §5 when `.env` arrives: "could someone download `.env` from my server? Why not?"
 1a. **S3 specificity, one quick check (taught 2026-09-29, when I said "I don't know"):** a new rule `.list-item { color: red }` against `#today-list li { color: blue }`. Which colour wins, and why? Predict it, then try it.
 1a'. **L18 closures, one prediction:** after deleting the middle of 3 climbs, is the old 3rd ✕ button reused, or rebuilt? (Rebuilt: `renderList` wipes every `<li>` and makes new buttons with new functions.)
-1b. **S11 (half there, 2026-10-01):** for "why does a refresh keep them but a restart doesn't", I only said "server memory wipes on restart". The
-   refresh half (the tab's memory IS wiped, then `loadClimbs` re-asks the untouched server) was told to me. Check it at the §5 deliverable: after a
-   restart the climbs survive. *Whose* memory are they in now?
+1b. **S11 (the where ✅, the why told, 2026-10-01):** after the restart I said "they are in the database now". The why (the database is a separate
+   program on Neon's computers, so stopping my server doesn't touch it) was told to me. Check once in §8, when Render restarts the server on every deploy.
 2. **S34: what does tapping a label actually do?** My comment says it "calls the select element". Say it again using the
    word *focus*, and give one reason labels matter at the gym.
 4. *(If there's time)* **S5 + S6: the rest of the session 5 step.** I've now seen that a crash halfway through the file still leaves
@@ -52,7 +57,7 @@
 
 ## 📊 Snapshot
 
-79 concepts · 🌱 19 · 👋 30 · 🔧 30 · ✅ 0 (as of 2026-10-01, Section 4 done)
+79 concepts · 🌱 14 · 👋 28 · 🔧 37 · ✅ 0 (as of 2026-10-01, Section 5 done)
 
 ---
 
@@ -93,7 +98,7 @@
 | S8 | Events and listeners | 2 | 🔧 | 2026-09-25 | 2026-09-28 | The `app.js` comments compare `addEventListener` to `onClick.AddListener`. 2.1: predicted that `preventDefault()` stops the reload, then commented it out myself to test that. §2 trace (2026-09-29): left the listener and `preventDefault` out of my Log trace (started at "we get the data"). | S7, L6 |
 | S9 | Drawing a list from data (data → HTML) | 2 | 🔧 | 2026-09-28 | 2026-09-28 | Session 6 (1.4): my two made-up `<li>`s are the design mock for one climb, and JS will copy that shape in §2. I predicted that tapping Log won't change the list "since we'd need JS". 2.2: the list is now drawn from `climbs` by `renderList()`. I wrote the `<li>` text and the push + redraw. The "wipe first, or you get A, A, B" point was told to me, not tested. §2 trace (2026-09-29): ✕ → delete from the data → "rerender the list to display the updated info". Correct, and in my own words. | L7, L9, S7 |
 | S10 | Data model (the shape of data in memory) | 2 | 🔧 | 2026-09-25 | 2026-09-28 | Session 3: I got the definition, not the *why*. 2.2: I use `climbs` in code. I said the climbs live "in renderList" (wrong: they live in the `climbs` array, and renderList only draws it). Refresh: "it has nothing saved on it", which is close. The full chain was told to me: the tab's memory is destroyed, then `const climbs = []` makes a new array. §2 trace (2026-09-29): "display them in a list stored in an array" still blurs the two (the array stores; the `<ul>` only shows). ⚠️ known gap. 4.3 (2026-10-01): the same blur, one level down: reached for element properties (`textContent`, `getElementById`) on a climb object. | L7, L8 |
-| S11 | Persistence (data that survives closing the app) | 5 | 👋 | 2026-09-25 | 2026-09-28 | Session 3: same gap as S10. Session 4: switched from `localStorage` to a database. 2.2: "a server would need to exist" is half right. Told: a server alone still wipes on restart (§4), and the database is what outlives the program. §4 deliverable (2026-10-01): predicted correctly that a restart leaves only the 2 made-up climbs. My why, "server memory wipes on restart", covers only half; the refresh half (the tab is wiped too, then re-asks the server) was told to me. | S10 |
+| S11 | Persistence (data that survives closing the app) | 5 | 🔧 | 2026-09-25 | 2026-10-01 | §5 (2026-10-01): built it. My climbs survive Ctrl + C and a restart; asked where they live now, I said "in the database" (the why was told). | Session 3: same gap as S10. Session 4: switched from `localStorage` to a database. 2.2: "a server would need to exist" is half right. Told: a server alone still wipes on restart (§4), and the database is what outlives the program. §4 deliverable (2026-10-01): predicted correctly that a restart leaves only the 2 made-up climbs. My why, "server memory wipes on restart", covers only half; the refresh half (the tab is wiped too, then re-asks the server) was told to me. | S10 |
 | S12 | Frontend vs backend (client and server) | Plan | 👋 | 2026-09-26 | 2026-09-26 | I chose a backend for portfolio value, but skipped the gym-internet tradeoff when asked about it. | S5 |
 | S13 | Framework vs plain JS | Plan | 👋 | 2026-09-26 | 2026-09-26 | I said: "framework is pre built so I wouldnt understand the exact mechanics of how JS really works." | S5 |
 | S14 | Node.js and Express (what they are) | 3 | 🔧 | 2026-09-26 | 2026-09-29 | Decision 3: I picked them, but I haven't said what Node *is* in my own words. 3.1: wrote `hello.js` and ran it with Node myself (with the VS Code runner). Installed Express with npm. | S12 |
@@ -107,12 +112,12 @@
 | S22 | APIs (REST style) | 4 | 🔧 | 2026-09-30 | 2026-10-01 | 4.1: predicted "an error, since we didn't create any API" (the route *is* the API). Told: the menu of orders; GET reads, POST adds (201), DELETE removes (204, or 404 if missing). §4 trace (2026-10-01): all 9 blanks of the ✕ round trips right (route method, text param, index, splice, 204, loadClimbs, GET, json, renderList). | S20, S21, L17 |
 | S23 | `fetch` (the page calling the server) | 4 | 🔧 | 2026-09-30 | 2026-09-30 | 4.2: wrote the POST `body` line and replaced push + redraw with `loadClimbs()`; a refresh kept the climb. 4.3: wrote `` `/api/climbs/body.id` `` (no `${}`, and `body` instead of `climb`), so the server gets literal text and replies 404. The old splice lines hid it. 2026-10-01: predicted all 3 outcomes of that bug right (log line, disappears, comes back on refresh). Removed the local splice and called `loadClimbs()` myself. | S22, L16 |
 | S24 | Middleware (`express.json`, `express.static`) | 3 | 🔧 | 2026-09-30 | 2026-09-30 | 3.3: filled in `express.static("public/")` and the logger (`console.log` of `req.method` + `req.url`, then `next()`) myself. First try was `res.use("GET /style.css")`: unsure what the TODO wanted, mixing up printing with the reply object. Said "now I understand it" after the fix. | S14, S20 |
-| S25 | Database tables, rows, columns | 5 | 👋 | 2026-09-26 | 2026-09-26 | Decision 4: my climb-record table = a database table. It was explained to me but not checked. | L8 |
+| S25 | Database tables, rows, columns | 5 | 🔧 | 2026-09-26 | 2026-10-01 | Decision 4: my climb-record table = a database table. It was explained to me but not checked. 5.1 (2026-10-01): created the `climbs` table on Neon and saw my rows come back; hit `relation "climbs" already exists` on a second run (the table stays, unlike the array). | L8 |
 | S26 | Why the database runs as a separate service (Postgres vs SQLite) | Plan | 👋 | 2026-09-26 | 2026-09-26 | My first answer read the list back. After a nudge: "free hosts whipe the servers so data on climbs would be lost." | S11, S25 |
-| S27 | SQL basics (`SELECT`, `INSERT`, `DELETE`, `WHERE`) | 5 | 🌱 | — | — | One example query was shown in Decision 4. | S25 |
-| S28 | Schema, primary keys, column types | 5 | 🌱 | — | — | — | S25, L2 |
-| S29 | Connecting to the database (driver, connection string) | 5 | 🌱 | — | — | — | S14, S25 |
-| S30 | Parameterized queries (and why: SQL injection) | 5 | 🌱 | — | — | — | S27 |
+| S27 | SQL basics (`SELECT`, `INSERT`, `DELETE`, `WHERE`) | 5 | 🔧 | 2026-10-01 | 2026-10-01 | One example query was shown in Decision 4. 5.1 (2026-10-01): ran `INSERT` and `SELECT *` by hand in Neon's editor (5 rows from 5 runs). Two `42601` syntax errors on the way; the cause was never pinned down (likely a missing `;` between statements). No `DELETE`/`WHERE` yet. | S25 |
+| S28 | Schema, primary keys, column types | 5 | 🔧 | 2026-10-01 | 2026-10-01 | 5.1 (2026-10-01): all three types right (`TEXT`, `INTEGER`, `BOOLEAN`), in a table with an identity primary key. Predicted `'lots'` in an `INTEGER` column errors ✅ (`22P02`). Gaps: predicted an INSERT without `id` errors (told: identity and `DEFAULT now()` fill in missing values), and that the same INSERT twice errors (it adds a row with the next id). | S25, L2 |
+| S29 | Connecting to the database (driver, connection string) | 5 | 🔧 | 2026-10-01 | 2026-10-01 | 5.2 (2026-10-01): ran `npm install pg` and wrote `new Pool({ connectionString: process.env.DATABASE_URL })` myself; the server prints the table's row count on start. My first query (`SELECT *` + `result.rowCount`) was my own and worked. Gaps: `SELECT COUNT (*) climbs` without `FROM` (silently counts 1), and `rowCount` vs the value inside `result.rows[0]` (given to me). | S14, S25 |
+| S30 | Parameterized queries (and why: SQL injection) | 5 | 🔧 | 2026-10-01 | 2026-10-01 | 5.3 (2026-10-01): after a two-column example, wrote the six-column INSERT with `$1`–`$6` and the matching values array myself, in the right order. Missed the `*` after `RETURNING` (syntax error, nothing saved). The *why* (typed text must never become part of the command) was told to me, not explained back. | S27 |
 | S31 | Sessions = climbs grouped by day | 6 | 🌱 | — | — | — | L13, S27 |
 | S32 | `file://` vs `http://` (opening a file vs being served by a server) | 3 | 👋 | 2026-09-26 | 2026-09-26 | Session 5: saw the "'file:' URLs are treated as unique security origins" warning; it was explained as noise that goes away in §3. 2026-09-29: asked who answered the §1 `?grade=6b` request, I said "app.js" (a gap). Told: with `file://`, nobody answers; the browser rereads the file from disk. | S19, S20 |
 | S35 | The host (runtime): browser vs Node give the same JS different extras | 3 | 👋 | 2026-09-29 | 2026-09-29 | 3.1: predicted `document.title` would work in Node and that the lines after it would run. Both wrong (a crash stops everything). My why: "app.js runs on js, hello.js through node", which is half right (both are JS). Told: the host provides `document`, like Unity provides `transform`. §3 trace (2026-09-30): said the climbs are "stored on app.js and lost when the server stops" ⚠️. Told: the server only *hands over* `app.js`, and the array lives in the tab. I proved it: a refresh with the server still running wiped them. | S5, S14, S7 |
@@ -135,7 +140,7 @@
 | E9 | Automated tests and a test runner | 7 | 🌱 | — | — | — | L5, S22 |
 | E10 | Input validation (rejecting bad data) | 6 | 🌱 | — | — | — | L4, S22 |
 | E11 | Handling failure (server unreachable) | 6 | 🌱 | — | — | — | L15, S23 |
-| E12 | Environment variables and secrets | 5 | 🌱 | — | — | — | S29, E4 |
+| E12 | Environment variables and secrets | 5 | 🔧 | 2026-10-01 | 2026-10-01 | 5.2 (2026-10-01): created `.env` with `DATABASE_URL`, added `.env` to `.gitignore` myself (`git check-ignore` confirms it), and read it with `process.env.DATABASE_URL`. I haven't said *why* in my own words yet (see S36 in the queue). | S29, E4 |
 | E13 | Deployment (push-to-deploy hosting) | 8 | 👋 | 2026-09-26 | 2026-09-26 | Decision 5: picked Render + Neon. I haven't deployed anything yet. | E2, S19 |
 | E14 | Free-tier tradeoffs and cold starts | 8 | 👋 | 2026-09-26 | 2026-09-26 | I explained the sleep after 15 minutes and the 30–60 s wake-up, but mixed up Neon and Render and left out *why* we accept it (it's free). | E13 |
 | E15 | Reading production logs | 8 | 🌱 | — | — | — | E8, E13 |
@@ -201,3 +206,14 @@
   Gaps: guessed names for the id (`getElementById`, `textContent`) and the splice (`findIndex(1)`, `climbs.index(index)`) before being given them:
   data object vs page element (L8 ⚠️), and using an already-computed variable bare. The restart "why" was half (S11).
   Then I found a regression myself by testing Log (all fields `undefined`): I had changed `JSON.stringify(climb)` to `climb.body`. Same L8 gap; fixed it after the explanation.
+- **2026-10-01 (session 10, task 5.1 done):** S25, S27 and S28 → 🔧. Correct: the three column types, and `'lots'` is refused. Gaps: expected errors for a
+  missing `id` and for a repeated INSERT (defaults and identity were told to me). New distinction, told: a syntax error (`42601`, nothing ran) vs a data error (`22P02`, read fine, value refused).
+- **2026-10-01 (session 10, task 5.2 done):** S29 and E12 → 🔧. Pacing lesson for Claude: the TODOs had blanks for syntax I'd never seen (`rows[0].count`),
+  and the tasks didn't say what they were for ("you expect me to guess the syntax magically???"). Fix: goal first, a full example line for new syntax, blanks only for seen things.
+  I also asked for the teaching comments in `app.js` and `server.js` to be stripped (too noisy to focus); explanations now live in chat and in `learning/`.
+- **2026-10-01 (session 10, task 5.3 done):** S30 → 🔧. The example-first format worked: one two-column INSERT shown, and I extended it to six on the first try.
+  Gap: `RETURNING` without `*`; I reported "not showing or updating" without checking the terminal, where the error was (E8: look at the server log when the page is quiet).
+- **2026-10-01 (session 10, 5.4 deliverable):** no upgrades (the delete route was given to me). Right on my own: `async` and `[id]`. Gaps: a JS variable
+  inside the SQL text (`id = climb.id`), no comma between the SQL and the values, and `-1` carried over from `findIndex` for "not found". Restart test passed.
+- **2026-10-01 (session 10, Section 5 done):** S11 → 🔧. I removed the dead array and fixed the 404 check myself. §5 trace: 5 of 9 (reload, JSON, `req.body`,
+  INSERT, id ✅; POST, 201, `loadClimbs()`, SELECT ❌). The gap is one link: HTTP method ↔ action ↔ SQL (S20/S22 reviewed, see 0d). Last time's 9 of 9 was on ✕, straight after building it.

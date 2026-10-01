@@ -110,14 +110,27 @@ Passwords and connection details stay out of the code (environment variables).
 *(2026-10-01: the database lives on **Neon** from the start, not a local Postgres install. Same free database as §8, nothing to install
 on Windows, and Neon's SQL Editor in the browser is where I run queries by hand.)*
 
-- [ ] **5.1 The table, by hand.** Neon account + project, then in the SQL Editor: `CREATE TABLE climbs`, one `INSERT`, one `SELECT`.
+- [x] **5.1 The table, by hand.** Neon account + project, then in the SQL Editor: `CREATE TABLE climbs`, one `INSERT`, one `SELECT`.
   ✅ My climb shows up as a row in a query result, with an id the database gave it.
-- [ ] **5.2 Connect the server.** `npm install pg`, the connection string in `.env` (git-ignored), loaded with `node --env-file`.
+  *(2026-10-01: done. Types right (`TEXT`, `INTEGER`, `BOOLEAN`); my table uses `GENERATED ALWAYS AS IDENTITY` and `IF NOT EXISTS`.
+  Predicted the INSERT would error without an `id` ❌ (the database fills in `id` and `created_at`), a repeat INSERT would error ❌ (5 runs = 5 rows),
+  and `'lots'` in `attempts` would error ✅ (`22P02`). Two `42601` syntax errors on the way: Postgres couldn't read the text, so nothing ran.)*
+- [x] **5.2 Connect the server.** `npm install pg`, the connection string in `.env` (git-ignored), loaded with `node --env-file`.
   ✅ On start, the server prints how many rows the table has.
-- [ ] **5.3 GET and POST use SQL.** `SELECT` replaces `res.json(climbs)`, and `INSERT ... RETURNING` with `$1, $2...` placeholders replaces `push`.
+  *(2026-10-01: done. I installed `pg`, made `.env`, added it to `.gitignore`, and wrote `process.env.DATABASE_URL` myself. My own first version worked
+  (`SELECT *` + `result.rowCount`). The `COUNT` version printed 1: `FROM` was missing (so `climbs` became a column nickname) and `rowCount` counts the
+  reply's rows. `result.rows[0].count` was given to me; I'd been asked to guess syntax nobody had shown me.)*
+- [x] **5.3 GET and POST use SQL.** `SELECT` replaces `res.json(climbs)`, and `INSERT ... RETURNING` with `$1, $2...` placeholders replaces `push`.
   ✅ A climb logged in the app shows up in a query in Neon's editor.
-- [ ] **5.4 DELETE uses SQL, and the array dies.** `DELETE ... WHERE id = $1`, then remove the `climbs` array and `nextId`.
+  *(2026-10-01: done. GET was shown in full and I typed it in. For POST I saw a two-column example, then extended it to all six columns, slots and
+  values myself, in matching order. Bug: `RETURNING` with no `*` (a syntax error, so nothing was saved and the page stayed quiet; the terminal had the error).)*
+- [x] **5.4 DELETE uses SQL, and the array dies.** `DELETE ... WHERE id = $1`, then remove the `climbs` array and `nextId`.
   ✅ The deliverable: Ctrl + C, restart, and the climbs are still there. Then the §5 trace a tap.
+  *(2026-10-01: the deliverable works: ✕ deletes the row, and the climbs survive a restart. My first try had `id = climb.id` inside the SQL, no comma
+  before `[id]`, and `rowCount == -1`; the finished route was given to me. I then deleted the dead array and `nextId` and fixed the 404 check to `0`.
+  Where the climbs live now: "in the database" ✅ (the why, a separate program on Neon that my restart doesn't touch, was told to me).
+  **§5 trace a tap (Log):** 5 of 9. Right: reload, JSON, `req.body`, INSERT, the database fills in `id`. Missed: the request is a **POST**, the reply
+  status is **201**, the page function that re-reads is **`loadClimbs()`**, and the GET route runs a **SELECT**. **Section 5 complete.**)*
 
 ### 6. The core features (the MVP, complete)
 "Today" versus **past sessions** (earlier days and their climbs), checks on bad input,

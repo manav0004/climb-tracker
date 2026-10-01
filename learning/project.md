@@ -175,3 +175,21 @@ Written down so it stops nagging me. Not before the MVP ships.
   `JSON.stringify(climb)` to `JSON.stringify(climb.body)` (empty parcel → server saved `{}` + id). Same object-fields gap. Fixed it myself.
   **§5 planned (same session):** split into 5.1–5.4; Neon from the start (no local Postgres). 5.1 was shown but not started (I had to leave).
   **Next:** 5.1: Neon account, `CREATE TABLE climbs`, INSERT + SELECT by hand, with predictions (a)–(c) from the quiz queue.
+- **Session 10 (2026-10-01): 5.1 done.** My `climbs` table lives on Neon, with the three types right (`TEXT`, `INTEGER`, `BOOLEAN`).
+  `relation "climbs" already exists`: a relation is a table, and it stays once created (unlike the array). I predicted the INSERT would error without
+  an `id` ❌: the database hands out the id (identity) and fills `created_at` (`DEFAULT now()`). I predicted a repeated INSERT errors ❌: 5 runs gave 5 rows.
+  `'lots'` in `attempts` errors ✅ (`22P02`): the table refuses bad data, where the JS array stored `'3'`. Lesson: a syntax error (`42601`) means
+  Postgres couldn't read the text and ran nothing, so it tests no prediction.
+  **5.2 done (same session):** the server is connected to Neon. I installed `pg`, put the connection string in `.env` (ignored by Git), and wrote
+  `process.env.DATABASE_URL`. On start it prints `The table has N rows`. Bugs: `SELECT COUNT (*) climbs` with no `FROM` silently counts 1, and `rowCount`
+  is the number of rows in the *reply* (1 for a COUNT), so the number is read with `result.rows[0].count`. I asked for quieter code files (comments stripped)
+  and for tasks that say what they're for; new syntax now gets shown as a full line before I'm asked to write it.
+  **5.3 done (same session):** GET reads the database (`SELECT * ... ORDER BY id` → `res.json(result.rows)`), and Log saves with
+  `INSERT ... VALUES ($1..$6) RETURNING *`. I extended a two-column example to all six fields myself. Bug: `RETURNING` without `*`. Lesson: when the page
+  is quiet, the error is in the terminal. A climb logged in the app shows up in Neon's editor.
+  **5.4 deliverable (same session):** ✕ runs `DELETE FROM climbs WHERE id = $1`, and after Ctrl + C and a restart **the climbs are still there**.
+  My try put a JS variable inside the SQL (`id = climb.id`); the database only gets text, so values go through `$1` + `[id]`.
+  **Section 5 done (same session).** I deleted the dead array and `nextId` and fixed the 404 check. The climbs live "in the database now": a separate
+  program on Neon, so restarting my server doesn't touch them. **§5 trace (Log):** 5 of 9. To fix next time: POST = add = `INSERT` (201), GET = read =
+  `SELECT`, and the page re-reads with `loadClimbs()`. MVP item 4 (data saved in the database) is true now.
+  **Next:** Section 6: split it into tasks (today vs past sessions, input checks, a message when the server is unreachable).
