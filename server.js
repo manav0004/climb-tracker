@@ -35,9 +35,13 @@ app.get("/api/climbs", async (req, res) => {
 app.post("/api/climbs", async(req, res) => {
   
   const climb = req.body;
-
-  if(climb.effort < 1 ||climb.effort > 5 ){
+  
+  if(climb.effort < 1 || climb.effort > 5 ){
     return res.status(400).json({error: "Effort must be 1-5" })
+  }
+
+  if(!Number.isInteger(climb.effort)) {
+    return res.status(400).json({error:"Effort must be a Whole Number"})
   }
 
   const result = await pool.query("INSERT INTO climbs(grade, colour, sent, attempts, effort, beta) VALUES($1, $2, $3, $4, $5, $6) RETURNING * ",[climb.grade, climb.colour, climb.sent, climb.attempts, climb.effort, climb.beta]);

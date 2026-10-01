@@ -2,7 +2,7 @@
 
 ## Now
 Section 6 (sessions and polish). Task 6.1 built and tested (2026-10-01): `required` + `Number()` on the page; the server answers 400 for effort outside 1–5.
-Open in 6.1: non-number effort (`"lots"`) slips past the `if` and crashes at the database. Then 6.2 (today vs past sessions).
+6.1 done: added `!Number.isInteger(climb.effort)` myself (found the function alone; `!` was shown). Next: 6.2, today vs past sessions.
 Sections 1–5 are done: the climbs live in PostgreSQL on Neon and survive a restart.
 
 ## Solid (did it correctly)
@@ -21,7 +21,7 @@ Sections 1–5 are done: the climbs live in PostgreSQL on Neon and survive a res
 - Data object vs page element: tried `climb.textContent` and `getElementById` on a climb object.
 - SQL is text: wrote `WHERE id = climb.id` inside the query; the `$1` hand-over was told.
 - Database defaults: predicted that an INSERT without `id` errors (identity fills it in).
-- Refusal conditions with `||`: wrote `> 1 || > 5`, then `> 1 || < 5`; traced each correctly once asked. Says "should work" before testing.
+- Conditions: wrote `> 1 || > 5`, `> 1 || < 5`, `= false`, `x != isInteger(x)`; traces well once asked. Says "should work" before testing.
 - Array vs list (the array stores, the `<ul>` shows); CSS specificity; closures; why serve only `public/`.
 
 ## Parking lot
