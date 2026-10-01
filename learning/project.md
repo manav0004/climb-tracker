@@ -173,4 +173,5 @@ Written down so it stops nagging me. Not before the MVP ships.
   6a Blue comes back). My why had only the server half; the refresh half (the tab is wiped, then re-asks the untouched server) was told to me.
   §4 trace of ✕: all 9 blanks right (DELETE → 204 → GET → json → renderList). I then caught a regression myself by testing Log: everything saved as `undefined`. Cause: while fixing TODO I, I had changed
   `JSON.stringify(climb)` to `JSON.stringify(climb.body)` (empty parcel → server saved `{}` + id). Same object-fields gap. Fixed it myself.
-  **Next:** Section 5, Postgres, so the climbs survive a restart.
+  **§5 planned (same session):** split into 5.1–5.4; Neon from the start (no local Postgres). 5.1 was shown but not started (I had to leave).
+  **Next:** 5.1: Neon account, `CREATE TABLE climbs`, INSERT + SELECT by hand, with predictions (a)–(c) from the quiz queue.

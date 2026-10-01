@@ -33,7 +33,9 @@
 
 ## 🎯 Quiz queue (next session)
 
-0. **Opener (session 10): start Section 5 (Postgres).** Split it into tasks first (like 3.x/4.x). Section 4 is done.
+0. **Opener (session 10): task 5.1, not started.** §5 is split into 5.1–5.4 in `plan.md` (the database is on Neon from the start). The 5.1 step was shown
+   but I had to leave: Neon sign-up, `CREATE TABLE` with 3 type blanks (colour/attempts/beta), INSERT + SELECT. Predictions still open:
+   (a) what `id`/`created_at` show though the INSERT skips them, (b) same INSERT twice → error or two rows?, (c) `'lots'` in `attempts`. Re-show it short.
 0a. **L8/S10 gap, check it in §5 when rows come back from SQL:** in 4.3 I tried `climb.getElementById`, `climb.textContent` and the whole `${climb}`
    before `climb.id`, mixing up a data object (fields = the names before the colons) with a page element (`li.textContent`). Ask naturally: "a row comes
    back as `{ id: 4, grade: "6c", ... }`. How do you read its grade?"

@@ -107,6 +107,18 @@ A `climbs` table in Postgres. The API reads and writes with SQL instead of the a
 Passwords and connection details stay out of the code (environment variables).
 **✅ Deliverable:** climbs survive a server restart, and I can see them with a SQL query run by hand.
 
+*(2026-10-01: the database lives on **Neon** from the start, not a local Postgres install. Same free database as §8, nothing to install
+on Windows, and Neon's SQL Editor in the browser is where I run queries by hand.)*
+
+- [ ] **5.1 The table, by hand.** Neon account + project, then in the SQL Editor: `CREATE TABLE climbs`, one `INSERT`, one `SELECT`.
+  ✅ My climb shows up as a row in a query result, with an id the database gave it.
+- [ ] **5.2 Connect the server.** `npm install pg`, the connection string in `.env` (git-ignored), loaded with `node --env-file`.
+  ✅ On start, the server prints how many rows the table has.
+- [ ] **5.3 GET and POST use SQL.** `SELECT` replaces `res.json(climbs)`, and `INSERT ... RETURNING` with `$1, $2...` placeholders replaces `push`.
+  ✅ A climb logged in the app shows up in a query in Neon's editor.
+- [ ] **5.4 DELETE uses SQL, and the array dies.** `DELETE ... WHERE id = $1`, then remove the `climbs` array and `nextId`.
+  ✅ The deliverable: Ctrl + C, restart, and the climbs are still there. Then the §5 trace a tap.
+
 ### 6. The core features (the MVP, complete)
 "Today" versus **past sessions** (earlier days and their climbs), checks on bad input,
 and a clear message when the server can't be reached.
