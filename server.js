@@ -64,7 +64,7 @@ app.delete("/api/climbs/:id", (req, res) => {
   }
 
   // TODO(you) H: cut that one climb out of the server's array (you did this in 2.3)
-  climbs.splice(climbs.indexOf(1),1)
+  climbs.splice(index,1);
 
   res.status(204).end(); // 204 = "Done, nothing to send back"
 });

@@ -50,12 +50,12 @@ function renderList() {
       //   2. Then the same one-call reload you wrote in TODO F.
       //   3. Delete the two old lines below (they only edit the tab's copy).
 
-      await fetch(`/api/climbs/body.id`,{method:"DELETE"});
+      await fetch(`/api/climbs/${climb.id}`,{method:"DELETE"});
 
 
-      climbs.splice(climbs.indexOf(climb), 1)
+      
 
-      renderList();
+      loadClimbs();
     });
 
     li.appendChild(deleteBtn); // the button goes inside the <li>

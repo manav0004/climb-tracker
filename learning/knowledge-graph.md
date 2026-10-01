@@ -33,16 +33,16 @@
 
 ## 🎯 Quiz queue (next session)
 
-0. **Opener (session 9): finish 4.3. Two bugs were pointed out but NOT fixed yet** (I had to leave):
-   - `server.js` TODO H: `climbs.splice(climbs.indexOf(1), 1)` → `climbs.splice(index, 1)`.
-   - `public/app.js` TODO I: `` fetch(`/api/climbs/body.id`, ...) `` → `` `/api/climbs/${climb.id}` ``, then delete the old `splice` + `renderList()`
-     lines and call `loadClimbs()` instead.
-   Test: log one, ✕ the *first* made-up climb (6a Blue), refresh; it stays gone. Then the §4 deliverable (Ctrl + C wipes them) and the §4 trace a tap.
-   The (a) refresh prediction was wrong ("nothing survives") and then *proved* in 4.2; in the trace, ask why Ctrl + C wipes them but a refresh doesn't.
+0. **Opener (session 10): start Section 5 (Postgres).** Split it into tasks first (like 3.x/4.x). Section 4 is done.
+0a. **L8/S10 gap, check it in §5 when rows come back from SQL:** in 4.3 I tried `climb.getElementById`, `climb.textContent` and the whole `${climb}`
+   before `climb.id`, mixing up a data object (fields = the names before the colons) with a page element (`li.textContent`). Ask naturally: "a row comes
+   back as `{ id: 4, grade: "6c", ... }`. How do you read its grade?"
 1. **S36 (why `public/`):** it was told, not answered. Check it naturally in §5 when `.env` arrives: "could someone download `.env` from my server? Why not?"
 1a. **S3 specificity, one quick check (taught 2026-09-29, when I said "I don't know"):** a new rule `.list-item { color: red }` against `#today-list li { color: blue }`. Which colour wins, and why? Predict it, then try it.
 1a'. **L18 closures, one prediction:** after deleting the middle of 3 climbs, is the old 3rd ✕ button reused, or rebuilt? (Rebuilt: `renderList` wipes every `<li>` and makes new buttons with new functions.)
-1b. **S10 + S11 (don't re-ask directly, they asked not to repeat):** check it again naturally in §4, where "refresh keeps them, server restart wipes them" is the same idea one level up.
+1b. **S11 (half there, 2026-10-01):** for "why does a refresh keep them but a restart doesn't", I only said "server memory wipes on restart". The
+   refresh half (the tab's memory IS wiped, then `loadClimbs` re-asks the untouched server) was told to me. Check it at the §5 deliverable: after a
+   restart the climbs survive. *Whose* memory are they in now?
 2. **S34: what does tapping a label actually do?** My comment says it "calls the select element". Say it again using the
    word *focus*, and give one reason labels matter at the gym.
 4. *(If there's time)* **S5 + S6: the rest of the session 5 step.** I've now seen that a crash halfway through the file still leaves
@@ -50,7 +50,7 @@
 
 ## 📊 Snapshot
 
-79 concepts · 🌱 19 · 👋 32 · 🔧 28 · ✅ 0 (as of 2026-09-30, mid-4.3)
+79 concepts · 🌱 19 · 👋 30 · 🔧 30 · ✅ 0 (as of 2026-10-01, Section 4 done)
 
 ---
 
@@ -65,7 +65,7 @@
 | L5 | Functions (parameters, `return`) | 2 | 👋 | 2026-09-28 | 2026-09-28 | 2.2: `renderList()` was explained as a Python `def`, and I call it after `push`. Claude wrote the function; no parameters or `return` yet. | L1 |
 | L6 | Callbacks and arrow functions (`() => {}`) | 2 | 👋 | 2026-09-28 | 2026-09-28 | 2.1: the submit listener's `(event) => {...}` was explained as the same lambda as C#'s `AddListener(() => {...})`. Claude wrote it. | L5 |
 | L7 | Arrays | 2 | 🔧 | 2026-09-25 | 2026-09-28 | Session 3: I got the definition ("many climbs form an array"). 2.2: wrote `climbs.push(climb)` once I knew push = Python's append. | L1 |
-| L8 | Objects | 2 | 🔧 | 2026-09-25 | 2026-09-28 | Session 3: I got the definition ("a climb is an object"). 2.1: wrote 4 of the climb object's 6 fields myself, and read the object in the Console. | L1 |
+| L8 | Objects | 2 | 🔧 | 2026-09-25 | 2026-09-28 | Session 3: I got the definition ("a climb is an object"). 2.1: wrote 4 of the climb object's 6 fields myself, and read the object in the Console. 4.3 (2026-10-01) ⚠️ gap: to put the id in the URL I tried `${climb}` (→ `[object Object]`), `climb.getElementById` and `climb.textContent` before being given `climb.id`. Mixed up a data object with a page element. | L1 |
 | L9 | Loops (`for...of`) | 2 | 👋 | 2026-09-28 | 2026-09-28 | 2.2: `for (const climb of climbs)` was explained as Python's `for climb in climbs:`. Claude wrote it. | L7 |
 | L10 | Array methods (`filter`, `map`, `find`) | 6 | 🌱 | — | — | — | L6, L7 |
 | L11 | Scope (where a variable can be seen) | 2 | 🌱 | — | — | — | L1, L5 |
@@ -73,7 +73,7 @@
 | L13 | Dates (`Date`, comparing days) | 6 | 🌱 | — | — | `app.js` shows today's date, but it was never explained. | L8 |
 | L14 | `null` / `undefined` (missing values) | 2 | 👋 | 2026-09-27 | 2026-09-27 | Session 6: `null` explained as JS's `NullReferenceException`. With a hint, I named `addBtn` as the `null` variable. 2.1: I predicted an unpicked effort would be "none", and it's `''` (an empty string: JS has no `None`, and `''` isn't `null` either). | L2 |
 | L15 | Errors and `try` / `catch` | 6 | 🌱 | — | — | — | L5 |
-| L16 | Async: promises and `async` / `await` | 4 | 👋 | 2026-09-30 | 2026-09-30 | 4.2: explained as a Unity coroutine with `yield return www.SendWebRequest()`. Claude wrote `loadClimbs` and the `async` listeners; I copied the `await fetch` pattern into the ✕. | L6 |
+| L16 | Async: promises and `async` / `await` | 4 | 🔧 | 2026-09-30 | 2026-10-01 | §4 trace (2026-10-01): filled in "`await` stops waiting, then the listener calls `loadClimbs()`" correctly. 4.2: explained as a Unity coroutine with `yield return www.SendWebRequest()`. Claude wrote `loadClimbs` and the `async` listeners; I copied the `await fetch` pattern into the ✕. | L6 |
 | L17 | JSON (data as text) | 4 | 🔧 | 2026-09-30 | 2026-09-30 | Found `JSON.stringify` myself in `hello.js` (3.1). 4.1: saw `res.json` send the array as raw text in the tab. 4.2: wrote `body: JSON.stringify(climb)` ("you can only mail text"). | L7, L8 |
 | L18 | Closures (a function remembers the variables around it when it was made) | 2 | 👋 | 2026-09-29 | 2026-09-29 | §2 trace: I said ✕ deletes "the climb that is on the same list as the x" (the right idea, the wrong mechanism). Told: each ✕'s click function captures its own `climb` from the loop, and `indexOf(climb)` finds it in the array. | L5, L6, L9 |
 
@@ -90,8 +90,8 @@
 | S7 | The DOM (JS grabbing page elements) | 2 | 🔧 | 2026-09-25 | 2026-09-27 | The `app.js` comments compare `getElementById` to Unity's `GetComponent`. Session 6: saw it return `null` once we deleted the button. In 1.3, I deleted exactly the dead references myself and kept `todayEl` ("I knew they weren't working"). The Console was clean. | S1, L8 |
 | S8 | Events and listeners | 2 | 🔧 | 2026-09-25 | 2026-09-28 | The `app.js` comments compare `addEventListener` to `onClick.AddListener`. 2.1: predicted that `preventDefault()` stops the reload, then commented it out myself to test that. §2 trace (2026-09-29): left the listener and `preventDefault` out of my Log trace (started at "we get the data"). | S7, L6 |
 | S9 | Drawing a list from data (data → HTML) | 2 | 🔧 | 2026-09-28 | 2026-09-28 | Session 6 (1.4): my two made-up `<li>`s are the design mock for one climb, and JS will copy that shape in §2. I predicted that tapping Log won't change the list "since we'd need JS". 2.2: the list is now drawn from `climbs` by `renderList()`. I wrote the `<li>` text and the push + redraw. The "wipe first, or you get A, A, B" point was told to me, not tested. §2 trace (2026-09-29): ✕ → delete from the data → "rerender the list to display the updated info". Correct, and in my own words. | L7, L9, S7 |
-| S10 | Data model (the shape of data in memory) | 2 | 🔧 | 2026-09-25 | 2026-09-28 | Session 3: I got the definition, not the *why*. 2.2: I use `climbs` in code. I said the climbs live "in renderList" (wrong: they live in the `climbs` array, and renderList only draws it). Refresh: "it has nothing saved on it", which is close. The full chain was told to me: the tab's memory is destroyed, then `const climbs = []` makes a new array. §2 trace (2026-09-29): "display them in a list stored in an array" still blurs the two (the array stores; the `<ul>` only shows). ⚠️ known gap | L7, L8 |
-| S11 | Persistence (data that survives closing the app) | 5 | 👋 | 2026-09-25 | 2026-09-28 | Session 3: same gap as S10. Session 4: switched from `localStorage` to a database. 2.2: "a server would need to exist" is half right. Told: a server alone still wipes on restart (§4), and the database is what outlives the program. | S10 |
+| S10 | Data model (the shape of data in memory) | 2 | 🔧 | 2026-09-25 | 2026-09-28 | Session 3: I got the definition, not the *why*. 2.2: I use `climbs` in code. I said the climbs live "in renderList" (wrong: they live in the `climbs` array, and renderList only draws it). Refresh: "it has nothing saved on it", which is close. The full chain was told to me: the tab's memory is destroyed, then `const climbs = []` makes a new array. §2 trace (2026-09-29): "display them in a list stored in an array" still blurs the two (the array stores; the `<ul>` only shows). ⚠️ known gap. 4.3 (2026-10-01): the same blur, one level down: reached for element properties (`textContent`, `getElementById`) on a climb object. | L7, L8 |
+| S11 | Persistence (data that survives closing the app) | 5 | 👋 | 2026-09-25 | 2026-09-28 | Session 3: same gap as S10. Session 4: switched from `localStorage` to a database. 2.2: "a server would need to exist" is half right. Told: a server alone still wipes on restart (§4), and the database is what outlives the program. §4 deliverable (2026-10-01): predicted correctly that a restart leaves only the 2 made-up climbs. My why, "server memory wipes on restart", covers only half; the refresh half (the tab is wiped too, then re-asks the server) was told to me. | S10 |
 | S12 | Frontend vs backend (client and server) | Plan | 👋 | 2026-09-26 | 2026-09-26 | I chose a backend for portfolio value, but skipped the gym-internet tradeoff when asked about it. | S5 |
 | S13 | Framework vs plain JS | Plan | 👋 | 2026-09-26 | 2026-09-26 | I said: "framework is pre built so I wouldnt understand the exact mechanics of how JS really works." | S5 |
 | S14 | Node.js and Express (what they are) | 3 | 🔧 | 2026-09-26 | 2026-09-29 | Decision 3: I picked them, but I haven't said what Node *is* in my own words. 3.1: wrote `hello.js` and ran it with Node myself (with the VS Code runner). Installed Express with npm. | S12 |
@@ -100,10 +100,10 @@
 | S17 | `package-lock.json` and `node_modules` (generated) | 3 | 👋 | 2026-09-30 | 2026-09-30 | 3.2: said `node_modules` *should* be committed (a gap). Told: like Unity's `Library/`, it's rebuilt by `npm install`, so commit the recipe, not the groceries. The lock file (exact versions) *is* committed. | S16 |
 | S18 | Modules (`import` / `export` between JS files) | 3 | 🌱 | — | — | — | S6, L5 |
 | S19 | A local server: `localhost` and ports | 3 | 🔧 | 2026-09-30 | 2026-09-30 | 3.3: ran `node server.js` and used the app at `localhost:3000`. Predicted correctly that after Ctrl + C a refresh gives an error page ("site can't be reached"). Learned that Node needs a restart after every edit. | S14 |
-| S20 | HTTP: request and response, methods, status codes | 4 | 🔧 | 2026-09-30 | 2026-09-30 | §3 trace: predicted 4 requests on page load and got 4 (`/`, `style.css`, `app.js`, `favicon.ico`). Said correctly that Log sends no request because of `preventDefault`. The favicon 404 and the DevTools request were told to me. Status codes not taught yet. | S12 |
-| S21 | Routes and URLs | 4 | 🔧 | 2026-09-30 | 2026-09-30 | 4.1: wrote `res.json(climbs)` in `GET /api/climbs`. 4.2: `climbs.push(req.body)` in the POST route. 4.3: `req.body.id = nextId++` ✅, but `splice(climbs.indexOf(1), 1)` instead of `splice(index, 1)` (-1, so it would cut the LAST climb). `:id` URL blanks and `req.params` were told. | S20 |
-| S22 | APIs (REST style) | 4 | 👋 | 2026-09-30 | 2026-09-30 | 4.1: predicted "an error, since we didn't create any API" (the route *is* the API). Told: the menu of orders; GET reads, POST adds (201), DELETE removes (204, or 404 if missing). | S20, S21, L17 |
-| S23 | `fetch` (the page calling the server) | 4 | 🔧 | 2026-09-30 | 2026-09-30 | 4.2: wrote the POST `body` line and replaced push + redraw with `loadClimbs()`; a refresh kept the climb. 4.3: wrote `` `/api/climbs/body.id` `` (no `${}`, and `body` instead of `climb`), so the server gets literal text and replies 404. The old splice lines hid it. | S22, L16 |
+| S20 | HTTP: request and response, methods, status codes | 4 | 🔧 | 2026-09-30 | 2026-09-30 | §3 trace: predicted 4 requests on page load and got 4 (`/`, `style.css`, `app.js`, `favicon.ico`). Said correctly that Log sends no request because of `preventDefault`. The favicon 404 and the DevTools request were told to me. §4 trace (2026-10-01): filled in DELETE → 204, then GET → `res.json` correctly. | S12 |
+| S21 | Routes and URLs | 4 | 🔧 | 2026-09-30 | 2026-09-30 | 4.1: wrote `res.json(climbs)` in `GET /api/climbs`. 4.2: `climbs.push(req.body)` in the POST route. 4.3: `req.body.id = nextId++` ✅, but `splice(climbs.indexOf(1), 1)` instead of `splice(index, 1)` (-1, so it would cut the LAST climb). `:id` URL blanks and `req.params` were told. 2026-10-01: tried `climbs.findIndex(1)` and `climbs.index(index)` before `splice(index, 1)`. I didn't see that `index` was already computed two lines up, a plain variable to use bare. §4 trace: said `req.params.id` is text ✅. | S20 |
+| S22 | APIs (REST style) | 4 | 🔧 | 2026-09-30 | 2026-10-01 | 4.1: predicted "an error, since we didn't create any API" (the route *is* the API). Told: the menu of orders; GET reads, POST adds (201), DELETE removes (204, or 404 if missing). §4 trace (2026-10-01): all 9 blanks of the ✕ round trips right (route method, text param, index, splice, 204, loadClimbs, GET, json, renderList). | S20, S21, L17 |
+| S23 | `fetch` (the page calling the server) | 4 | 🔧 | 2026-09-30 | 2026-09-30 | 4.2: wrote the POST `body` line and replaced push + redraw with `loadClimbs()`; a refresh kept the climb. 4.3: wrote `` `/api/climbs/body.id` `` (no `${}`, and `body` instead of `climb`), so the server gets literal text and replies 404. The old splice lines hid it. 2026-10-01: predicted all 3 outcomes of that bug right (log line, disappears, comes back on refresh). Removed the local splice and called `loadClimbs()` myself. | S22, L16 |
 | S24 | Middleware (`express.json`, `express.static`) | 3 | 🔧 | 2026-09-30 | 2026-09-30 | 3.3: filled in `express.static("public/")` and the logger (`console.log` of `req.method` + `req.url`, then `next()`) myself. First try was `res.use("GET /style.css")`: unsure what the TODO wanted, mixing up printing with the reply object. Said "now I understand it" after the fix. | S14, S20 |
 | S25 | Database tables, rows, columns | 5 | 👋 | 2026-09-26 | 2026-09-26 | Decision 4: my climb-record table = a database table. It was explained to me but not checked. | L8 |
 | S26 | Why the database runs as a separate service (Postgres vs SQLite) | Plan | 👋 | 2026-09-26 | 2026-09-26 | My first answer read the list back. After a nudge: "free hosts whipe the servers so data on climbs would be lost." | S11, S25 |
@@ -194,3 +194,8 @@
 - **2026-09-30 (session 8, §4: 4.1 + 4.2 done, 4.3 half):** L1 → 🔧. L17, S21 and S23 → 🔧. L16 and S22 → 👋.
   Pacing: 3 TODOs + 3 predictions + a diagram at once was too much ("explain it to me, I'm not understanding"). One TODO at a time, each with a
   fill-in-the-blank, worked. 4.3 bugs: the `indexOf(1)` splice and the literal `body.id` URL (see the queue).
+- **2026-10-01 (session 9, 4.3 done, Section 4 done):** L16 and S22 → 🔧. Reviewed L8, S10, S11, S20, S21 and S23.
+  Correct: all 3 predictions for the hidden `body.id` bug (the screen lied, the refresh told the truth), the restart prediction, and all 9 trace blanks.
+  Gaps: guessed names for the id (`getElementById`, `textContent`) and the splice (`findIndex(1)`, `climbs.index(index)`) before being given them:
+  data object vs page element (L8 ⚠️), and using an already-computed variable bare. The restart "why" was half (S11).
+  Then I found a regression myself by testing Log (all fields `undefined`): I had changed `JSON.stringify(climb)` to `climb.body`. Same L8 gap; fixed it after the explanation.

@@ -166,3 +166,11 @@ Written down so it stops nagging me. Not before the MVP ships.
   A refresh keeps a logged climb (I'd predicted "nothing survives"). Planted `const` bug: "Assignment to constant variable" → `let`.
   I asked for a slower explanation when 3 TODOs came at once; one TODO at a time worked. 4.3 half done: ids (`req.body.id = nextId++` ✅).
   **Next (open bugs, not fixed yet):** TODO H `splice(index, 1)` and TODO I `` `/api/climbs/${climb.id}` `` + `loadClimbs()`. See the quiz queue.
+- **Session 9 (2026-10-01): Section 4 done.** Predicted the hidden 4.3 bug exactly: `/api/climbs/body.id` printed in the log, the climb vanished
+  (the old local `splice`), and came back on refresh (the server said 404). The screen lied; the server is the truth. Fixed TODO H (`splice(index, 1)`)
+  and TODO I (`${climb.id}` + `loadClimbs()`), but only after guessing `getElementById` / `textContent` / `findIndex(1)`. Gap: a climb is a *data object*
+  (read its fields by the names before the colons), not a page element. Deliverable: a restart leaves only the 2 made-up climbs (even the deleted
+  6a Blue comes back). My why had only the server half; the refresh half (the tab is wiped, then re-asks the untouched server) was told to me.
+  §4 trace of ✕: all 9 blanks right (DELETE → 204 → GET → json → renderList). I then caught a regression myself by testing Log: everything saved as `undefined`. Cause: while fixing TODO I, I had changed
+  `JSON.stringify(climb)` to `JSON.stringify(climb.body)` (empty parcel → server saved `{}` + id). Same object-fields gap. Fixed it myself.
+  **Next:** Section 5, Postgres, so the climbs survive a restart.

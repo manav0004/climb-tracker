@@ -96,9 +96,11 @@ and I can explain the difference.
   *(2026-09-30: done. I wrote the server's `push(req.body)`, `body: JSON.stringify(climb)` and the `loadClimbs()` call. The first explanation
   was too much at once; one TODO at a time worked. Planted bug: `const climbs` + reassignment → "Assignment to constant variable"; I read it as
   "gets nothing in return". Fixed with `let`. A refresh keeps a logged climb, but a deleted one came back (✕ only edited the tab's copy).)*
-- [ ] **4.3 Delete: `DELETE /api/climbs/:id`.** Each climb gets an `id` from the server, and ✕ asks the server to delete that id.
+- [x] **4.3 Delete: `DELETE /api/climbs/:id`.** Each climb gets an `id` from the server, and ✕ asks the server to delete that id.
   ✅ The deliverable: refresh keeps them, Ctrl + C wipes them, and I explain why. Then the §4 trace a tap.
-  *(2026-09-30: in progress. Ids and the DELETE route are in. TODO G done; TODOs H and I have bugs to fix, listed in the quiz queue.)*
+  *(2026-10-01: done. Predicted the hidden bug right: `/api/climbs/body.id` → 404, but the local splice made the climb vanish until a refresh.
+  Fixed to `splice(index, 1)` and `${climb.id}` + `loadClimbs()` after several guesses. Deliverable: a restart left only the 2 made-up climbs;
+  my why covered the server half. §4 trace: all 9 hops right. **Section 4 complete.**)*
 
 ### 5. The database (PostgreSQL)
 A `climbs` table in Postgres. The API reads and writes with SQL instead of the array.
