@@ -1,7 +1,7 @@
 # Climb Tracker — Project Record
 
-> Every session starts by reading this file, then `plan.md`, `knowledge-graph.md` (it decides the quiz)
-> and `file-map.md`. After every lesson, update the knowledge graph and the file map.
+> Context file: the idea, the MVP and the history. The tutoring rules are in `CLAUDE.md`, and
+> sessions start from `learning/progress.md`.
 
 ## Who I am
 
@@ -11,8 +11,8 @@
 - **Goal:** Learn to code for real by building something I'll actually use.
 - **How I learn best:** Twice-exceptional: attention deficit plus high ability (IQ around 130).
   My strengths are language and connecting abstract concepts.
-  - **I learn fast (session 6 felt too slow).** Pitch lessons at a fast learner: bigger steps, predictions
-    batched into one set per step, no re-explaining HTML/CSS basics. Slow down only where I actually get something wrong.
+  - **I learn fast, but my working memory is limited.** One small step per message, challenged with depth
+    rather than volume (see `CLAUDE.md`). No re-explaining HTML/CSS basics.
   - Make each step end with something visible working.
   - Explain new ideas through analogies to what I know (Unity scripts, Python, HTML/CSS)
     and through *why* they work, not just *what* to type.
