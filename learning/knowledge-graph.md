@@ -33,8 +33,9 @@
 
 ## 🎯 Quiz queue (next session)
 
-0. **Opener (session 11): split Section 6 into tasks** (today vs past sessions, input checks incl. the empty-effort `''` that the `INTEGER` column
-   refuses, and a message when the server can't be reached). Section 5 is complete.
+0. **Opener (session 11): task 6.1, step 1, shown but not started.** §6 is split into 6.1–6.3 in `plan.md`. Re-show it short, goal first:
+   log a climb with no effort and read the terminal (the `22P02` refusal), add `required` to the first effort radio, wrap effort in `Number()` like
+   attempts, test. Then step 2: the server's own check that answers 400 (show one full example `if` first). Ask 0d before starting.
 0d. **§5 trace gap (2026-10-01), the first quiz next session:** I missed 4 of 9 blanks, all the same link: which request goes with which action.
    POST = add = `INSERT` (reply 201); GET = read = `SELECT`; DELETE = remove = `DELETE` (reply 204). And the page re-reads with `loadClimbs()`
    (I said "server.js"). Ask with the terminal log in front of me: "you tap Log; which two lines appear in the terminal, and which SQL does each run?"

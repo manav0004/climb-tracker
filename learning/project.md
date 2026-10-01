@@ -192,4 +192,6 @@ Written down so it stops nagging me. Not before the MVP ships.
   **Section 5 done (same session).** I deleted the dead array and `nextId` and fixed the 404 check. The climbs live "in the database now": a separate
   program on Neon, so restarting my server doesn't touch them. **§5 trace (Log):** 5 of 9. To fix next time: POST = add = `INSERT` (201), GET = read =
   `SELECT`, and the page re-reads with `loadClimbs()`. MVP item 4 (data saved in the database) is true now.
-  **Next:** Section 6: split it into tasks (today vs past sessions, input checks, a message when the server is unreachable).
+  **§6 planned (same session):** split into 6.1 (bad input refused, page + server), 6.2 (today vs past sessions) and 6.3 (a message when things go wrong).
+  6.1 step 1 was shown but not started (I stopped for the day).
+  **Next:** the quiz question (tap Log: which two terminal lines, which SQL each?), then 6.1 step 1: see the empty-effort failure, `required`, `Number()`.

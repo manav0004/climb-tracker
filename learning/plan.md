@@ -139,6 +139,13 @@ and a clear message when the server can't be reached.
 `Number()` it. Don't `Number('')` it blindly, because that silently becomes `0`.)*
 **✅ Deliverable:** MVP features 1–5 all work on my laptop.
 
+- [ ] **6.1 Bad input is refused, in two places.** The page: effort is required and sent as a number. The server: it checks the climb
+  before the INSERT and answers `400` with a reason. ✅ Log without an effort can't be sent, and a bad request made by hand gets a 400, not a crash.
+- [ ] **6.2 Today vs past sessions.** Today's list shows only today's climbs (by `created_at`), and a new "Past sessions" card lists earlier
+  days with their climbs. ✅ Rows I back-date by hand in Neon show up under the right day.
+- [ ] **6.3 When things go wrong.** `try` / `catch` around `fetch`, and a visible message when the server can't be reached or says no.
+  ✅ With the server stopped, tapping Log shows a message instead of doing nothing. Then the §6 trace a tap. That's the Section 6 deliverable.
+
 ### 7. Tests and debugging
 Automated tests for the API, plus deliberate bug hunting with DevTools and the server logs.
 **✅ Deliverable:** one command runs the tests and they pass. When I break something on purpose, they fail
