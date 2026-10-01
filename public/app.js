@@ -24,7 +24,13 @@ loadClimbs();
 // --- Draw the list from the array ---
 function renderList() {
   todayList.innerHTML = "";
+  const today = new Date().toDateString();
+  
   for (const climb of climbs) {
+    
+    const day = new Date(climb.created_at).toDateString();
+    if (day !== today)continue;
+    
     const li = document.createElement("li");
     li.className = "list-item";
     li.textContent = `${climb.grade} - ${climb.sent ? "Sent" : "Not Sent"} - ${climb.colour} - ${climb.attempts} attempts - ${climb.effort} effort - ${climb.beta ? "Beta" : "No Beta"}`;
