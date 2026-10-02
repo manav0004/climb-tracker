@@ -31,35 +31,6 @@ async function loadClimbs() {
 
 loadClimbs();
 
-
-// --- Draw the list from the array ---
-function renderList() {
-  todayList.innerHTML = "";
-  const today = new Date().toDateString();
-  
-  for (const climb of climbs) {
-    
-    const day = new Date(climb.created_at).toDateString();
-    if (day !== today)continue;
-    
-    const li = document.createElement("li");
-    li.className = "list-item";
-    li.textContent = `${climb.grade} - ${climb.sent ? "Sent" : "Not Sent"} - ${climb.colour} - ${climb.attempts} attempts - ${climb.effort} effort - ${climb.beta ? "Beta" : "No Beta"}`;
-
-    const deleteBtn = document.createElement("button");
-    deleteBtn.className = "delete-button";
-    deleteBtn.textContent = "✕";
-
-    // ✕: DELETE this climb on the server, then reload
-    deleteBtn.addEventListener("click", async () => {
-      await fetch(`/api/climbs/${climb.id}`, { method: "DELETE" });
-      loadClimbs();
-    });
-
-    li.appendChild(deleteBtn);
-    todayList.appendChild(li);
-  }
-}
 // Group climbs by day
 function groupByDay(){
 
@@ -82,7 +53,20 @@ function groupByDay(){
   return groups;
   
 }
+// --- Draw the list from the array ---
+function renderList() {
+  todayList.innerHTML = "";
+  const today = new Date().toDateString();
 
+  for (const climb of climbs) {
+      const day = new Date(climb.created_at).toDateString();
+      if (day !== today){
+        continue
+      }
+      const liClimb = createClimbItem(climb);
+      todayList.appendChild(liClimb);
+  }
+}
 
 function renderPast(){
   const grouped = groupByDay();
@@ -103,30 +87,35 @@ function renderPast(){
     div.appendChild(title);
     
     
-    for (const climb of climbsArray){     
-        
-      const li = document.createElement("li")
-      li.className = "list-item";
-      li.textContent= `${climb.grade} - ${climb.sent ? "Sent" : "Not Sent"} - ${climb.colour} - ${climb.attempts} attempts - ${climb.effort} effort - ${climb.beta ? "Beta" : "No Beta"}`;
-      
-      const deleteBtn = document.createElement("button")
-      deleteBtn.className =  "delete-button"
-      deleteBtn.textContent = "✕"
-
-      deleteBtn.addEventListener("click", async () => {
-      await fetch(`/api/climbs/${climb.id}`, { method: "DELETE" });
-      loadClimbs();
-      });
-      div.appendChild(li);
-      li.appendChild(deleteBtn);
-    } 
-
-
+    for (const climb of climbsArray){
+      const liClimb = createClimbItem(climb);
+      div.appendChild(liClimb);
+    }
+  
   }
-  
-  
 
 }
+
+
+// Build one climb's <li> with its ✕ button; the caller decides where it goes
+function createClimbItem(climb){
+  const li = document.createElement("li")
+  li.className = "list-item";
+  li.textContent= `${climb.grade} - ${climb.sent ? "Sent" : "Not Sent"} - ${climb.colour} - ${climb.attempts} attempts - ${climb.effort} effort - ${climb.beta ? "Beta" : "No Beta"}`;
+
+  const deleteBtn = document.createElement("button")
+  deleteBtn.className = "delete-button"
+  deleteBtn.textContent = "✕"
+
+  deleteBtn.addEventListener("click",async () =>{
+    await fetch(`/api/climbs/${climb.id}`, {method: "DELETE"});
+    loadClimbs()
+  })
+
+  li.appendChild(deleteBtn);
+  return li;
+}
+
 
 // --- Log: build a climb from the form, POST it, then reload ---
 const form = document.getElementById("log-form");
