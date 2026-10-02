@@ -27,7 +27,8 @@ app.use(express.json());
 // List the climbs
 //
 app.get("/api/climbs", async (req, res) => {
-  const result = await pool.query("SELECT * FROM climbs ORDER BY id");
+  
+  const result = await pool.query("SELECT * FROM climbs ORDER BY created_at DESC");
   res.json(result.rows);
 });
 
@@ -73,3 +74,6 @@ app.listen(3000, async () => {
   const result = await pool.query("SELECT COUNT(*) FROM climbs");
   console.log(`The table has ${result.rows[0].count} rows`);
 });
+
+
+

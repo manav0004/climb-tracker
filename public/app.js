@@ -14,14 +14,23 @@ let climbs = [];
 const todayList = document.getElementById("today-list");
 const pastSessions = document.getElementById("past-sessions");
 
+let climbDate = [];
 
 // GET the climbs from the server, then draw them
 async function loadClimbs() {
+ 
   const response = await fetch("/api/climbs");
   climbs = await response.json();
+  
+  
+  
   renderList();
+  renderPast();
+  
 }
+
 loadClimbs();
+
 
 // --- Draw the list from the array ---
 function renderList() {
@@ -50,6 +59,73 @@ function renderList() {
     li.appendChild(deleteBtn);
     todayList.appendChild(li);
   }
+}
+// Group climbs by day
+function groupByDay(){
+
+  const groups = {};
+
+  const today = new Date().toDateString();
+  
+  for (const climb of climbs){
+    
+    const date = new Date(climb.created_at).toDateString();
+    if (date === today) continue;
+    if (groups[date]===undefined){
+        groups[date] = [];
+    }
+    groups[date].push(climb);
+   
+  }
+
+  
+  return groups;
+  
+}
+
+
+function renderPast(){
+  const grouped = groupByDay();
+  
+  pastSessions.innerHTML="";
+  
+  for(const[date, climbsArray] of Object.entries(grouped)){
+   
+    const div = document.createElement("div");
+    div.className = "card"
+    
+    
+    const title = document.createElement("h3")
+    
+    title.textContent = (date);
+
+    pastSessions.appendChild(div);
+    div.appendChild(title);
+    
+    
+    for (const climb of climbsArray){     
+        
+      const li = document.createElement("li")
+      li.className = "list-item";
+      li.textContent= `${climb.grade} - ${climb.sent ? "Sent" : "Not Sent"} - ${climb.colour} - ${climb.attempts} attempts - ${climb.effort} effort - ${climb.beta ? "Beta" : "No Beta"}`;
+      
+      const deleteBtn = document.createElement("button")
+      deleteBtn.className =  "delete-button"
+      deleteBtn.textContent = "✕"
+
+      deleteBtn.addEventListener("click", async () => {
+      await fetch(`/api/climbs/${climb.id}`, { method: "DELETE" });
+      loadClimbs();
+      });
+      div.appendChild(li);
+      li.appendChild(deleteBtn);
+    } 
+
+
+  }
+  
+  
+
 }
 
 // --- Log: build a climb from the form, POST it, then reload ---
