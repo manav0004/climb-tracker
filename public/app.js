@@ -12,6 +12,8 @@ todayEl.textContent = new Date().toLocaleDateString(undefined, {
 // --- The climbs: the tab's copy of the server's list ---
 let climbs = [];
 const todayList = document.getElementById("today-list");
+const pastSessions = document.getElementById("past-sessions");
+
 
 // GET the climbs from the server, then draw them
 async function loadClimbs() {

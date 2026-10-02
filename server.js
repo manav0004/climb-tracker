@@ -44,6 +44,7 @@ app.post("/api/climbs", async(req, res) => {
     return res.status(400).json({error:"Effort must be a Whole Number"})
   }
 
+   
   const result = await pool.query("INSERT INTO climbs(grade, colour, sent, attempts, effort, beta) VALUES($1, $2, $3, $4, $5, $6) RETURNING * ",[climb.grade, climb.colour, climb.sent, climb.attempts, climb.effort, climb.beta]);
   
   res.status(201).json(result.rows[0]);
