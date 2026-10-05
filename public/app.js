@@ -74,7 +74,7 @@ function renderPast(){
   pastSessions.innerHTML="";
   
   for(const[date, climbsArray] of Object.entries(grouped)){
-   
+    
     const div = document.createElement("div");
     div.className = "card"
     
