@@ -8,6 +8,10 @@ const app = express();
 const { Pool } = require("pg");
 const pool = new Pool({ connectionString: process.env.DATABASE_URL});
 
+
+const port = process.env.PORT || 3000;
+
+
 // --- Stations every request passes through ---
 // Log each request
 app.use((req, res, next) => {
@@ -67,12 +71,12 @@ app.delete("/api/climbs/:id", async(req, res) => {
 });
 
 // --- Start ---
-app.listen(3000, async () => {
-  console.log("Server running at http://localhost:3000");
-
+app.listen(port, async () => {
+  
+  console.log(`http://localhost:${port} is connected`);
   // Connection check: count the rows in the table
   const result = await pool.query("SELECT COUNT(*) FROM climbs");
-  console.log(`The table has ${result.rows[0].count} rows`);
+  
 });
 
 
