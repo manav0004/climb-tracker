@@ -105,7 +105,8 @@ button:active { transform: scale(0.98); }
 
 /* ---- Today's list ---- */
 
-#today-list {
+#today-list,
+.climb-list {
   list-style: none;            /* no bullet dots */
   margin: 0;
   padding: 0;

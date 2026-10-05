@@ -85,11 +85,14 @@ function renderPast(){
 
     pastSessions.appendChild(div);
     div.appendChild(title);
-    
-    
+
+    const list = document.createElement("ul");
+    list.className = "climb-list";
+    div.appendChild(list);
+
     for (const climb of climbsArray){
       const liClimb = createClimbItem(climb);
-      div.appendChild(liClimb);
+      list.appendChild(liClimb);
     }
   
   }
