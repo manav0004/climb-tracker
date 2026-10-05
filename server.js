@@ -75,7 +75,7 @@ app.listen(port, async () => {
   
   console.log(`http://localhost:${port} is connected`);
   // Connection check: count the rows in the table
-  const result = await pool.query("SELECT COUNT(*) FROM climbs");
+  await pool.query("SELECT COUNT(*) FROM climbs");
   
 });
 

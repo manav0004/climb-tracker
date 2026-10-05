@@ -14,7 +14,7 @@ let climbs = [];
 const todayList = document.getElementById("today-list");
 const pastSessions = document.getElementById("past-sessions");
 
-let climbDate = [];
+
 
 // GET the climbs from the server, then draw them
 async function loadClimbs() {
