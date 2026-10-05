@@ -20,6 +20,7 @@ const pastSessions = document.getElementById("past-sessions");
 async function loadClimbs() {
  try{
   const response = await fetch("/api/climbs");
+  
   climbs = await response.json();
  }
  catch{
@@ -138,11 +139,15 @@ form.addEventListener("submit", async (event) => {
   };
   
   try{
-    await fetch("/api/climbs", {
+    const response= await fetch("/api/climbs", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(climb),
   });
+    if (response.ok === false){
+      window.alert("Invalid climb registered");
+      return;
+    }
   }
   catch{
     window.alert("Couldn't save the climb. Check your connection.")
