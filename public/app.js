@@ -18,11 +18,13 @@ const pastSessions = document.getElementById("past-sessions");
 
 // GET the climbs from the server, then draw them
 async function loadClimbs() {
- 
+ try{
   const response = await fetch("/api/climbs");
   climbs = await response.json();
-  
-  
+ }
+ catch{
+  window.alert("Can't access the climb record check your connection")
+ }
   
   renderList();
   renderPast();
@@ -134,12 +136,18 @@ form.addEventListener("submit", async (event) => {
     effort: Number(form.elements.effort.value),
     beta: form.elements.beta.checked,
   };
-
-  await fetch("/api/climbs", {
+  
+  try{
+    await fetch("/api/climbs", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(climb),
   });
+  }
+  catch{
+    window.alert("Couldn't save the climb. Check your connection.")
+    return;
+  }
 
   loadClimbs();
 });
